@@ -1,0 +1,123 @@
+//--- Questão 01 ---
+boolean q1Resposta;
+String q1Nome = null; 		// preenchida if q1Resposta true
+String q1Parentesco = null; 	// preenchida if q1Resposta true
+String q1Programa = null; 	// preenchida if q1Resposta true
+String q1Ano = null; 		// preenchida if q1Resposta true
+
+//--- Questão 02 ---
+String q2Programa = null; 	// com select
+String q2Outro = null; 		// preenchida if select Outro
+
+//--- Questão 03 ---
+String q3Transporte = null; 	// com select
+String q3Tempo = null; 		// preenchida if select pé-bicicleta
+double q3ValorGastodiario; 	// preenchida if select transporte coletivo
+double q3ValorGastoMensal; 	// preenchida if select transporte locado
+String q3Outro = null; 		// preenchida if select Outro
+
+//--- Questão 04 ---
+String q4Instituicao = null; 	// com select
+
+--- Questão 05 ---
+String q5NaturezaInstituicao = null; // com select
+
+//--- Questão 06 ---
+String q6AtividadeRemunerada = null; 	// com select
+double q6ValorBolsaEstagio; 		// preenchida if select estágio
+String q6ProjetoIniciacao = null; 	// preenchida if select iniciação científica
+double q6ValorBolsaIniciacao; 		// preenchida if select iniciação científica
+String q6ProjetoTreinamento = null; 	// preenchida if select treinamento profissional
+double q6ValorBolsaTreinamento; 	// preenchida if select treinamento profissional
+String q6Outra = null; 			// preenchida if select Outra
+double q6ValorBolsaOutra = null; 	// preenchida if select Outra
+
+//--- Questão 07 ---
+boolean q7TrabalhoRemunerado;
+String q7HorasSemanais = null; 	// preenchida if q7TrabalhoRemunerado true
+double q7Salario; 		// preenchida if q7TrabalhoRemunerado true
+
+//--- Questão 08 ---
+String q8Manutencao = null; 	// com select
+String q8Outra = null; 		// preenchida if select Outra
+
+//--- Questão 09 ---
+String q9Moradia = null; 	// com select
+String q9Outra = null; 		// preenchida if select Outra
+
+//--- Questão 10 ---
+String q10ResponsavelManutencao = null;	// com select
+String q10Outros = null; 		// preenchida if select Outros
+
+//--- Questão 11 ---
+boolean q11Esgoto = false;		// set true if this checkbox is checked
+boolean q11Agua = false;		// set true if this checkbox is checked
+boolean q11Iluminacao = false;		// set true if this checkbox is checked
+boolean q11Lixo = false;		// set true if this checkbox is checked
+boolean q11Pavimentacao = false;	// set true if this checkbox is checked
+
+//--- Questão 12 ---
+String q12Residencia = null; 	// com select
+String q12Outro = null;		// preenchida if select Outro
+
+//--- Questão 13 ---
+String q13Imovel = null; 	// com select
+boolean q13ValorAluguel;	// preenchida if select alugado
+boolean q13ValorPrestacao;	// preenchida if select em pagamento
+String q13Nome = null;		// preenchida if select emprestado
+String q13Outro = null;		// preenchida if select Outro
+
+//--- Questão 14 ---
+String q14CaracteristicaCasa = null; // com select
+
+//--- Questão 15 ---
+boolean q15OutrosImoveis;
+String q15Tipo = null; 	// preenchida if q15OutrosImoveis true
+String q15Local = null;	// preenchida if q15OutrosImoveis true
+
+//--- Questão 16 ---
+int q16QuantCarro;
+int q16QuantTV;
+int q16QuantMaqLavar;
+int q16QuantGeladeira;
+int q16QuantTVCabo;
+int q16QuantComputador;
+int q16QuantInternetPaga;
+int q16QuantEmpregadaMensalista;
+int q16QuantEmpregadaDiarista;
+int q16QuantBanheiro;
+int q16QuantQuarto;
+
+//--- Questão 17 ---
+
+
+//--- Questão 18 ---
+
+
+//--- Questão 19 ---
+double q19ValorAgua;
+double q19ValorLuz;
+double q19ValorTelefone;
+double q19ValorCondominio;
+double q19ValorMensalidadeEscolar;
+double q19ValorAlimentacao;
+double q19ValorSaude;
+double q19ValorTransporte;
+double q19ValorIptuAnual;
+double q19ValorAluguel;
+double q19ValorPensao;
+double q19ValorOutros;
+
+//--- Questão 20 ---
+double q20ValorAgua;
+double q20ValorLuz;
+double q20ValorTelefone;
+double q20ValorCondominio;
+double q20ValorAluguel;
+double q20ValorIptuAnual;
+
+//--- Questão 21 ---
+String q21Esclarecimentos = null; // não sei se uma string dá conta de guardar o texto
+
+//--- Termo ---
+boolean TermoCompromisso = false; // set true if checkbox is checked
