@@ -1,123 +1,141 @@
+Nas variaveis que viraram 'boolean' vamos fazer  
+com que seja 'String' que vai guardar somente os
+valores 'Sim' e 'Não', isso facilitará na implementação do código.
+
+Nas paginas web fazemos um select option cujas opções só poderão ser 'Sim' ou 'Não',
+aí então não haveria o risco de o usuário colocar uma resposta 'inadequada' nessa variável.
+
 //--- Questão 01 ---
-boolean q1Resposta;
-String q1Nome = null; 		// preenchida if q1Resposta true
-String q1Parentesco = null; 	// preenchida if q1Resposta true
-String q1Programa = null; 	// preenchida if q1Resposta true
-String q1Ano = null; 		// preenchida if q1Resposta true
+String qt01_Resposta;		// com ratio button de 'Sim' ou 'Não'
+String qt01_Nome = ""; 		// preenchida se qt01_Resposta = 'sim'
+String qt01_Parentesco = ""; 	// preenchida se qt01_Resposta = 'sim'
+String qt01_Programa = ""; 	// preenchida se qt01_Resposta = 'sim'
+String qt01_Ano = ""; 		// preenchida se qt01_Resposta = 'sim'
 
 //--- Questão 02 ---
-String q2Programa = null; 	// com select
-String q2Outro = null; 		// preenchida if select Outro
+String qt02_Programa = "";	// com ratio button
+String qt02_Outro = ""; 	// preenchida se qt02_Programa = 'Outro'
 
 //--- Questão 03 ---
-String q3Transporte = null; 	// com select
-String q3Tempo = null; 		// preenchida if select pé-bicicleta
-double q3ValorGastodiario; 	// preenchida if select transporte coletivo
-double q3ValorGastoMensal; 	// preenchida if select transporte locado
-String q3Outro = null; 		// preenchida if select Outro
+String qt03_Transporte = ""; 	// com ratio button
+String qt03_Tempo = ""; 	// preenchida se qt03_Transporte = 'pé-bicicleta'
+double qt03_ValorGastodiario; 	// preenchida se qt03_Transporte = 'transporte coletivo'
+double qt03_ValorGastoMensal; 	// preenchida se qt03_Transporte = 'transporte locado'
+String qt03_Outro = ""; 	// preenchida se qt03_Transporte = 'Outro'
 
 //--- Questão 04 ---
-String q4Instituicao = null; 	// com select
+String qt04_InstituicaoEnsinoFundamental = ""; 	// com ratio button
 
 --- Questão 05 ---
-String q5NaturezaInstituicao = null; // com select
+String qt05_InstituicaoEnsinoMedio = ""; 	// com ratio button
 
 //--- Questão 06 ---
-String q6AtividadeRemunerada = null; 	// com select
-double q6ValorBolsaEstagio; 		// preenchida if select estágio
-String q6ProjetoIniciacao = null; 	// preenchida if select iniciação científica
-double q6ValorBolsaIniciacao; 		// preenchida if select iniciação científica
-String q6ProjetoTreinamento = null; 	// preenchida if select treinamento profissional
-double q6ValorBolsaTreinamento; 	// preenchida if select treinamento profissional
-String q6Outra = null; 			// preenchida if select Outra
-double q6ValorBolsaOutra = null; 	// preenchida if select Outra
+String qt06_AtividadeRemunerada = ""; 	// com ratio button
+double qt06_ValorBolsaEstagio; 		// preenchida qt06_AtividadeRemunerada = estágio
+String qt06_ProjetoIniciacao = ""; 	// preenchida qt06_AtividadeRemunerada = iniciação científica
+double qt06_ValorBolsaIniciacao; 	// preenchida qt06_AtividadeRemunerada = iniciação científica
+String qt06_ProjetoTreinamento = ""; 	// preenchida qt06_AtividadeRemunerada = treinamento profissional
+double qt06_ValorBolsaTreinamento; 	// preenchida qt06_AtividadeRemunerada = treinamento profissional
+String qt06_Outro = ""; 		// preenchida qt06_AtividadeRemunerada = Outra
+double qt06_ValorBolsaOutro; 		// preenchida qt06_AtividadeRemunerada = Outra
 
 //--- Questão 07 ---
-boolean q7TrabalhoRemunerado;
-String q7HorasSemanais = null; 	// preenchida if q7TrabalhoRemunerado true
-double q7Salario; 		// preenchida if q7TrabalhoRemunerado true
+String qt07_TrabalhoRemunerado = "";	// com ratio button de 'Sim' ou 'Não'
+String qt07_HorasSemanais = ""; 	// preenchida se qt07_TrabalhoRemunerado = 'Sim'
+double qt07_Salario; 			// preenchida se qt07_TrabalhoRemunerado = 'Sim'
 
 //--- Questão 08 ---
-String q8Manutencao = null; 	// com select
-String q8Outra = null; 		// preenchida if select Outra
+String qt08_Manutencao = ""; 	// com ratio button
+String qt08_Outra = ""; 	// preenchida se qt08_Manutencao = 'Outra'
 
 //--- Questão 09 ---
-String q9Moradia = null; 	// com select
-String q9Outra = null; 		// preenchida if select Outra
+String qt09_Moradia = ""; 	// com ratio button
+String qt09_Outra = ""; 	// preenchida se qt09_Moradia = 'Outra'
 
 //--- Questão 10 ---
-String q10ResponsavelManutencao = null;	// com select
-String q10Outros = null; 		// preenchida if select Outros
+String qt10_ResponsavelFinanceiro = "";		// com ratio button
+String qt10_Outros = ""; 			// preenchida se qt10_ResponsavelFinanceiro = 'Outros'
 
 //--- Questão 11 ---
-boolean q11Esgoto = false;		// set true if this checkbox is checked
-boolean q11Agua = false;		// set true if this checkbox is checked
-boolean q11Iluminacao = false;		// set true if this checkbox is checked
-boolean q11Lixo = false;		// set true if this checkbox is checked
-boolean q11Pavimentacao = false;	// set true if this checkbox is checked
+String qt11_Esgoto = "";		// com ratio button de 'Sim' ou 'Não'
+String qt11_Agua = "";			// com ratio button de 'Sim' ou 'Não'
+String qt11_Iluminacao = "";		// com ratio button de 'Sim' ou 'Não'
+String qt11_Lixo = "";			// com ratio button de 'Sim' ou 'Não'
+String qt11_Pavimentacao = "";		// com ratio button de 'Sim' ou 'Não'
 
 //--- Questão 12 ---
-String q12Residencia = null; 	// com select
-String q12Outro = null;		// preenchida if select Outro
+String qt12_Residencia = ""; 	// com ratio button
+String qt12_Outro = "";		// preenchida se qt12_Residencia = 'Outro'
 
 //--- Questão 13 ---
-String q13Imovel = null; 	// com select
-boolean q13ValorAluguel;	// preenchida if select alugado
-boolean q13ValorPrestacao;	// preenchida if select em pagamento
-String q13Nome = null;		// preenchida if select emprestado
-String q13Outro = null;		// preenchida if select Outro
+String qt13_Imovel = ""; 	// com ratio button
+double qt13_ValorAluguel;	// preenchida se qt13_Imovel = alugado
+double qt13_ValorPrestacao;	// preenchida se qt13_Imovel = em pagamento
+String qt13_Nome = "";		// preenchida se qt13_Imovel = emprestado
+String qt13_Outro = "";		// preenchida se qt13_Imovel = Outro
 
 //--- Questão 14 ---
-String q14CaracteristicaCasa = null; // com select
+String qt14_Acabamento = ""; 	// com ratio button
 
 //--- Questão 15 ---
-boolean q15OutrosImoveis;
-String q15Tipo = null; 	// preenchida if q15OutrosImoveis true
-String q15Local = null;	// preenchida if q15OutrosImoveis true
+String qt15_OutrosImoveis = ""; // com ratio button de 'Sim' ou 'Não'
+//se 'Sim' acessar tabela separada para preencher seus campos
 
 //--- Questão 16 ---
-int q16QuantCarro;
-int q16QuantTV;
-int q16QuantMaqLavar;
-int q16QuantGeladeira;
-int q16QuantTVCabo;
-int q16QuantComputador;
-int q16QuantInternetPaga;
-int q16QuantEmpregadaMensalista;
-int q16QuantEmpregadaDiarista;
-int q16QuantBanheiro;
-int q16QuantQuarto;
+int qt16_QuantCarro;
+int qt16_QuantTV;
+int qt16_QuantMaqLavar;
+int qt16_QuantGeladeira;
+int qt16_QuantTVCabo;
+int qt16_QuantComputador;
+int qt16_QuantInternetPaga;
+int qt16_QuantEmpregadaMensalista;
+int qt16_QuantEmpregadaDiarista;
+int qt16_QuantBanheiro;
+int qt16_QuantQuarto;
 
 //--- Questão 17 ---
-
+String qt17_ProblemaSaude = ""; // com ratio button de 'Sim' ou 'Não'
+//se 'Sim' acessar tabela separada para preencher seus campos
 
 //--- Questão 18 ---
-
+//acessar tabela separada
+double qt18_AluguelImoveis;
+double qt18_PensaoMorte;
+double qt18_PensaoAlimenticia;
+double qt18_AjudaTerceiros
+double qt18_BeneficiosSociais
+double qt18_OutraRenda
+int qt18_NumeroResidentes;
 
 //--- Questão 19 ---
-double q19ValorAgua;
-double q19ValorLuz;
-double q19ValorTelefone;
-double q19ValorCondominio;
-double q19ValorMensalidadeEscolar;
-double q19ValorAlimentacao;
-double q19ValorSaude;
-double q19ValorTransporte;
-double q19ValorIptuAnual;
-double q19ValorAluguel;
-double q19ValorPensao;
-double q19ValorOutros;
+double qt19_ValorAgua;
+double qt19_ValorLuz;
+double qt19_ValorTelefone;
+double qt19_ValorCondominio;
+double qt19_ValorMensalidadeEscolar;
+double qt19_ValorAlimentacao;
+double qt19_ValorSaude;
+double qt19_ValorTransporte;
+double qt19_ValorIptuAnual;
+double qt19_ValorAluguel;
+double qt19_ValorPensao;
+double qt19_ValorOutros;
 
 //--- Questão 20 ---
-double q20ValorAgua;
-double q20ValorLuz;
-double q20ValorTelefone;
-double q20ValorCondominio;
-double q20ValorAluguel;
-double q20ValorIptuAnual;
+double qt20_ValorAgua;
+double qt20_ValorLuz;
+double qt20_ValorTelefone;
+double qt20_ValorCondominio;
+double qt20_ValorAluguel;
+double qt20_ValorIptuAnual;
 
 //--- Questão 21 ---
-String q21Esclarecimentos = null; // não sei se uma string dá conta de guardar o texto
+String qt21_Esclarecimentos = ""; 	// não sei se uma string dá conta de guardar o texto
+					// pode sim, fiz um varchar(200) no banco de dados então podemos inserir 200 caracteres
+					// ou então inserir mais se precisar
 
 //--- Termo ---
-boolean TermoCompromisso = false; // set true if checkbox is checked
+// é desnecessário guardar uma variável para 'termo de compromisso', 
+// pois se o usuário não aceitar selecionar, haverá um codigo javascript 
+// que não vai deixar confirmar o incluir do formulário todo, ou seja, a pessoa precisa aceitar os termos se quiser prosseguir.
