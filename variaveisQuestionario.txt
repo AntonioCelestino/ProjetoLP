@@ -6,27 +6,30 @@ Nas paginas web fazemos um select option cujas opções só poderão ser 'Sim' ou 'N
 aí então não haveria o risco de o usuário colocar uma resposta 'inadequada' nessa variável.
 
 //--- Questão 01 ---
-String qt01_Resposta;		// com ratio button de 'Sim' ou 'Não'
-String qt01_Nome = ""; 		// preenchida se qt01_Resposta = 'sim'
-String qt01_Parentesco = ""; 	// preenchida se qt01_Resposta = 'sim'
-String qt01_Programa = ""; 	// preenchida se qt01_Resposta = 'sim'
-String qt01_Ano = ""; 		// preenchida se qt01_Resposta = 'sim'
+String qt01_Resposta;		// com ratio button de 'Sim' ou 'Não'	
+String qt01_Nome = ""; 		// preenchida se qt01_Resposta = 'sim'	
+String qt01_Parentesco = ""; 	// preenchida se qt01_Resposta = 'sim'	
+String qt01_Programa = ""; 	// preenchida se qt01_Resposta = 'sim'	
+String qt01_Ano = ""; 		// preenchida se qt01_Resposta = 'sim'	
 
 //--- Questão 02 ---
-String qt02_Programa = "";	// com ratio button
-String qt02_Outro = ""; 	// preenchida se qt02_Programa = 'Outro'
+String qt02_Alimentacao = "";	// com ratio button de 'Sim' ou 'Não'				
+String qt02_Manutencao = "";	// com ratio button de 'Sim' ou 'Não'
+String qt02_Moradia = "";	// com ratio button de 'Sim' ou 'Não'
+String qt02_Transporte = "";	// com ratio button de 'Sim' ou 'Não'
+String qt02_Outro = "";		// preenchida se as respostas anteriores são iguais a 'Não'	
 
 //--- Questão 03 ---
 String qt03_Transporte = ""; 	// com ratio button
 String qt03_Tempo = ""; 	// preenchida se qt03_Transporte = 'pé-bicicleta'
-double qt03_ValorGastodiario; 	// preenchida se qt03_Transporte = 'transporte coletivo'
+double qt03_ValorGastoDiario; 	// preenchida se qt03_Transporte = 'transporte coletivo'
 double qt03_ValorGastoMensal; 	// preenchida se qt03_Transporte = 'transporte locado'
 String qt03_Outro = ""; 	// preenchida se qt03_Transporte = 'Outro'
 
 //--- Questão 04 ---
 String qt04_InstituicaoEnsinoFundamental = ""; 	// com ratio button
 
---- Questão 05 ---
+//--- Questão 05 ---
 String qt05_InstituicaoEnsinoMedio = ""; 	// com ratio button
 
 //--- Questão 06 ---
@@ -103,9 +106,9 @@ String qt17_ProblemaSaude = ""; // com ratio button de 'Sim' ou 'Não'
 double qt18_AluguelImoveis;
 double qt18_PensaoMorte;
 double qt18_PensaoAlimenticia;
-double qt18_AjudaTerceiros
-double qt18_BeneficiosSociais
-double qt18_OutraRenda
+double qt18_AjudaTerceiros;
+double qt18_BeneficiosSociais;
+double qt18_OutraRenda;
 int qt18_NumeroResidentes;
 
 //--- Questão 19 ---
