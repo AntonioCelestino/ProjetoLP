@@ -13,6 +13,16 @@
         <form action="ManterFormularioController?acao=confirmar${operacao}" method="post" name="frmManterFormulario" onsubmit="return validarFormulario(this)">
             <table>
                 <tr> 
+                    <td><hr />Confirme o nome do aluno:
+                        <select name="optAluno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${formulario.codAluno == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${alunos}" var="aluno">
+                                <option value="${aluno.matricula}" <c:if test="${formulario.codAluno == aluno.matricula}"> selected</c:if>>${aluno.usuario.nome}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr> 
                     <td><hr />Escolha em qual Seleção quer concorrer:
                         <select name="optSelecao" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${formulario.codSelecao == null}"> selected</c:if>> </option>  
@@ -271,7 +281,7 @@
                         <input type="radio" name="opt_qt15_OutrosImoveis" value="Sim" <c:if test="${formulario.qt15_OutrosImoveis == 'Sim'}"> selected</c:if>>Sim
                         <input type="radio" name="opt_qt15_OutrosImoveis" value="Nao" <c:if test="${formulario.qt15_OutrosImoveis == 'Nao'}"> selected</c:if>>Não
                         <br /> Se sim - especifique tipo e local de cada imóvel
-                        <br /><textarea rows="2" cols="100" name="qt15_DescricaoImoveis" value="${formulario.qt15_DescricaoImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea>
+                        <br /><textarea rows="2" cols="100" name="txt_qt15_DescricaoImoveis" value="${formulario.qt15_DescricaoImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea>
                     </td>
                 </tr>
                 <tr> 
@@ -306,7 +316,27 @@
                     <td><hr />QUESTÃO 18:</td>
                 </tr>
                 <tr>
-                    <td>XX</td>
+                    <td>
+                        Deverão ser lançados, no quadro abaixo, os dados de sua família atual, considerando as pessoas mantidas pela mesma renda ou contribuintes com a renda familiar, inclusive o estudante.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        QUADRO
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Outras rendas:
+                        <br />01) Aluguel(is) de imóvel(is) - Valor:&nbsp;<input type="text" name="txt_qt18_AluguelImoveis" value="${formulario.qt18_AluguelImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />02) Pensão por morte - Valor:&nbsp;<input type="text" name="txt_qt18_PensaoMorte" value="${formulario.qt18_PensaoMorte}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />03) Pensão alimentícia - Valor:&nbsp;<input type="text" name="txt_qt18_PensaoAlimenticia" value="${formulario.qt18_PensaoAlimenticia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />04) Ajudas de terceiros - Valor:&nbsp;<input type="text" name="txt_qt18_AjudaTerceiros" value="${formulario.qt18_AjudaTerceiros}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />05) Benefícios sociais - Valor:&nbsp;<input type="text" name="txt_qt18_BeneficiosSociais" value="${formulario.qt18_BeneficiosSociais}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />06) Outro - Qual?&nbsp;<input type="text" name="txt_qt18_NomeOutraRenda" value="${formulario.qt18_NomeOutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> - Valor:&nbsp;<input type="text" name="txt_qt18_OutraRenda" value="${formulario.qt18_OutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Total da renda familiar&nbsp;<input type="text" name="txt_q18_TotalRenda" value="${formulario.q18_TotalRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Número total de pessoas da família que vivem dessa renda (incluindo o estudante)&nbsp;<input type="text" name="txt_qt18_NumeroResidentes" value="${formulario.qt18_NumeroResidentes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    </td>
                 </tr>
                 <tr> 
                     <td><hr />QUESTÃO 19:</td>

@@ -1,9 +1,8 @@
-Nas variaveis que viraram 'boolean' vamos fazer  
-com que seja 'String' que vai guardar somente os
-valores 'Sim' e 'Não', isso facilitará na implementação do código.
-
-Nas paginas web fazemos um select option cujas opções só poderão ser 'Sim' ou 'Não',
-aí então não haveria o risco de o usuário colocar uma resposta 'inadequada' nessa variável.
+private int codFormulario;
+private Aluno aluno
+private int codAluno;
+private Selecao selecao;
+private int codSelecao;
 
 //--- Questão 01 ---
 String qt01_Resposta;		// com ratio button de 'Sim' ou 'Não'	
@@ -20,20 +19,20 @@ String qt02_Transporte = "";	// com ratio button de 'Sim' ou 'Não'
 String qt02_Outro = "";		// preenchida se as respostas anteriores são iguais a 'Não'	
 
 //--- Questão 03 ---
-String qt03_Transporte = ""; 	// com ratio button
+String qt03_Transporte = ""; 	// com select
 String qt03_Tempo = ""; 	// preenchida se qt03_Transporte = 'pé-bicicleta'
 double qt03_ValorGastoDiario; 	// preenchida se qt03_Transporte = 'transporte coletivo'
 double qt03_ValorGastoMensal; 	// preenchida se qt03_Transporte = 'transporte locado'
 String qt03_Outro = ""; 	// preenchida se qt03_Transporte = 'Outro'
 
 //--- Questão 04 ---
-String qt04_InstituicaoEnsinoFundamental = ""; 	// com ratio button
+String qt04_InstituicaoEnsinoFundamental = ""; 	// com select
 
 //--- Questão 05 ---
-String qt05_InstituicaoEnsinoMedio = ""; 	// com ratio button
+String qt05_InstituicaoEnsinoMedio = ""; 	// com select
 
 //--- Questão 06 ---
-String qt06_AtividadeRemunerada = ""; 	// com ratio button
+String qt06_AtividadeRemunerada = ""; 	// com select
 double qt06_ValorBolsaEstagio; 		// preenchida qt06_AtividadeRemunerada = estágio
 String qt06_ProjetoIniciacao = ""; 	// preenchida qt06_AtividadeRemunerada = iniciação científica
 double qt06_ValorBolsaIniciacao; 	// preenchida qt06_AtividadeRemunerada = iniciação científica
@@ -48,15 +47,15 @@ String qt07_HorasSemanais = ""; 	// preenchida se qt07_TrabalhoRemunerado = 'Sim
 double qt07_Salario; 			// preenchida se qt07_TrabalhoRemunerado = 'Sim'
 
 //--- Questão 08 ---
-String qt08_Manutencao = ""; 	// com ratio button
+String qt08_Manutencao = ""; 	// com select
 String qt08_Outra = ""; 	// preenchida se qt08_Manutencao = 'Outra'
 
 //--- Questão 09 ---
-String qt09_Moradia = ""; 	// com ratio button
+String qt09_Moradia = ""; 	// com select
 String qt09_Outra = ""; 	// preenchida se qt09_Moradia = 'Outra'
 
 //--- Questão 10 ---
-String qt10_ResponsavelFinanceiro = "";		// com ratio button
+String qt10_ResponsavelFinanceiro = "";		// com select
 String qt10_Outros = ""; 			// preenchida se qt10_ResponsavelFinanceiro = 'Outros'
 
 //--- Questão 11 ---
@@ -67,11 +66,11 @@ String qt11_Lixo = "";			// com ratio button de 'Sim' ou 'Não'
 String qt11_Pavimentacao = "";		// com ratio button de 'Sim' ou 'Não'
 
 //--- Questão 12 ---
-String qt12_Residencia = ""; 	// com ratio button
+String qt12_Residencia = ""; 	// com select
 String qt12_Outro = "";		// preenchida se qt12_Residencia = 'Outro'
 
 //--- Questão 13 ---
-String qt13_Imovel = ""; 	// com ratio button
+String qt13_Imovel = ""; 	// com select
 double qt13_ValorAluguel;	// preenchida se qt13_Imovel = alugado
 double qt13_ValorPrestacao;	// preenchida se qt13_Imovel = em pagamento
 String qt13_Nome = "";		// preenchida se qt13_Imovel = emprestado
@@ -82,7 +81,7 @@ String qt14_Acabamento = ""; 	// com ratio button
 
 //--- Questão 15 ---
 String qt15_OutrosImoveis = ""; // com ratio button de 'Sim' ou 'Não'
-//se 'Sim' acessar tabela separada para preencher seus campos
+String qt15_DescricaoImoveis = "";
 
 //--- Questão 16 ---
 int qt16_QuantCarro;
@@ -109,6 +108,8 @@ double qt18_PensaoAlimenticia;
 double qt18_AjudaTerceiros;
 double qt18_BeneficiosSociais;
 double qt18_OutraRenda;
+String qt18_NomeOutraRenda = "";
+double q18_TotalRenda;
 int qt18_NumeroResidentes;
 
 //--- Questão 19 ---
@@ -134,9 +135,7 @@ double qt20_ValorAluguel;
 double qt20_ValorIptuAnual;
 
 //--- Questão 21 ---
-String qt21_Esclarecimentos = ""; 	// não sei se uma string dá conta de guardar o texto
-					// pode sim, fiz um varchar(200) no banco de dados então podemos inserir 200 caracteres
-					// ou então inserir mais se precisar
+String qt21_Esclarecimentos = "";
 
 //--- Termo ---
 // é desnecessário guardar uma variável para 'termo de compromisso', 
