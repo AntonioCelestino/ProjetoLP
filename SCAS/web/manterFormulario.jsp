@@ -33,22 +33,17 @@
                     </td>
                 </tr>
                 <tr> 
-                    <td><hr />
-                        Código do Formulário&nbsp;<input type="text" name="txtCodFormulario" value="${aluno.matricula+"-"+selecao.codSelecao}" <c:if test="${operacao != 'Excluir'}"> readonly</c:if>>
-                    </td>
-                </tr>
-                <tr> 
                     <td><hr />QUESTÃO 01:</td>
                 </tr>
                 <tr>
                     <td>Você ou alguém da sua família é ou já foi atendido em algum programa de Assistência Estudantil do IF Sudeste MG ou do antigo CTU?
-                        <br /><input type="radio" name="opt_qt01_Resposta" value="Sim" <c:if test="${formulario.qt01_Resposta == 'Sim'}"> selected</c:if>>Sim
-                        <input type="radio" name="opt_qt01_Resposta" value="Nao" <c:if test="${formulario.qt01_Resposta == 'Nao'}"> selected</c:if>>Não
+                        <br /><input type="radio" name="opt_qt01_Resposta" value="Sim" onclick="if(document.getElementById('qt01_Nome').disabled==true){document.getElementById('qt01_Nome').disabled=false}; if(document.getElementById('qt01_Parentesco').disabled==true){document.getElementById('qt01_Parentesco').disabled=false}; if(document.getElementById('qt01_Programa').disabled==true){document.getElementById('qt01_Programa').disabled=false}; if(document.getElementById('qt01_Ano').disabled==true){document.getElementById('qt01_Ano').disabled=false}" <c:if test="${formulario.qt01_Resposta == 'Sim'}"> selected</c:if>>Sim
+                        <input type="radio" name="opt_qt01_Resposta" value="Nao" onclick="if(document.getElementById('qt01_Nome').disabled==false){document.getElementById('qt01_Nome').disabled=true}; if(document.getElementById('qt01_Parentesco').disabled==false){document.getElementById('qt01_Parentesco').disabled=true}; if(document.getElementById('qt01_Programa').disabled==false){document.getElementById('qt01_Programa').disabled=true}; if(document.getElementById('qt01_Ano').disabled==false){document.getElementById('qt01_Ano').disabled=true}" <c:if test="${formulario.qt01_Resposta == 'Nao'}"> selected</c:if>>Não
                         <br />Se Sim, informe:
-                        <br />Quem&nbsp;<input type="text" name="txt_qt01_Nome" value="${formulario.qt01_Nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Parentesco&nbsp;<input type="text" name="txt_qt01_Parentesco" value="${formulario.qt01_Parentesco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Programa&nbsp;<input type="text" name="txt_qt01_Programa" value="${formulario.qt01_Programa}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Ano&nbsp;<input type="text" name="txt_qt01_Ano" value="${formulario.qt01_Ano}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Quem&nbsp;<input type="text" id="qt01_Nome" name="txt_qt01_Nome" value="${formulario.qt01_Nome}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Parentesco&nbsp;<input type="text" id="qt01_Parentesco" name="txt_qt01_Parentesco" value="${formulario.qt01_Parentesco}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Programa&nbsp;<input type="text" id="qt01_Programa" name="txt_qt01_Programa" value="${formulario.qt01_Programa}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Ano&nbsp;<input type="text" id="qt01_Ano" name="txt_qt01_Ano" value="${formulario.qt01_Ano}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr> 
@@ -89,10 +84,10 @@
                             <option value="Outro" <c:if test="${formulario.qt03_Transporte == 'Outro'}"> selected</c:if>>Outro</option>
                         </select>
                         <br />Informe:
-                        <br />Se a pé / de bicicleta - Tempo gasto no trajeto&nbsp;<input type="text" name="txt_qt03_Tempo" value="${formulario.qt03_Tempo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Se transporte coletivo com recursos próprios - Gasto diário&nbsp;<input type="text" name="txt_qt03_ValorGastoDiario" value="${formulario.qt03_ValorGastodiario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Se transporte locado - Gasto mensal&nbsp;<input type="text" name="txt_qt03_ValorGastoMensal" value="${formulario.qt03_ValorGastoMensal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Se Outro - Especifique&nbsp;<input type="text" name="txt_qt03_Outro" value="${formulario.qt03_Outro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Se a pé / de bicicleta - Tempo gasto no trajeto&nbsp;<input type="text" id="qt03_Tempo" name="txt_qt03_Tempo" value="${formulario.qt03_Tempo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Se transporte coletivo com recursos próprios - Gasto diário&nbsp;<input type="text" id="qt03_ValorGastoDiario" name="txt_qt03_ValorGastoDiario" value="${formulario.qt03_ValorGastodiario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Se transporte locado - Gasto mensal&nbsp;<input type="text" id="qt03_ValorGastoMensal" name="txt_qt03_ValorGastoMensal" value="${formulario.qt03_ValorGastoMensal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Se Outro - Especifique&nbsp;<input type="text" id="qt03_Outro" name="txt_qt03_Outro" value="${formulario.qt03_Outro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr> 
@@ -150,11 +145,11 @@
                 </tr>
                 <tr>
                     <td>Você trabalha atualmente em alguma outra atividade remunerada?<br />
-                        <input type="radio" name="opt_qt07_TrabalhoRemunerado" value="Sim" <c:if test="${formulario.qt07_TrabalhoRemunerado == 'Sim'}"> selected</c:if>>Sim
-                        <input type="radio" name="opt_qt07_TrabalhoRemunerado" value="Nao" <c:if test="${formulario.qt07_TrabalhoRemunerado == 'Nao'}"> selected</c:if>>Não
+                        <input type="radio" name="opt_qt07_TrabalhoRemunerado" value="Sim" onclick="if(document.getElementById('qt07_HorasSemanais').disabled==true){document.getElementById('qt07_HorasSemanais').disabled=false}; if(document.getElementById('qt07_Salario').disabled==true){document.getElementById('qt07_Salario').disabled=false}" <c:if test="${formulario.qt07_TrabalhoRemunerado == 'Sim'}"> selected</c:if>>Sim
+                        <input type="radio" name="opt_qt07_TrabalhoRemunerado" value="Nao" onclick="if(document.getElementById('qt07_HorasSemanais').disabled==false){document.getElementById('qt07_HorasSemanais').disabled=true}; if(document.getElementById('qt07_Salario').disabled==false){document.getElementById('qt07_Salario').disabled=true}" <c:if test="${formulario.qt07_TrabalhoRemunerado == 'Nao'}"> selected</c:if>>Não
                         <br />Se Sim, informe:
-                        <br />Qual a carga horária mensal?&nbsp;<input type="text" name="txt_qt07_HorasSemanais" value="${formulario.qt07_HorasSemanais}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Qual o salário mensal?&nbsp;<input type="text" name="txt_qt07_Salario" value="${formulario.qt07_Salario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Qual a carga horária mensal?&nbsp;<input type="text" id="qt07_HorasSemanais" name="txt_qt07_HorasSemanais" value="${formulario.qt07_HorasSemanais}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Qual o salário mensal? - Valor R$:&nbsp;<input type="text" id="qt07_Salario" name="txt_qt07_Salario" value="${formulario.qt07_Salario}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr> 
@@ -262,8 +257,8 @@
                             <option value="Outra situação" <c:if test="${formulario.qt13_Imovel == 'Outra situação'}"> selected</c:if>>Outra situação</option>
                         </select>
                         <br />Informe:
-                        <br />Se alugado - Valor do aluguel&nbsp;<input type="text" name="txt_qt13_ValorAluguel" value="${formulario.qt13_ValorAluguel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Se próprio em pagamento - Valor da prestação&nbsp;<input type="text" name="txt_qt13_ValorPrestacao" value="${formulario.qt13_ValorPrestacao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Se alugado - Valor do aluguel (R$):&nbsp;<input type="text" name="txt_qt13_ValorAluguel" value="${formulario.qt13_ValorAluguel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Se próprio em pagamento - Valor da prestação (R$):&nbsp;<input type="text" name="txt_qt13_ValorPrestacao" value="${formulario.qt13_ValorPrestacao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />Se emprestado ou cedido - Por quem?&nbsp;<input type="text" name="txt_qt13_Nome" value="${formulario.qt13_Nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />Se Outra situação- Qual?&nbsp;<input type="text" name="txt_qt13_Outro" value="${formulario.qt13_Outro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
@@ -283,10 +278,10 @@
                 </tr>
                 <tr>
                     <td>A família possui outros imóveis além do que habita? (lotes, sítios, fazendas, casa na praia, aptos, salas, barracões ou outros)<br />
-                        <input type="radio" name="opt_qt15_OutrosImoveis" value="Sim" <c:if test="${formulario.qt15_OutrosImoveis == 'Sim'}"> selected</c:if>>Sim
-                        <input type="radio" name="opt_qt15_OutrosImoveis" value="Nao" <c:if test="${formulario.qt15_OutrosImoveis == 'Nao'}"> selected</c:if>>Não
+                        <input type="radio" name="opt_qt15_OutrosImoveis" value="Sim" onclick="if(document.getElementById('qt15_DescricaoImoveis').disabled==true){document.getElementById('qt15_DescricaoImoveis').disabled=false}" <c:if test="${formulario.qt15_OutrosImoveis == 'Sim'}"> selected</c:if>>Sim
+                        <input type="radio" name="opt_qt15_OutrosImoveis" value="Nao" onclick="if(document.getElementById('qt15_DescricaoImoveis').disabled==false){document.getElementById('qt15_DescricaoImoveis').disabled=true}" <c:if test="${formulario.qt15_OutrosImoveis == 'Nao'}"> selected</c:if>>Não
                         <br /> Se sim - especifique tipo e local de cada imóvel
-                        <br /><textarea rows="2" cols="100" name="txt_qt15_DescricaoImoveis" value="${formulario.qt15_DescricaoImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea>
+                        <br /><textarea rows="2" cols="100" id="qt15_DescricaoImoveis" name="txt_qt15_DescricaoImoveis" value="${formulario.qt15_DescricaoImoveis}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea>
                     </td>
                 </tr>
                 <tr> 
@@ -327,11 +322,6 @@
                 </tr>
                 <tr>
                     <td>
-                        QUADRO
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         Outras rendas:
                         <br />01) Aluguel(is) de imóvel(is) - Valor (R$):&nbsp;<input type="text" name="txt_qt18_AluguelImoveis" value="${formulario.qt18_AluguelImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />02) Pensão por morte - Valor (R$):&nbsp;<input type="text" name="txt_qt18_PensaoMorte" value="${formulario.qt18_PensaoMorte}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
@@ -350,18 +340,18 @@
                     <td>
                         Despesa familiar mensal:
                         <br />(excluir despesas do estudante do IF Sudeste MG que reside fora)
-                        <br />01) Água&nbsp;<input type="text" name="txt_qt19_ValorAgua" value="${formulario.qt19_ValorAgua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />02) Luz&nbsp;<input type="text" name="txt_qt19_ValorLuz" value="${formulario.qt19_ValorLuz}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />03) Telefone&nbsp;<input type="text" name="txt_qt19_ValorTelefone" value="${formulario.qt19_ValorTelefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />04) Condomínio&nbsp;<input type="text" name="txt_qt19_ValorCondominio" value="${formulario.qt19_ValorCondominio}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />05) Mensalidade escolar&nbsp;<input type="text" name="txt_qt19_ValorMensalidadeEscolar" value="${formulario.qt19_ValorMensalidadeEscolar}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />06) Alimentação&nbsp;<input type="text" name="txt_qt19_ValorAlimentacao" value="${formulario.qt19_ValorAlimentacao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />07) Saúde&nbsp;<input type="text" name="txt_qt19_ValorSaude" value="${formulario.qt19_ValorSaude}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />08) Transporte&nbsp;<input type="text" name="txt_qt19_ValorTransporte" value="${formulario.qt19_ValorTransporte}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />09) IPTU anual&nbsp;<input type="text" name="txt_qt19_ValorIptuAnual" value="${formulario.qt19_ValorIptuAnual}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />10) Aluguel / prestação casa&nbsp;<input type="text" name="txt_qt19_ValorAluguel" value="${formulario.qt19_ValorAluguel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />11) Pensão alimentícia&nbsp;<input type="text" name="txt_qt19_ValorPensao" value="${formulario.qt19_ValorPensao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />11) Outros&nbsp;<input type="text" name="txt_qt19_ValorOutros" value="${formulario.qt19_ValorOutros}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />01) Água - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorAgua" value="${formulario.qt19_ValorAgua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />02) Luz - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorLuz" value="${formulario.qt19_ValorLuz}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />03) Telefone - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorTelefone" value="${formulario.qt19_ValorTelefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />04) Condomínio - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorCondominio" value="${formulario.qt19_ValorCondominio}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />05) Mensalidade escolar - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorMensalidadeEscolar" value="${formulario.qt19_ValorMensalidadeEscolar}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />06) Alimentação - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorAlimentacao" value="${formulario.qt19_ValorAlimentacao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />07) Saúde - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorSaude" value="${formulario.qt19_ValorSaude}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />08) Transporte - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorTransporte" value="${formulario.qt19_ValorTransporte}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />09) IPTU anual - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorIptuAnual" value="${formulario.qt19_ValorIptuAnual}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />10) Aluguel / prestação casa - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorAluguel" value="${formulario.qt19_ValorAluguel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />11) Pensão alimentícia - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorPensao" value="${formulario.qt19_ValorPensao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />11) Outros - Valor (R$):&nbsp;<input type="text" name="txt_qt19_ValorOutros" value="${formulario.qt19_ValorOutros}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr> 
@@ -371,12 +361,12 @@
                     <td>
                         Despesa do estudante do IF Sudeste MG com moradia:
                         <br />(registrar apenas a parcela que cabe ao estudante, no caso de república ou similar)
-                        <br />01) Água&nbsp;<input type="text" name="txt_qt20_ValorAgua" value="${formulario.qt20_ValorAgua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />02) Luz&nbsp;<input type="text" name="txt_qt20_ValorLuz" value="${formulario.qt20_ValorLuz}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />03) Telefone&nbsp;<input type="text" name="txt_qt20_ValorTelefone" value="${formulario.qt20_ValorTelefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />04) Condomínio&nbsp;<input type="text" name="txt_qt20_ValorCondominio" value="${formulario.qt20_ValorCondominio}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />05) Aluguel&nbsp;<input type="text" name="txt_qt20_ValorAluguel" value="${formulario.qt20_ValorAluguel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />06) IPTU anual&nbsp;<input type="text" name="txt_qt20_ValorIptuAnual" value="${formulario.qt20_ValorIptuAnual}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />01) Água - Valor (R$):&nbsp;<input type="text" name="txt_qt20_ValorAgua" value="${formulario.qt20_ValorAgua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />02) Luz - Valor (R$):&nbsp;<input type="text" name="txt_qt20_ValorLuz" value="${formulario.qt20_ValorLuz}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />03) Telefone - Valor (R$):&nbsp;<input type="text" name="txt_qt20_ValorTelefone" value="${formulario.qt20_ValorTelefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />04) Condomínio - Valor (R$):&nbsp;<input type="text" name="txt_qt20_ValorCondominio" value="${formulario.qt20_ValorCondominio}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />05) Aluguel - Valor (R$):&nbsp;<input type="text" name="txt_qt20_ValorAluguel" value="${formulario.qt20_ValorAluguel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />06) IPTU anual - Valor (R$):&nbsp;<input type="text" name="txt_qt20_ValorIptuAnual" value="${formulario.qt20_ValorIptuAnual}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr> 
@@ -389,12 +379,18 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                    <td>
+                        <hr />TERMO DE COMPROMISSO
+                        <br /><input type="checkbox" name="termo" value="Sim" />Declaro que as informações prestadas correspondem à realidade. Estou ciente de que a não veracidade das respostas desclassificará o estudante.
+                    </td>
+                </tr>
+                <tr>
+                    <td><hr /><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
         </form>
         <SCRIPT language="JavaScript">
-            <!--          
+            <!--
             function campoNumerico(valor)
             {
                 var caracteresValidos = "0123456789";
@@ -438,18 +434,81 @@
                 if (form.opt_qt03_Transporte.value == ""){
                     mensagem = mensagem + "Selecione um Transporte na Questão 03\n";
                 }
+                if (form.txt_qt03_ValorGastoDiario.value == ""){
+                    form.txt_qt03_ValorGastoDiario.value = 0.0;
+                }
+                if (form.txt_qt03_ValorGastoDiario.value < 0.0){
+                    mensagem = mensagem + "O gasto diário na Questão 03 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt03_ValorGastoDiario.value)){
+                    mensagem = mensagem + "O gasto diário na Questão 03 deve ser numérico\n";
+                }
+                if (form.txt_qt03_ValorGastoMensal.value == ""){
+                    form.txt_qt03_ValorGastoMensal.value = 0.0;
+                }
+                if (form.txt_qt03_ValorGastoMensal.value < 0.0){
+                    mensagem = mensagem + "O gasto mensal na Questão 03 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt03_ValorGastoMensal.value)){
+                    mensagem = mensagem + "O gasto mensal na Questão 03 deve ser numérico\n";
+                }
                 if (form.opt_qt04_InstituicaoEnsinoFundamental.value == ""){
                     mensagem = mensagem + "Selecione uma Instituição de Ensino Fundamental na Questão 04\n";
                 }
                 if (form.opt_qt05_InstituicaoEnsinoMedio.value == ""){
                     mensagem = mensagem + "Selecione uma Instituição de Ensino Medio na Questão 05\n";
                 }
+                if (form.txt_qt06_ValorBolsaEstagio.value == ""){
+                    form.txt_qt06_ValorBolsaEstagio.value = 0.0;
+                }
+                if (form.txt_qt06_ValorBolsaEstagio.value < 0.0){
+                    mensagem = mensagem + "O valor bolsa estágio na Questão 06 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt06_ValorBolsaEstagio.value)){
+                    mensagem = mensagem + "O valor bolsa estágio na Questão 06 deve ser numérico\n";
+                }
+                if (form.txt_qt06_ValorBolsaIniciacao.value == ""){
+                    form.txt_qt06_ValorBolsaIniciacao.value = 0.0;
+                }
+                if (form.txt_qt06_ValorBolsaIniciacao.value < 0.0){
+                    mensagem = mensagem + "O valor bolsa iniciação na Questão 06 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt06_ValorBolsaIniciacao.value)){
+                    mensagem = mensagem + "O valor bolsa iniciação na Questão 06 deve ser numérico\n";
+                }
+                if (form.txt_qt06_ValorBolsaTreinamento.value == ""){
+                    form.txt_qt06_ValorBolsaTreinamento.value = 0.0;
+                }
+                if (form.txt_qt06_ValorBolsaTreinamento.value < 0.0){
+                    mensagem = mensagem + "O valor bolsa treinamento na Questão 06 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt06_ValorBolsaTreinamento.value)){
+                    mensagem = mensagem + "O valor bolsa treinamento na Questão 06 deve ser numérico\n";
+                }
+                if (form.txt_qt06_ValorBolsaOutro.value == ""){
+                    form.txt_qt06_ValorBolsaOutro.value = 0.0;
+                }
+                if (form.txt_qt06_ValorBolsaOutro.value < 0.0){
+                    mensagem = mensagem + "O valor bolsa outro na Questão 06 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt06_ValorBolsaOutro.value)){
+                    mensagem = mensagem + "O valor bolsa outro na Questão 06 deve ser numérico\n";
+                }                
                 if (form.opt_qt06_AtividadeRemunerada.value == ""){
                     mensagem = mensagem + "Selecione uma Atividade Remunerada na Questão 06\n";
                 }
                 if (form.opt_qt07_TrabalhoRemunerado.value == ""){
                     mensagem = mensagem + "Informe Sim ou Não em Trabalho Remunerado na Questão 07\n";
                 }
+                if (form.txt_qt07_Salario.value == ""){
+                    form.txt_qt07_Salario.value = 0.0;
+                }
+                if (form.txt_qt07_Salario.value < 0.0){
+                    mensagem = mensagem + "O valor do salário na Questão 07 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt07_Salario.value)){
+                    mensagem = mensagem + "O valor do salário na Questão 07 deve ser numérico\n";
+                } 
                 if (form.opt_qt08_Manutencao.value == ""){
                     mensagem = mensagem + "Selecione uma Manutenção na Questão 08\n";
                 }
@@ -480,6 +539,24 @@
                 if (form.opt_qt13_Imovel.value == ""){
                     mensagem = mensagem + "Selecione um Tipo de Imóvel na Questão 13\n";
                 }
+                if (form.txt_qt13_ValorAluguel.value == ""){
+                    form.txt_qt13_ValorAluguel.value = 0.0;
+                }
+                if (form.txt_qt13_ValorAluguel.value < 0.0){
+                    mensagem = mensagem + "O valor do aluguel na Questão 13 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt13_ValorAluguel.value)){
+                    mensagem = mensagem + "O valor do aluguel na Questão 13 deve ser numérico\n";
+                }
+                if (form.txt_qt13_ValorPrestacao.value == ""){
+                    form.txt_qt13_ValorPrestacao.value = 0.0;
+                }
+                if (form.txt_qt13_ValorPrestacao.value < 0.0){
+                    mensagem = mensagem + "O valor da prestação na Questão 13 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt13_ValorPrestacao.value)){
+                    mensagem = mensagem + "O valor da prestação na Questão 13 deve ser numérico\n";
+                }                               
                 if (form.opt_qt14_Acabamento.value == ""){
                     mensagem = mensagem + "Informe Residência com ou sem Acabamento na Questão 14\n";
                 }
@@ -587,7 +664,7 @@
                     mensagem = mensagem + "Outra Renda na Questão 18 deve ser numérico\n";
                 }
                 if (form.txt_qt18_AluguelImoveis.value >= 0.0 && form.txt_qt18_PensaoMorte.value >= 0.0 && form.txt_qt18_PensaoAlimenticia.value >= 0.0 && form.txt_qt18_AjudaTerceiros.value >= 0.0 && form.txt_qt18_BeneficiosSociais.value >= 0.0 && form.txt_qt18_OutraRenda.value >= 0.0){
-                    form.txt_q18_TotalRenda.value = form.txt_qt18_AluguelImoveis.value + form.txt_qt18_PensaoMorte.value + form.txt_qt18_PensaoAlimenticia.value + form.txt_qt18_AjudaTerceiros.value + form.txt_qt18_BeneficiosSociais.value + form.txt_qt18_OutraRenda.value;
+                    form.txt_qt18_TotalRenda.value = (parseFloat(form.txt_qt18_AluguelImoveis.value) + parseFloat(form.txt_qt18_PensaoMorte.value) + parseFloat(form.txt_qt18_PensaoAlimenticia.value) + parseFloat(form.txt_qt18_AjudaTerceiros.value) + parseFloat(form.txt_qt18_BeneficiosSociais.value) + parseFloat(form.txt_qt18_OutraRenda.value)).toFixed(2);
                 }
                 if (form.txt_qt18_NumeroResidentes.value == ""){
                     mensagem = mensagem + "Informe o número de residentes na Questão 18\n";
