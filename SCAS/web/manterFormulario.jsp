@@ -12,10 +12,6 @@
         <h1>Formulário Sócioeconômico - ${operacao}</h1>
         <form action="ManterFormularioController?acao=confirmar${operacao}" method="post" name="frmManterFormulario" onsubmit="return validarFormulario(this)">
             <table>
-                <tr>
-                    <td><hr />Código:
-                    <input type="text" name="txtCodFormulario" value="${formulario.codFormulario}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
-                </tr>
                 <tr> 
                     <td><hr />Confirme o nome do aluno:
                         <select name="optAluno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
@@ -34,6 +30,11 @@
                                 <option value="${selecao.codSelecao}" <c:if test="${formulario.codSelecao == selecao.codSelecao}"> selected</c:if>>${selecao.numeroEdital} | ${selecao.modalidade.nome}</option>  
                             </c:forEach>
                         </select>
+                    </td>
+                </tr>
+                <tr> 
+                    <td><hr />
+                        Código do Formulário&nbsp;<input type="text" name="txtCodFormulario" value="${aluno.matricula+"-"+selecao.codSelecao}" <c:if test="${operacao != 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr> 
@@ -60,8 +61,8 @@
                         <input type="radio" name="opt_qt02_Alimentacao" value="Sim" <c:if test="${formulario.qt02_Alimentacao == 'Sim'}"> selected</c:if>>Sim
                         <input type="radio" name="opt_qt02_Alimentacao" value="Nao" <c:if test="${formulario.qt02_Alimentacao == 'Nao'}"> selected</c:if>>Não
                         <br />Manutenção:&nbsp;
-                        <input type="radio" name="opt_qt02_Manutenção" value="Sim" <c:if test="${formulario.qt02_Manutenção == 'Sim'}"> selected</c:if>>Sim
-                        <input type="radio" name="opt_qt02_Manutenção" value="Nao" <c:if test="${formulario.qt02_Manutenção == 'Nao'}"> selected</c:if>>Não
+                        <input type="radio" name="opt_qt02_Manutencao" value="Sim" <c:if test="${formulario.qt02_Manutencao == 'Sim'}"> selected</c:if>>Sim
+                        <input type="radio" name="opt_qt02_Manutencao" value="Nao" <c:if test="${formulario.qt02_Manutencao == 'Nao'}"> selected</c:if>>Não
                         <br />Moradia:&nbsp;
                         <input type="radio" name="opt_qt02_Moradia" value="Sim" <c:if test="${formulario.qt02_Moradia == 'Sim'}"> selected</c:if>>Sim
                         <input type="radio" name="opt_qt02_Moradia" value="Nao" <c:if test="${formulario.qt02_Moradia == 'Nao'}"> selected</c:if>>Não
@@ -332,13 +333,13 @@
                 <tr>
                     <td>
                         Outras rendas:
-                        <br />01) Aluguel(is) de imóvel(is) - Valor:&nbsp;<input type="text" name="txt_qt18_AluguelImoveis" value="${formulario.qt18_AluguelImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />02) Pensão por morte - Valor:&nbsp;<input type="text" name="txt_qt18_PensaoMorte" value="${formulario.qt18_PensaoMorte}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />03) Pensão alimentícia - Valor:&nbsp;<input type="text" name="txt_qt18_PensaoAlimenticia" value="${formulario.qt18_PensaoAlimenticia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />04) Ajudas de terceiros - Valor:&nbsp;<input type="text" name="txt_qt18_AjudaTerceiros" value="${formulario.qt18_AjudaTerceiros}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />05) Benefícios sociais - Valor:&nbsp;<input type="text" name="txt_qt18_BeneficiosSociais" value="${formulario.qt18_BeneficiosSociais}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />06) Outro - Qual?&nbsp;<input type="text" name="txt_qt18_NomeOutraRenda" value="${formulario.qt18_NomeOutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> - Valor:&nbsp;<input type="text" name="txt_qt18_OutraRenda" value="${formulario.qt18_OutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Total da renda familiar&nbsp;<input type="text" name="txt_qt18_TotalRenda" value="${formulario.qt18_TotalRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />01) Aluguel(is) de imóvel(is) - Valor (R$):&nbsp;<input type="text" name="txt_qt18_AluguelImoveis" value="${formulario.qt18_AluguelImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />02) Pensão por morte - Valor (R$):&nbsp;<input type="text" name="txt_qt18_PensaoMorte" value="${formulario.qt18_PensaoMorte}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />03) Pensão alimentícia - Valor (R$):&nbsp;<input type="text" name="txt_qt18_PensaoAlimenticia" value="${formulario.qt18_PensaoAlimenticia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />04) Ajudas de terceiros - Valor (R$):&nbsp;<input type="text" name="txt_qt18_AjudaTerceiros" value="${formulario.qt18_AjudaTerceiros}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />05) Benefícios sociais - Valor (R$):&nbsp;<input type="text" name="txt_qt18_BeneficiosSociais" value="${formulario.qt18_BeneficiosSociais}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />06) Outro - Qual?&nbsp;<input type="text" name="txt_qt18_NomeOutraRenda" value="${formulario.qt18_NomeOutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> - Valor (R$):&nbsp;<input type="text" name="txt_qt18_OutraRenda" value="${formulario.qt18_OutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Total da renda familiar (R$)&nbsp;<input type="text" name="txt_q18_TotalRenda" value="${formulario.q18_TotalRenda}" <c:if test="${operacao != 'Excluir'}"> readonly</c:if>>
                         <br />Número total de pessoas da família que vivem dessa renda (incluindo o estudante)&nbsp;<input type="text" name="txt_qt18_NumeroResidentes" value="${formulario.qt18_NumeroResidentes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
@@ -387,10 +388,410 @@
                         <br /><textarea rows="5" cols="100" name="txt_qt21_Esclarecimentos" value="${formulario.qt21_Esclarecimentos}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea>
                     </td>
                 </tr>
-                <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
-                </tr>
             </table>
         </form>
+        <SCRIPT language="JavaScript">
+            <!--          
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.optAluno.value == "0"){
+                    mensagem = mensagem + "Selecione um Aluno\n";
+                }
+                if (form.optSelecao.value == "0"){
+                    mensagem = mensagem + "Selecione uma Seleção\n";
+                }
+                if (form.opt_qt01_Resposta.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não na Questão 01\n";
+                }                             
+                if (form.opt_qt02_Alimentacao.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Alimentação na Questão 02\n";
+                }
+                if (form.opt_qt02_Manutencao.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Manutenção na Questão 02\n";
+                }
+                if (form.opt_qt02_Moradia.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Moradia na Questão 02\n";
+                }
+                if (form.opt_qt02_Transporte.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Transporte na Questão 02\n";
+                }
+                if (form.opt_qt03_Transporte.value == ""){
+                    mensagem = mensagem + "Selecione um Transporte na Questão 03\n";
+                }
+                if (form.opt_qt04_InstituicaoEnsinoFundamental.value == ""){
+                    mensagem = mensagem + "Selecione uma Instituição de Ensino Fundamental na Questão 04\n";
+                }
+                if (form.opt_qt05_InstituicaoEnsinoMedio.value == ""){
+                    mensagem = mensagem + "Selecione uma Instituição de Ensino Medio na Questão 05\n";
+                }
+                if (form.opt_qt06_AtividadeRemunerada.value == ""){
+                    mensagem = mensagem + "Selecione uma Atividade Remunerada na Questão 06\n";
+                }
+                if (form.opt_qt07_TrabalhoRemunerado.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Trabalho Remunerado na Questão 07\n";
+                }
+                if (form.opt_qt08_Manutencao.value == ""){
+                    mensagem = mensagem + "Selecione uma Manutenção na Questão 08\n";
+                }
+                if (form.opt_qt09_Moradia.value == ""){
+                    mensagem = mensagem + "Selecione uma Moradia na Questão 09\n";
+                }
+                if (form.opt_qt10_ResponsavelFinanceiro.value == ""){
+                    mensagem = mensagem + "Selecione um Responsavel Financeiro na Questão 10\n";
+                }
+                if (form.opt_qt11_Esgoto.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Esgoto na Questão 11\n";
+                }
+                if (form.opt_qt11_Agua.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Agua na Questão 11\n";
+                }
+                if (form.opt_qt11_Iluminacao.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Iluminação na Questão 11\n";
+                }
+                if (form.opt_qt11_Lixo.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Lixo na Questão 11\n";
+                }
+                if (form.opt_qt11_Pavimentacao.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Pavimentação na Questão 11\n";
+                }
+                if (form.opt_qt12_Residencia.value == ""){
+                    mensagem = mensagem + "Selecione um Local de Residência na Questão 12\n";
+                }
+                if (form.opt_qt13_Imovel.value == ""){
+                    mensagem = mensagem + "Selecione um Tipo de Imóvel na Questão 13\n";
+                }
+                if (form.opt_qt14_Acabamento.value == ""){
+                    mensagem = mensagem + "Informe Residência com ou sem Acabamento na Questão 14\n";
+                }
+                if (form.opt_qt15_OutrosImoveis.value == ""){
+                    mensagem = mensagem + "Informe Sim ou Não em Outros Imóveis na Questão 15\n";
+                }
+                if (form.txt_qt16_QuantCarro.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de carros na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantTV.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de TVs na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantMaqLavar.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de máquinas de lavar na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantGeladeira.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de geladeiras na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantTVCabo.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de TVs a cabo na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantComputador.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de computadores na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantInternetPaga.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de internetes pagas na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantEmpregadaMensalista.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de empregadas mensalistas na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantEmpregadaDiarista.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de empregadas diaristas na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantBanheiro.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de banheiros na Questão 16\n";
+                }
+                if (form.txt_qt16_QuantQuarto.value == ""){
+                    mensagem = mensagem + "Informe a quantidade de quartos na Questão 16\n";
+                }
+                if (form.opt_qt17_ProblemaSaude == ""){
+                    mensagem = mensagem + "Informe Sim ou Não para Problema de Saúde na Questão 17\n";
+                }
+                if (form.txt_qt18_AluguelImoveis.value == ""){
+                    form.txt_qt18_AluguelImoveis.value = 0.0;
+                }
+                if (form.txt_qt18_PensaoMorte.value == ""){
+                    form.txt_qt18_PensaoMorte.value = 0.0;
+                }
+                if (form.txt_qt18_PensaoAlimenticia.value == ""){
+                    form.txt_qt18_PensaoAlimenticia.value = 0.0;
+                }
+                if (form.txt_qt18_AjudaTerceiros.value == ""){
+                    form.txt_qt18_AjudaTerceiros.value = 0.0;
+                }
+                if (form.txt_qt18_BeneficiosSociais.value == ""){
+                    form.txt_qt18_BeneficiosSociais.value = 0.0;
+                }
+                if (form.txt_qt18_OutraRenda.value == ""){
+                    form.txt_qt18_OutraRenda.value = 0.0;
+                }
+                if (form.txt_qt18_AluguelImoveis.value < 0.0){
+                    mensagem = mensagem + "Renda de Aluguel não pode ser negativa\n";
+                    form.txt_q18_TotalRenda.value = "";
+                }
+                if (form.txt_qt18_PensaoMorte.value < 0.0){
+                    mensagem = mensagem + "Renda de Pensão por Morte não pode ser negativa\n";
+                    form.txt_q18_TotalRenda.value = "";
+                }
+                if (form.txt_qt18_PensaoAlimenticia.value < 0.0){
+                    mensagem = mensagem + "Renda de Pensão Alimentícia não pode ser negativa\n";
+                    form.txt_q18_TotalRenda.value = "";
+                }
+                if (form.txt_qt18_AjudaTerceiros.value < 0.0){
+                    mensagem = mensagem + "Ajuda de Terceiros não pode ser negativa\n";
+                    form.txt_q18_TotalRenda.value = "";
+                }
+                if (form.txt_qt18_BeneficiosSociais.value < 0.0){
+                    mensagem = mensagem + "Benefícios Sociais não podem ser negativos\n";
+                    form.txt_q18_TotalRenda.value = "";
+                }
+                if (form.txt_qt18_OutraRenda.value < 0.0){
+                    mensagem = mensagem + "Outras Rendas não podem ser negativas\n";
+                    form.txt_q18_TotalRenda.value = "";
+                }
+                if (form.txtCreditos.value < 0.0){
+                    mensagem = mensagem + "Crédito não pode ser negativo\n";
+                    form.txt_q18_TotalRenda.value = "";
+                }
+                if (!campoNumerico(form.txt_qt18_AluguelImoveis.value)){
+                    mensagem = mensagem + "Aluguel na Questão 18 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt18_PensaoMorte.value)){
+                    mensagem = mensagem + "Pensão por Morte na Questão 18 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt18_PensaoAlimenticia.value)){
+                    mensagem = mensagem + "Pensão Alimentícia na Questão 18 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt18_AjudaTerceiros.value)){
+                    mensagem = mensagem + "Ajuda de Terceiros na Questão 18 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt18_BeneficiosSociais.value)){
+                    mensagem = mensagem + "Benefícios Sociais na Questão 18 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt18_OutraRenda.value)){
+                    mensagem = mensagem + "Outra Renda na Questão 18 deve ser numérico\n";
+                }
+                if (form.txt_qt18_AluguelImoveis.value >= 0.0 && form.txt_qt18_PensaoMorte.value >= 0.0 && form.txt_qt18_PensaoAlimenticia.value >= 0.0 && form.txt_qt18_AjudaTerceiros.value >= 0.0 && form.txt_qt18_BeneficiosSociais.value >= 0.0 && form.txt_qt18_OutraRenda.value >= 0.0){
+                    form.txt_q18_TotalRenda.value = form.txt_qt18_AluguelImoveis.value + form.txt_qt18_PensaoMorte.value + form.txt_qt18_PensaoAlimenticia.value + form.txt_qt18_AjudaTerceiros.value + form.txt_qt18_BeneficiosSociais.value + form.txt_qt18_OutraRenda.value;
+                }
+                if (form.txt_qt18_NumeroResidentes.value == ""){
+                    mensagem = mensagem + "Informe o número de residentes na Questão 18\n";
+                }
+                if (form.txt_qt19_ValorAgua.value == ""){
+                    form.txt_qt19_ValorAgua.value = 0.0;
+                }
+                if (form.txt_qt19_ValorLuz.value == ""){
+                    form.txt_qt19_ValorLuz.value = 0.0;
+                }
+                if (form.txt_qt19_ValorTelefone.value == ""){
+                    form.txt_qt19_ValorTelefone.value = 0.0;
+                }
+                if (form.txt_qt19_ValorCondominio.value == ""){
+                    form.txt_qt19_ValorCondominio.value = 0.0;
+                }
+                if (form.txt_qt19_ValorMensalidadeEscolar.value == ""){
+                    form.txt_qt19_ValorMensalidadeEscolar.value = 0.0;
+                }
+                if (form.txt_qt19_ValorAlimentacao.value == ""){
+                    form.txt_qt19_ValorAlimentacao.value = 0.0;
+                }
+                if (form.txt_qt19_ValorSaude.value == ""){
+                    form.txt_qt19_ValorSaude.value = 0.0;
+                }
+                if (form.txt_qt19_ValorTransporte.value == ""){
+                    form.txt_qt19_ValorTransporte.value = 0.0;
+                }
+                if (form.txt_qt19_ValorIptuAnual.value == ""){
+                    form.txt_qt19_ValorIptuAnual.value = 0.0;
+                }
+                if (form.txt_qt19_ValorAluguel.value == ""){
+                    form.txt_qt19_ValorAluguel.value = 0.0;
+                }
+                if (form.txt_qt19_ValorPensao.value == ""){
+                    form.txt_qt19_ValorPensao.value = 0.0;
+                }
+                if (form.txt_qt19_ValorOutros.value == ""){
+                    form.txt_qt19_ValorOutros.value = 0.0;
+                }
+                if (form.txt_qt19_ValorAgua.value < 0.0){
+                    mensagem = mensagem + "Despesa de Água na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorLuz.value < 0.0){
+                    mensagem = mensagem + "Despesa de Luz na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorTelefone.value < 0.0){
+                    mensagem = mensagem + "Despesa de Telefone na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorCondominio.value < 0.0){
+                    mensagem = mensagem + "Despesa de Condomínio na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorMensalidadeEscolar.value < 0.0){
+                    mensagem = mensagem + "Despesa de Mensalidade Escolar na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorAlimentacao.value < 0.0){
+                    mensagem = mensagem + "Despesa de Alimentação na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorSaude.value < 0.0){
+                    mensagem = mensagem + "Despesa de Saúde na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorTransporte.value < 0.0){
+                    mensagem = mensagem + "Despesa de Transporte na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorIptuAnual.value < 0.0){
+                    mensagem = mensagem + "Despesa de IPTU Anual na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorAluguel.value < 0.0){
+                    mensagem = mensagem + "Despesa de Aluguel na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorPensao.value < 0.0){
+                    mensagem = mensagem + "Despesa de Pensão na Questão 19 não pode ser negativa\n";
+                }
+                if (form.txt_qt19_ValorOutros.value < 0.0){
+                    mensagem = mensagem + "Outras Despesas na Questão 19 não podem ser negativas\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorAgua.value)){
+                    mensagem = mensagem + "Despesa de Água na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorLuz.value)){
+                    mensagem = mensagem + "Despesa de Luz na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorTelefone.value)){
+                    mensagem = mensagem + "Despesa de Telefone na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorCondominio.value)){
+                    mensagem = mensagem + "Despesa de Condomínio na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorMensalidadeEscolar.value)){
+                    mensagem = mensagem + "Despesa de Mensalidade Escolar na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorAlimentacao.value)){
+                    mensagem = mensagem + "Despesa de Alimentação na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorSaude.value)){
+                    mensagem = mensagem + "Despesa de Saúde na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorTransporte.value)){
+                    mensagem = mensagem + "Despesa de Transporte na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorIptuAnual.value)){
+                    mensagem = mensagem + "Despesa de IPTU Anual na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorAluguel.value)){
+                    mensagem = mensagem + "Despesa de Aluguel na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorPensao.value)){
+                    mensagem = mensagem + "Despesa de Pensão na Questão 19 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt19_ValorOutros.value)){
+                    mensagem = mensagem + "Outras Despesas na Questão 19 deve ser numérico\n";
+                }
+                if (form.txt_qt20_ValorAgua.value == ""){
+                    form.txt_qt20_ValorAgua.value = 0.0;
+                }
+                if (form.txt_qt20_ValorLuz.value == ""){
+                    form.txt_qt20_ValorLuz.value = 0.0;
+                }
+                if (form.txt_qt20_ValorTelefone.value == ""){
+                    form.txt_qt20_ValorTelefone.value = 0.0;
+                }
+                if (form.txt_qt20_ValorCondominio.value == ""){
+                    form.txt_qt20_ValorCondominio.value = 0.0;
+                }
+                if (form.txt_qt20_ValorAluguel.value == ""){
+                    form.txt_qt20_ValorAluguel.value = 0.0;
+                }
+                if (form.txt_qt20_ValorIptuAnual.value == ""){
+                    form.txt_qt20_ValorIptuAnual.value = 0.0;
+                }
+                if (form.txt_qt20_ValorAgua.value < 0.0){
+                    mensagem = mensagem + "Despesa de Água na Questão 20 não pode ser negativa\n";
+                }
+                if (form.txt_qt20_ValorLuz.value < 0.0){
+                    mensagem = mensagem + "Despesa de Luz na Questão 20 não pode ser negativa\n";
+                }
+                if (form.txt_qt20_ValorTelefone.value < 0.0){
+                    mensagem = mensagem + "Despesa de Telefone na Questão 20 não pode ser negativa\n";
+                }
+                if (form.txt_qt20_ValorCondominio.value < 0.0){
+                    mensagem = mensagem + "Despesa de Condomínio na Questão 20 não pode ser negativa\n";
+                }
+                if (form.txt_qt20_ValorAluguel.value < 0.0){
+                    mensagem = mensagem + "Despesa de Aluguel na Questão 20 não pode ser negativa\n";
+                }
+                if (form.txt_qt20_ValorIptuAnual.value < 0.0){
+                    mensagem = mensagem + "Despesa de IPTU Anual na Questão 20 não pode ser negativa\n";
+                }
+                if (!campoNumerico(form.txt_qt20_ValorAgua.value)){
+                    mensagem = mensagem + "Despesa de Água na Questão 20 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt20_ValorLuz.value)){
+                    mensagem = mensagem + "Despesa de Luz na Questão 20 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt20_ValorTelefone.value)){
+                    mensagem = mensagem + "Despesa de Telefone na Questão 20 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt20_ValorCondominio.value)){
+                    mensagem = mensagem + "Despesa de Condomínio na Questão 20 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt20_ValorAluguel.value)){
+                    mensagem = mensagem + "Despesa de Aluguel na Questão 20 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt20_ValorIptuAnual.value)){
+                    mensagem = mensagem + "Despesa de IPTU Anual na Questão 20 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt16_QuantCarro.value)){
+                    mensagem = mensagem + "A quantidade de carros na Questão 16 deve ser numérico\n";
+                }
+                if (!campoNumerico(form.txt_qt16_QuantTV.value)){
+                    mensagem = mensagem + "A quantidade de TVs na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantMaqLavar.value)){
+                    mensagem = mensagem + "A quantidade de máquinas de lavar na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantGeladeira.value)){
+                    mensagem = mensagem + "A quantidade de geladeiras na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantTVCabo.value)){
+                    mensagem = mensagem + "A quantidade de TVs a cabo na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantComputador.value)){
+                    mensagem = mensagem + "A quantidade de computadores na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantInternetPaga.value)){
+                    mensagem = mensagem + "A quantidade de internetes pagas na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantEmpregadaMensalista.value)){
+                    mensagem = mensagem + "A quantidade de empregadas mensalistas na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantEmpregadaDiarista.value)){
+                    mensagem = mensagem + "A quantidade de empregadas diaristas na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantBanheiro.value)){
+                    mensagem = mensagem + "A quantidade de banheiros na Questão 16 deve ser numérico\n";
+                } 
+                if (!campoNumerico(form.txt_qt16_QuantQuarto.value)){
+                    mensagem = mensagem + "A quantidade de quartos na Questão 16 deve ser numérico\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            //-->
+        </SCRIPT>
     </body>
 </html>
