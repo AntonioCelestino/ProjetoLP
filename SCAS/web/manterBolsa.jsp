@@ -37,23 +37,12 @@
                         <td><input type="text" name="txtDataFim" maxlength="10" placeholder="dd/mm/aaaa" OnKeyPress="formatar('##/##/####', this)" value="${bolsa.dataFim}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr> 
-                        <td>Nome do Aluno:</td> 
+                        <td>Formulário: (Nome do Aluno | Seleção Modalidade</td> 
                         <td>
-                            <select name="optAluno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="0" <c:if test="${bolsa.codAluno == null}"> selected</c:if>> </option>  
-                            <c:forEach items="${alunos}" var="aluno">
-                                <option value="${aluno.matricula}" <c:if test="${bolsa.codAluno == aluno.matricula}"> selected</c:if>>${aluno.estudante.nome}</option>  
-                            </c:forEach>
-                        </select>
-                    </td>
-                </tr>
-                <tr> 
-                    <td>Edital | Nome da Modalidade:</td> 
-                    <td>
-                        <select name="optSelecao" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="0" <c:if test="${bolsa.codSelecao == null}"> selected</c:if>> </option>  
-                            <c:forEach items="${selecoes}" var="selecao">
-                                <option value="${selecao.codSelecao}" <c:if test="${bolsa.codSelecao == selecao.codSelecao}"> selected</c:if>>${selecao.numeroEdital} | ${selecao.modalidade.nome}</option>  
+                            <select name="optFormulario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="0" <c:if test="${bolsa.codFormulario == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${formularios}" var="formulario">
+                                <option value="${formulario.codFormulario}" <c:if test="${bolsa.codFormulario == formulario.codFormulario}"> selected</c:if>>${formulario.aluno.usuario.nome} | ${formulario.selecao.modalidade.nome}</option>  
                             </c:forEach>
                         </select>
                     </td>
@@ -94,11 +83,8 @@
                 if (form.txtDataFim.value == ""){
                     mensagem = mensagem + "Informe a Data de Fim\n";
                 }
-                if (form.optBolsista.value == "0"){
-                    mensagem = mensagem + "Selecione um Bolsista\n";
-                }
-                if (form.optSelecao.value == "0"){
-                    mensagem = mensagem + "Selecione um Edital | Modalidade\n";
+                if (form.optFormulario.value == "0"){
+                    mensagem = mensagem + "Selecione um Formulário\n";
                 }
                 if (!campoNumerico(form.txtCodBolsa.value)){
                     mensagem = mensagem + "Código da Bolsa deve ser numérico\n";

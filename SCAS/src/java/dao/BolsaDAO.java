@@ -23,9 +23,8 @@ public class BolsaDAO {
                 Bolsa bolsa = new Bolsa(
                         rs.getInt("BOLSA_ID"),
                         rs.getString("DT_INICIO"),
-                        rs.getString("DT_FIM"), null, null);
-                bolsa.setCodAluno(rs.getInt("ALUNO_MATRICULA"));
-                bolsa.setCodSelecao(rs.getInt("SELECAO_ID"));
+                        rs.getString("DT_FIM"), null);
+                bolsa.setCodFormulario(rs.getInt("FORMULARIO_ID"));
                 bolsas.add(bolsa);
             }
         }catch(SQLException e){
@@ -49,9 +48,8 @@ public class BolsaDAO {
             bolsa = new Bolsa(
                         rs.getInt("BOLSA_ID"),
                         rs.getString("DT_INICIO"),
-                        rs.getString("DT_FIM"), null, null);
-                bolsa.setCodAluno(rs.getInt("ALUNO_MATRICULA"));
-                bolsa.setCodSelecao(rs.getInt("SELECAO_ID"));
+                        rs.getString("DT_FIM"), null);
+                bolsa.setCodFormulario(rs.getInt("FORMULARIO_ID"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -64,23 +62,17 @@ public class BolsaDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "insert into bolsa (BOLSA_ID, DT_INICIO, DT_FIM, ALUNO_MATRICULA, SELECAO_ID) values (?,?,?,?,?)";
+            String sql = "insert into bolsa (BOLSA_ID, DT_INICIO, DT_FIM, FORMULARIO_ID) values (?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, bolsa.getCodBolsa());
             comando.setString(2, bolsa.getDataInicio());
             comando.setString(3, bolsa.getDataFim());
             
-            if (bolsa.getAluno() == null){
+            if (bolsa.getFormulario() == null){
                 comando.setNull(4, Types.NULL);
             }else{
-                comando.setInt(4, bolsa.getCodAluno());
+                comando.setInt(4, bolsa.getCodFormulario());
             }
-            
-            if (bolsa.getSelecao() == null){
-                comando.setNull(5, Types.NULL);
-            }else{
-                comando.setInt(5, bolsa.getCodSelecao());
-            } 
             
             comando.execute();
             comando.close();
@@ -94,22 +86,17 @@ public class BolsaDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "update bolsa set DT_INICIO = ?, DT_FIM = ?, ALUNO_MATRICULA = ?, SELECAO_ID = ? where BOLSA_ID = ?";
+            String sql = "update bolsa set DT_INICIO = ?, DT_FIM = ?, FORMULARIO_ID = ? where BOLSA_ID = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, bolsa.getDataInicio());
             comando.setString(2, bolsa.getDataFim());
             
-            if (bolsa.getAluno() == null){
+            if (bolsa.getFormulario() == null){
                 comando.setNull(3, Types.NULL);
             }else{
-                comando.setInt(3, bolsa.getCodAluno());
+                comando.setInt(3, bolsa.getCodFormulario());
             }
             
-            if (bolsa.getSelecao() == null){
-                comando.setNull(4, Types.NULL);
-            }else{
-                comando.setInt(4, bolsa.getCodSelecao());
-            } 
             comando.setInt(5, bolsa.getCodBolsa());
             comando.execute();
             comando.close();

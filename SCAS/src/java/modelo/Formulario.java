@@ -2,13 +2,17 @@ package modelo;
 
 import dao.AlunoDAO;
 import dao.FormularioDAO;
+import dao.SelecaoDAO;
 import java.sql.SQLException;
 import java.util.List;
 
 public class Formulario {
     private int codFormulario;
     private Aluno aluno;
+    private Selecao selecao;
+    
     private int codAluno;
+    private int codSelecao;
     //--- Questão 01 ---
     private String qt01_Resposta;	// com ratio button de 'Sim' ou 'Não'
     private String qt01_Nome; 		// preenchida se qt01_Resposta = 'sim'
@@ -85,8 +89,8 @@ public class Formulario {
     private String qt14_Acabamento; 	// com ratio button
 
     //--- Questão 15 ---
-    private String qt15_OutrosImoveis; // com ratio button de 'Sim' ou 'Não'
-    //se 'Sim' acessar tabela separada para preencher seus campos
+    private String qt15_OutrosImoveis;      // com ratio button de 'Sim' ou 'Não'
+    private String qt15_DescricaoImoveis;   // preenchida se qt15_OutrosImoveis = 'Sim'
 
     //--- Questão 16 ---
     private int qt16_QuantCarro;
@@ -113,6 +117,8 @@ public class Formulario {
     private double qt18_AjudaTerceiros;
     private double qt18_BeneficiosSociais;
     private double qt18_OutraRenda;
+    private String qt18_NomeOutraRenda;
+    private double qt18_TotalRenda;
     private int qt18_NumeroResidentes;
 
     //--- Questão 19 ---
@@ -140,7 +146,7 @@ public class Formulario {
     //--- Questão 21 ---
     private String qt21_Esclarecimentos; 
 
-    public Formulario(int codFormulario, Aluno aluno, String qt01_Resposta, String qt01_Nome, String qt01_Parentesco, String qt01_Programa,
+    public Formulario(int codFormulario, Aluno aluno, Selecao selecao, String qt01_Resposta, String qt01_Nome, String qt01_Parentesco, String qt01_Programa,
             String qt01_Ano, String qt02_Alimentacao, String qt02_Manutencao, String qt02_Moradia, String qt02_Transporte, String qt02_Outro, String qt03_Transporte,
             String qt03_Tempo, double qt03_ValorGastoDiario, double qt03_ValorGastoMensal, String qt03_Outro, String qt04_InstituicaoEnsinoFundamental, 
             String qt05_InstituicaoEnsinoMedio, String qt06_AtividadeRemunerada, double qt06_ValorBolsaEstagio, String qt06_ProjetoIniciacao, double qt06_ValorBolsaIniciacao, 
@@ -148,16 +154,17 @@ public class Formulario {
             String qt07_HorasSemanais, double qt07_Salario, String qt08_Manutencao, String qt08_Outra, String qt09_Moradia, String qt09_Outra, 
             String qt10_ResponsavelFinanceiro, String qt10_Outros, String qt11_Esgoto, String qt11_Agua, String qt11_Iluminacao, String qt11_Lixo, 
             String qt11_Pavimentacao, String qt12_Residencia, String qt12_Outro, String qt13_Imovel, double qt13_ValorAluguel, double qt13_ValorPrestacao, 
-            String qt13_Nome, String qt13_Outro, String qt14_Acabamento, String qt15_OutrosImoveis, int qt16_QuantCarro, int qt16_QuantTV, int qt16_QuantMaqLavar, 
-            int qt16_QuantGeladeira, int qt16_QuantTVCabo, int qt16_QuantComputador, int qt16_QuantInternetPaga, int qt16_QuantEmpregadaMensalista, 
+            String qt13_Nome, String qt13_Outro, String qt14_Acabamento, String qt15_OutrosImoveis, String qt15_DescricaoImoveis, int qt16_QuantCarro, int qt16_QuantTV, 
+            int qt16_QuantMaqLavar, int qt16_QuantGeladeira, int qt16_QuantTVCabo, int qt16_QuantComputador, int qt16_QuantInternetPaga, int qt16_QuantEmpregadaMensalista, 
             int qt16_QuantEmpregadaDiarista, int qt16_QuantBanheiro, int qt16_QuantQuarto, String qt17_ProblemaSaude, double qt18_AluguelImoveis, 
             double qt18_PensaoMorte, double qt18_PensaoAlimenticia, double qt18_AjudaTerceiros, double qt18_BeneficiosSociais, double qt18_OutraRenda, 
-            int qt18_NumeroResidentes, double qt19_ValorAgua, double qt19_ValorLuz, double qt19_ValorTelefone, double qt19_ValorCondominio, 
+            String qt18_NomeOutraRenda, double qt18_TotalRenda, int qt18_NumeroResidentes, double qt19_ValorAgua, double qt19_ValorLuz, double qt19_ValorTelefone, double qt19_ValorCondominio, 
             double qt19_ValorMensalidadeEscolar, double qt19_ValorAlimentacao, double qt19_ValorSaude, double qt19_ValorTransporte, double qt19_ValorIptuAnual, 
             double qt19_ValorAluguel, double qt19_ValorPensao, double qt19_ValorOutros, double qt20_ValorAgua, double qt20_ValorLuz, double qt20_ValorTelefone, 
             double qt20_ValorCondominio, double qt20_ValorAluguel, double qt20_ValorIptuAnual, String qt21_Esclarecimentos) {
         this.codFormulario = codFormulario;
         this.aluno = aluno;
+        this.selecao = selecao;
         this.qt01_Resposta = qt01_Resposta;
         this.qt01_Nome = qt01_Nome;
         this.qt01_Parentesco = qt01_Parentesco;
@@ -206,6 +213,7 @@ public class Formulario {
         this.qt13_Outro = qt13_Outro;
         this.qt14_Acabamento = qt14_Acabamento;
         this.qt15_OutrosImoveis = qt15_OutrosImoveis;
+        this.qt15_DescricaoImoveis = qt15_DescricaoImoveis;
         this.qt16_QuantCarro = qt16_QuantCarro;
         this.qt16_QuantTV = qt16_QuantTV;
         this.qt16_QuantMaqLavar = qt16_QuantMaqLavar;
@@ -224,6 +232,8 @@ public class Formulario {
         this.qt18_AjudaTerceiros = qt18_AjudaTerceiros;
         this.qt18_BeneficiosSociais = qt18_BeneficiosSociais;
         this.qt18_OutraRenda = qt18_OutraRenda;
+        this.qt18_NomeOutraRenda = qt18_NomeOutraRenda;
+        this.qt18_TotalRenda = qt18_TotalRenda;
         this.qt18_NumeroResidentes = qt18_NumeroResidentes;
         this.qt19_ValorAgua = qt19_ValorAgua;
         this.qt19_ValorLuz = qt19_ValorLuz;
@@ -272,6 +282,17 @@ public class Formulario {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
+    
+    public Selecao getSelecao() throws ClassNotFoundException {
+        if ((codSelecao != 0) && (selecao == null)){
+            selecao = SelecaoDAO.obterSelecao(codSelecao);
+        }
+        return selecao;
+    }
+
+    public void setSelecao(Selecao selecao) {
+        this.selecao = selecao;
+    }
 
     public int getCodAluno() {
         return codAluno;
@@ -279,6 +300,14 @@ public class Formulario {
 
     public void setCodAluno(int codAluno) {
         this.codAluno = codAluno;
+    }
+    
+    public int getCodSelecao() {
+        return codSelecao;
+    }
+
+    public void setCodSelecao(int codSelecao) {
+        this.codSelecao = codSelecao;
     }
 
     public String getQt01_Resposta() {
@@ -665,6 +694,14 @@ public class Formulario {
         this.qt15_OutrosImoveis = qt15_OutrosImoveis;
     }
 
+    public String getQt15_DescricaoImoveis() {
+        return qt15_DescricaoImoveis;
+    }
+
+    public void setQt15_DescricaoImoveis(String qt15_DescricaoImoveis) {
+        this.qt15_DescricaoImoveis = qt15_DescricaoImoveis;
+    }
+    
     public int getQt16_QuantCarro() {
         return qt16_QuantCarro;
     }
@@ -809,6 +846,22 @@ public class Formulario {
         this.qt18_OutraRenda = qt18_OutraRenda;
     }
 
+    public String getQt18_NomeOutraRenda() {
+        return qt18_NomeOutraRenda;
+    }
+
+    public void setQt18_NomeOutraRenda(String qt18_NomeOutraRenda) {
+        this.qt18_NomeOutraRenda = qt18_NomeOutraRenda;
+    }
+
+    public double getQt18_TotalRenda() {
+        return qt18_TotalRenda;
+    }
+
+    public void setQt18_TotalRenda(double qt18_TotalRenda) {
+        this.qt18_TotalRenda = qt18_TotalRenda;
+    }
+    
     public int getQt18_NumeroResidentes() {
         return qt18_NumeroResidentes;
     }

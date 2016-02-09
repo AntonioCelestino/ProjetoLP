@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Bolsa;
-import modelo.Aluno;
-import modelo.Selecao;
+import modelo.Formulario;
 
 /**
  *
@@ -114,8 +113,7 @@ public class ManterBolsaController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, ServletException {
         try{
             request.setAttribute("operacao", "Incluir");
-            request.setAttribute("alunos", Aluno.obterAlunos());
-            request.setAttribute("selecoes", Selecao.obterSelecoes());
+            request.setAttribute("formulario", Formulario.obterFormularios());
 
             RequestDispatcher view = request.getRequestDispatcher("/manterBolsa.jsp");
             view.forward(request, response);   
@@ -132,20 +130,14 @@ public class ManterBolsaController extends HttpServlet {
         int codBolsa = Integer.parseInt(request.getParameter("txtCodBolsa"));
         String dataInicio = request.getParameter("txtDataInicio");
         String dataFim = request.getParameter("txtDataFim");
-        int codAluno = Integer.parseInt(request.getParameter("optAluno"));
-        int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
+        int codFormulario = Integer.parseInt(request.getParameter("optFormulario"));
         try{
-            Aluno aluno = null;
-            if(codAluno != 0){
-                aluno = Aluno.obterAluno(codAluno);
+            Formulario formulario = null;
+            if(codFormulario != 0){
+                formulario = Formulario.obterFormulario(codFormulario);
             }
-            Selecao selecao = null;
-            if(codSelecao != 0){
-                selecao = Selecao.obterSelecao(codSelecao);
-            }
-            Bolsa bolsa = new Bolsa(codBolsa, dataInicio, dataFim, aluno, selecao);
-            bolsa.setCodAluno(codAluno);
-            bolsa.setCodSelecao(codSelecao);
+            Bolsa bolsa = new Bolsa(codBolsa, dataInicio, dataFim, formulario);
+            bolsa.setCodFormulario(codFormulario);
             bolsa.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaBolsaController");
             view.forward(request, response);
@@ -163,11 +155,8 @@ public class ManterBolsaController extends HttpServlet {
     private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try{
             request.setAttribute("operacao", "Editar");
-            request.setAttribute("alunos", Aluno.obterAlunos());
-            request.setAttribute("selecoes", Selecao.obterSelecoes());
-            int codBolsa = Integer.parseInt(request.getParameter("codBolsa"));
-            Bolsa bolsa = Bolsa.obterBolsa(codBolsa);
-            request.setAttribute("bolsa", bolsa);
+            request.setAttribute("formulario", Formulario.obterFormularios());
+
             RequestDispatcher view = request.getRequestDispatcher("/manterBolsa.jsp");
             view.forward(request, response);   
         } catch(ServletException ex){
@@ -182,11 +171,8 @@ public class ManterBolsaController extends HttpServlet {
     private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try{
             request.setAttribute("operacao", "Excluir");
-            request.setAttribute("alunos", Aluno.obterAlunos());
-            request.setAttribute("selecoes", Selecao.obterSelecoes());
-            int codBolsa = Integer.parseInt(request.getParameter("codBolsa"));
-            Bolsa bolsa = Bolsa.obterBolsa(codBolsa);
-            request.setAttribute("bolsa", bolsa);
+            request.setAttribute("formulario", Formulario.obterFormularios());
+
             RequestDispatcher view = request.getRequestDispatcher("/manterBolsa.jsp");
             view.forward(request, response);   
         } catch(ServletException ex){
@@ -202,20 +188,14 @@ public class ManterBolsaController extends HttpServlet {
         int codBolsa = Integer.parseInt(request.getParameter("txtCodBolsa"));
         String dataInicio = request.getParameter("txtDataInicio");
         String dataFim = request.getParameter("txtDataFim");
-        int codAluno = Integer.parseInt(request.getParameter("optAluno"));
-        int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
+        int codFormulario = Integer.parseInt(request.getParameter("optFormulario"));
         try{
-            Aluno aluno = null;
-            if(codAluno != 0){
-                aluno = Aluno.obterAluno(codAluno);
+            Formulario formulario = null;
+            if(codFormulario != 0){
+                formulario = Formulario.obterFormulario(codFormulario);
             }
-            Selecao selecao = null;
-            if(codSelecao != 0){
-                selecao = Selecao.obterSelecao(codSelecao);
-            }
-            Bolsa bolsa = new Bolsa(codBolsa, dataInicio, dataFim, aluno, selecao);
-            bolsa.setCodAluno(codAluno);
-            bolsa.setCodSelecao(codSelecao);
+            Bolsa bolsa = new Bolsa(codBolsa, dataInicio, dataFim, formulario);
+            bolsa.setCodFormulario(codFormulario);
             bolsa.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaBolsaController");
             view.forward(request, response);
@@ -234,20 +214,14 @@ public class ManterBolsaController extends HttpServlet {
         int codBolsa = Integer.parseInt(request.getParameter("txtCodBolsa"));
         String dataInicio = request.getParameter("txtDataInicio");
         String dataFim = request.getParameter("txtDataFim");
-        int codAluno = Integer.parseInt(request.getParameter("optAluno"));
-        int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
+        int codFormulario = Integer.parseInt(request.getParameter("optFormulario"));
         try{
-            Aluno aluno = null;
-            if(codAluno != 0){
-                aluno = Aluno.obterAluno(codAluno);
+            Formulario formulario = null;
+            if(codFormulario != 0){
+                formulario = Formulario.obterFormulario(codFormulario);
             }
-            Selecao selecao = null;
-            if(codSelecao != 0){
-                selecao = Selecao.obterSelecao(codSelecao);
-            }
-            Bolsa bolsa = new Bolsa(codBolsa, dataInicio, dataFim, aluno, selecao);
-            bolsa.setCodAluno(codAluno);
-            bolsa.setCodSelecao(codSelecao);
+            Bolsa bolsa = new Bolsa(codBolsa, dataInicio, dataFim, formulario);
+            bolsa.setCodFormulario(codFormulario);
             bolsa.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaBolsaController");
             view.forward(request, response);

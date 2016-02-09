@@ -18,7 +18,7 @@ public class AlunoDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from ALUNO, USUARIO where ALUNO.USUARIO_ID = USUARIO.USUARIO_ID");
+            ResultSet rs = comando.executeQuery("select * from ALUNO");
             while(rs.next()){
                 Aluno aluno = new Aluno(
                         rs.getInt("MATRICULA"),

@@ -1,8 +1,7 @@
 package modelo;
 
 import dao.BolsaDAO;
-import dao.AlunoDAO;
-import dao.SelecaoDAO;
+import dao.FormularioDAO;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,19 +11,16 @@ public class Bolsa {
     private String dataInicio;
     private String dataFim;
     
-    private Aluno aluno;
-    private Selecao selecao;
+    private Formulario formulario;
     
-    private int codAluno;
-    private int codSelecao;
+    private int codFormulario;
     
     
-    public Bolsa(int codBolsa, String dataInicio, String dataFim, Aluno aluno, Selecao selecao) {
+    public Bolsa(int codBolsa, String dataInicio, String dataFim, Formulario formulario) {
         this.codBolsa = codBolsa;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
-        this.aluno = aluno;
-        this.selecao = selecao;
+        this.formulario = formulario;
     }
     
     public static List<Bolsa> obterBolsas() throws ClassNotFoundException{
@@ -59,42 +55,23 @@ public class Bolsa {
         this.dataFim = dataFim;
     }
 
-    public int getCodAluno() {
-        return codAluno;
+    public int getCodFormulario() {
+        return codFormulario;
     }
 
-    public void setCodAluno(int codAluno) {
-        this.codAluno = codAluno;
+    public void setCodFormulario(int codFormulario) {
+        this.codFormulario = codFormulario;
     }
 
-    public int getCodSelecao() {
-        return codSelecao;
-    }
-
-    public void setCodSelecao(int codSelecao) {
-        this.codSelecao = codSelecao;
-    }
-
-    public Aluno getAluno() throws ClassNotFoundException {
-        if ((codAluno != 0) && (aluno == null)){
-            aluno = AlunoDAO.obterAluno(codAluno);
+    public Formulario getFormulario() throws ClassNotFoundException {
+        if ((codFormulario != 0) && (formulario == null)){
+            formulario = FormularioDAO.obterFormulario(codFormulario);
         }
-        return aluno;
+        return formulario;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public Selecao getSelecao() throws ClassNotFoundException {
-        if ((codSelecao != 0) && (selecao == null)){
-            selecao = SelecaoDAO.obterSelecao(codSelecao);
-        }
-        return selecao;
-    }
-
-    public void setSelecao(Selecao selecao) {
-        this.selecao = selecao;
+    public void setFormulario(Formulario formulario) {
+        this.formulario = formulario;
     }
     
     public void gravar() throws SQLException, ClassNotFoundException {

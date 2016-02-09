@@ -12,6 +12,10 @@
         <h1>Formulário Sócioeconômico - ${operacao}</h1>
         <form action="ManterFormularioController?acao=confirmar${operacao}" method="post" name="frmManterFormulario" onsubmit="return validarFormulario(this)">
             <table>
+                <tr>
+                    <td><hr />Código:
+                    <input type="text" name="txtCodFormulario" value="${formulario.codFormulario}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                </tr>
                 <tr> 
                     <td><hr />Confirme o nome do aluno:
                         <select name="optAluno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
@@ -334,7 +338,7 @@
                         <br />04) Ajudas de terceiros - Valor:&nbsp;<input type="text" name="txt_qt18_AjudaTerceiros" value="${formulario.qt18_AjudaTerceiros}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />05) Benefícios sociais - Valor:&nbsp;<input type="text" name="txt_qt18_BeneficiosSociais" value="${formulario.qt18_BeneficiosSociais}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />06) Outro - Qual?&nbsp;<input type="text" name="txt_qt18_NomeOutraRenda" value="${formulario.qt18_NomeOutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> - Valor:&nbsp;<input type="text" name="txt_qt18_OutraRenda" value="${formulario.qt18_OutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <br />Total da renda familiar&nbsp;<input type="text" name="txt_q18_TotalRenda" value="${formulario.q18_TotalRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />Total da renda familiar&nbsp;<input type="text" name="txt_qt18_TotalRenda" value="${formulario.qt18_TotalRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />Número total de pessoas da família que vivem dessa renda (incluindo o estudante)&nbsp;<input type="text" name="txt_qt18_NumeroResidentes" value="${formulario.qt18_NumeroResidentes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
@@ -382,6 +386,9 @@
                         Informe ou esclareça sobre dados não contemplados neste formulário ou situações especiais que julgar conveniente:
                         <br /><textarea rows="5" cols="100" name="txt_qt21_Esclarecimentos" value="${formulario.qt21_Esclarecimentos}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea>
                     </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
         </form>

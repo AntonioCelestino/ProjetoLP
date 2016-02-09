@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Aluno;
 import modelo.Formulario;
 import modelo.Funcionario;
+import modelo.Selecao;
 
 /**
  *
@@ -105,6 +106,7 @@ public class ManterFormularioController extends HttpServlet {
         try{
             request.setAttribute("operacao", "Incluir");
             request.setAttribute("alunos", Aluno.obterAlunos());
+            request.setAttribute("selecoes", Selecao.obterSelecoes());
             
             RequestDispatcher view = request.getRequestDispatcher("/manterFormulario.jsp");
             view.forward(request, response);   
@@ -120,6 +122,7 @@ public class ManterFormularioController extends HttpServlet {
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codFormulario = Integer.parseInt(request.getParameter("txtCodFormulario"));
         int codAluno = Integer.parseInt(request.getParameter("optAluno"));
+        int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
         String qt01_Resposta = request.getParameter("opt_qt01_Resposta");	
         String qt01_Nome = request.getParameter("txt_qt01_Nome"); 		
         String qt01_Parentesco = request.getParameter("txt_qt01_Parentesco");	
@@ -168,6 +171,7 @@ public class ManterFormularioController extends HttpServlet {
         String qt13_Outro = request.getParameter("txt_qt13_Outro");
         String qt14_Acabamento = request.getParameter("opt_qt14_Acabamento");
         String qt15_OutrosImoveis = request.getParameter("opt_qt15_OutrosImoveis");
+        String qt15_DescricaoImoveis = request.getParameter("txt_qt15_DescricaoImoveis");
         int qt16_QuantCarro = Integer.parseInt(request.getParameter("txt_qt16_QuantCarro"));
         int qt16_QuantTV = Integer.parseInt(request.getParameter("txt_qt16_QuantTV"));
         int qt16_QuantMaqLavar = Integer.parseInt(request.getParameter("txt_qt16_QuantMaqLavar"));
@@ -186,6 +190,8 @@ public class ManterFormularioController extends HttpServlet {
         double qt18_AjudaTerceiros = Double.parseDouble(request.getParameter("txt_qt18_AjudaTerceiros"));
         double qt18_BeneficiosSociais = Double.parseDouble(request.getParameter("txt_qt18_BeneficiosSociais"));
         double qt18_OutraRenda = Double.parseDouble(request.getParameter("txt_qt18_OutraRenda"));
+        String qt18_NomeOutraRenda = request.getParameter("txt_qt18_NomeOutraRenda");
+        double qt18_TotalRenda = Double.parseDouble(request.getParameter("txt_qt18_TotalRenda"));
         int qt18_NumeroResidentes = Integer.parseInt(request.getParameter("txt_qt18_NumeroResidentes"));
         double qt19_ValorAgua = Double.parseDouble(request.getParameter("txt_qt19_ValorAgua"));
         double qt19_ValorLuz = Double.parseDouble(request.getParameter("txt_qt19_ValorLuz"));
@@ -211,20 +217,25 @@ public class ManterFormularioController extends HttpServlet {
             if(codAluno != 0){
                 aluno = Aluno.obterAluno(codAluno);
             }
-            Formulario formulario = new Formulario(codFormulario, aluno, qt01_Resposta, qt01_Nome, qt01_Parentesco, qt01_Programa, 
+            Selecao selecao = null;
+            if(codSelecao != 0){
+                selecao = Selecao.obterSelecao(codSelecao);
+            }
+            Formulario formulario = new Formulario(codFormulario, aluno, selecao, qt01_Resposta, qt01_Nome, qt01_Parentesco, qt01_Programa, 
                     qt01_Ano, qt02_Alimentacao, qt02_Manutencao, qt02_Moradia, qt02_Transporte, qt02_Outro, qt03_Transporte, qt03_Tempo, qt03_ValorGastoDiario, qt03_ValorGastoMensal, 
                     qt03_Outro, qt04_InstituicaoEnsinoFundamental, qt05_InstituicaoEnsinoMedio, qt06_AtividadeRemunerada, qt06_ValorBolsaEstagio, 
                     qt06_ProjetoIniciacao, qt06_ValorBolsaIniciacao, qt06_ProjetoTreinamento, qt06_ValorBolsaTreinamento, qt06_Outro, 
                     qt06_ValorBolsaOutro, qt07_TrabalhoRemunerado, qt07_HorasSemanais, qt07_Salario, qt08_Manutencao, qt08_Outra, qt09_Moradia, 
                     qt09_Outra, qt10_ResponsavelFinanceiro, qt10_Outros, qt11_Esgoto, qt11_Agua, qt11_Iluminacao, qt11_Lixo, qt11_Pavimentacao, 
                     qt12_Residencia, qt12_Outro, qt13_Imovel, qt13_ValorAluguel, qt13_ValorPrestacao, qt13_Nome, qt13_Outro, qt14_Acabamento, 
-                    qt15_OutrosImoveis, qt16_QuantCarro, qt16_QuantTV, qt16_QuantMaqLavar, qt16_QuantGeladeira, qt16_QuantTVCabo, qt16_QuantComputador, 
+                    qt15_OutrosImoveis, qt15_DescricaoImoveis, qt16_QuantCarro, qt16_QuantTV, qt16_QuantMaqLavar, qt16_QuantGeladeira, qt16_QuantTVCabo, qt16_QuantComputador, 
                     qt16_QuantInternetPaga, qt16_QuantEmpregadaMensalista, qt16_QuantEmpregadaDiarista, qt16_QuantBanheiro, qt16_QuantQuarto, 
                     qt17_ProblemaSaude, qt18_AluguelImoveis, qt18_PensaoMorte, qt18_PensaoAlimenticia, qt18_AjudaTerceiros, qt18_BeneficiosSociais, 
-                    qt18_OutraRenda, qt18_NumeroResidentes, qt19_ValorAgua, qt19_ValorLuz, qt19_ValorTelefone, qt19_ValorCondominio, qt19_ValorMensalidadeEscolar, 
-                    qt19_ValorAlimentacao, qt19_ValorSaude, qt19_ValorTransporte, qt19_ValorIptuAnual, qt19_ValorAluguel, qt19_ValorPensao, qt19_ValorOutros, 
-                    qt20_ValorAgua, qt20_ValorLuz, qt20_ValorTelefone, qt20_ValorCondominio, qt20_ValorAluguel, qt20_ValorIptuAnual, qt21_Esclarecimentos);            
+                    qt18_OutraRenda, qt18_NomeOutraRenda, qt18_TotalRenda, qt18_NumeroResidentes, qt19_ValorAgua, qt19_ValorLuz, qt19_ValorTelefone, qt19_ValorCondominio, 
+                    qt19_ValorMensalidadeEscolar, qt19_ValorAlimentacao, qt19_ValorSaude, qt19_ValorTransporte, qt19_ValorIptuAnual, qt19_ValorAluguel, qt19_ValorPensao, 
+                    qt19_ValorOutros, qt20_ValorAgua, qt20_ValorLuz, qt20_ValorTelefone, qt20_ValorCondominio, qt20_ValorAluguel, qt20_ValorIptuAnual, qt21_Esclarecimentos);            
             formulario.setCodAluno(codAluno);
+            formulario.setCodSelecao(codSelecao);
             formulario.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaFormularioController");
             view.forward(request, response);
@@ -243,6 +254,7 @@ public class ManterFormularioController extends HttpServlet {
         try{
             request.setAttribute("operacao", "Editar");
             request.setAttribute("alunos", Aluno.obterAlunos());
+            request.setAttribute("selecoes", Selecao.obterSelecoes());
             
             RequestDispatcher view = request.getRequestDispatcher("/manterFormulario.jsp");
             view.forward(request, response);   
@@ -258,6 +270,7 @@ public class ManterFormularioController extends HttpServlet {
     private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codFormulario = Integer.parseInt(request.getParameter("txtCodFormulario"));
         int codAluno = Integer.parseInt(request.getParameter("optAluno"));
+        int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
         String qt01_Resposta = request.getParameter("opt_qt01_Resposta");	
         String qt01_Nome = request.getParameter("txt_qt01_Nome"); 		
         String qt01_Parentesco = request.getParameter("txt_qt01_Parentesco");	
@@ -306,6 +319,7 @@ public class ManterFormularioController extends HttpServlet {
         String qt13_Outro = request.getParameter("txt_qt13_Outro");
         String qt14_Acabamento = request.getParameter("opt_qt14_Acabamento");
         String qt15_OutrosImoveis = request.getParameter("opt_qt15_OutrosImoveis");
+        String qt15_DescricaoImoveis = request.getParameter("txt_qt15_DescricaoImoveis");
         int qt16_QuantCarro = Integer.parseInt(request.getParameter("txt_qt16_QuantCarro"));
         int qt16_QuantTV = Integer.parseInt(request.getParameter("txt_qt16_QuantTV"));
         int qt16_QuantMaqLavar = Integer.parseInt(request.getParameter("txt_qt16_QuantMaqLavar"));
@@ -324,6 +338,8 @@ public class ManterFormularioController extends HttpServlet {
         double qt18_AjudaTerceiros = Double.parseDouble(request.getParameter("txt_qt18_AjudaTerceiros"));
         double qt18_BeneficiosSociais = Double.parseDouble(request.getParameter("txt_qt18_BeneficiosSociais"));
         double qt18_OutraRenda = Double.parseDouble(request.getParameter("txt_qt18_OutraRenda"));
+        String qt18_NomeOutraRenda = request.getParameter("txt_qt18_NomeOutraRenda");
+        double qt18_TotalRenda = Double.parseDouble(request.getParameter("txt_qt18_TotalRenda"));
         int qt18_NumeroResidentes = Integer.parseInt(request.getParameter("txt_qt18_NumeroResidentes"));
         double qt19_ValorAgua = Double.parseDouble(request.getParameter("txt_qt19_ValorAgua"));
         double qt19_ValorLuz = Double.parseDouble(request.getParameter("txt_qt19_ValorLuz"));
@@ -349,20 +365,25 @@ public class ManterFormularioController extends HttpServlet {
             if(codAluno != 0){
                 aluno = Aluno.obterAluno(codAluno);
             }
-            Formulario formulario = new Formulario(codFormulario, aluno, qt01_Resposta, qt01_Nome, qt01_Parentesco, qt01_Programa, 
+            Selecao selecao = null;
+            if(codSelecao != 0){
+                selecao = Selecao.obterSelecao(codSelecao);
+            }
+            Formulario formulario = new Formulario(codFormulario, aluno, selecao, qt01_Resposta, qt01_Nome, qt01_Parentesco, qt01_Programa, 
                     qt01_Ano, qt02_Alimentacao, qt02_Manutencao, qt02_Moradia, qt02_Transporte, qt02_Outro, qt03_Transporte, qt03_Tempo, qt03_ValorGastoDiario, qt03_ValorGastoMensal, 
                     qt03_Outro, qt04_InstituicaoEnsinoFundamental, qt05_InstituicaoEnsinoMedio, qt06_AtividadeRemunerada, qt06_ValorBolsaEstagio, 
                     qt06_ProjetoIniciacao, qt06_ValorBolsaIniciacao, qt06_ProjetoTreinamento, qt06_ValorBolsaTreinamento, qt06_Outro, 
                     qt06_ValorBolsaOutro, qt07_TrabalhoRemunerado, qt07_HorasSemanais, qt07_Salario, qt08_Manutencao, qt08_Outra, qt09_Moradia, 
                     qt09_Outra, qt10_ResponsavelFinanceiro, qt10_Outros, qt11_Esgoto, qt11_Agua, qt11_Iluminacao, qt11_Lixo, qt11_Pavimentacao, 
                     qt12_Residencia, qt12_Outro, qt13_Imovel, qt13_ValorAluguel, qt13_ValorPrestacao, qt13_Nome, qt13_Outro, qt14_Acabamento, 
-                    qt15_OutrosImoveis, qt16_QuantCarro, qt16_QuantTV, qt16_QuantMaqLavar, qt16_QuantGeladeira, qt16_QuantTVCabo, qt16_QuantComputador, 
+                    qt15_OutrosImoveis, qt15_DescricaoImoveis, qt16_QuantCarro, qt16_QuantTV, qt16_QuantMaqLavar, qt16_QuantGeladeira, qt16_QuantTVCabo, qt16_QuantComputador, 
                     qt16_QuantInternetPaga, qt16_QuantEmpregadaMensalista, qt16_QuantEmpregadaDiarista, qt16_QuantBanheiro, qt16_QuantQuarto, 
                     qt17_ProblemaSaude, qt18_AluguelImoveis, qt18_PensaoMorte, qt18_PensaoAlimenticia, qt18_AjudaTerceiros, qt18_BeneficiosSociais, 
-                    qt18_OutraRenda, qt18_NumeroResidentes, qt19_ValorAgua, qt19_ValorLuz, qt19_ValorTelefone, qt19_ValorCondominio, qt19_ValorMensalidadeEscolar, 
-                    qt19_ValorAlimentacao, qt19_ValorSaude, qt19_ValorTransporte, qt19_ValorIptuAnual, qt19_ValorAluguel, qt19_ValorPensao, qt19_ValorOutros, 
-                    qt20_ValorAgua, qt20_ValorLuz, qt20_ValorTelefone, qt20_ValorCondominio, qt20_ValorAluguel, qt20_ValorIptuAnual, qt21_Esclarecimentos);            
+                    qt18_OutraRenda, qt18_NomeOutraRenda, qt18_TotalRenda, qt18_NumeroResidentes, qt19_ValorAgua, qt19_ValorLuz, qt19_ValorTelefone, qt19_ValorCondominio, 
+                    qt19_ValorMensalidadeEscolar, qt19_ValorAlimentacao, qt19_ValorSaude, qt19_ValorTransporte, qt19_ValorIptuAnual, qt19_ValorAluguel, qt19_ValorPensao, 
+                    qt19_ValorOutros, qt20_ValorAgua, qt20_ValorLuz, qt20_ValorTelefone, qt20_ValorCondominio, qt20_ValorAluguel, qt20_ValorIptuAnual, qt21_Esclarecimentos);            
             formulario.setCodAluno(codAluno);
+            formulario.setCodSelecao(codSelecao);
             formulario.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaFormularioController");
             view.forward(request, response);
@@ -381,6 +402,7 @@ public class ManterFormularioController extends HttpServlet {
         try{
             request.setAttribute("operacao", "Excluir");
             request.setAttribute("alunos", Aluno.obterAlunos());
+            request.setAttribute("selecoes", Selecao.obterSelecoes());
             
             RequestDispatcher view = request.getRequestDispatcher("/manterFormulario.jsp");
             view.forward(request, response);   
@@ -396,6 +418,7 @@ public class ManterFormularioController extends HttpServlet {
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codFormulario = Integer.parseInt(request.getParameter("txtCodFormulario"));
         int codAluno = Integer.parseInt(request.getParameter("optAluno"));
+        int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
         String qt01_Resposta = request.getParameter("opt_qt01_Resposta");	
         String qt01_Nome = request.getParameter("txt_qt01_Nome"); 		
         String qt01_Parentesco = request.getParameter("txt_qt01_Parentesco");	
@@ -444,6 +467,7 @@ public class ManterFormularioController extends HttpServlet {
         String qt13_Outro = request.getParameter("txt_qt13_Outro");
         String qt14_Acabamento = request.getParameter("opt_qt14_Acabamento");
         String qt15_OutrosImoveis = request.getParameter("opt_qt15_OutrosImoveis");
+        String qt15_DescricaoImoveis = request.getParameter("txt_qt15_DescricaoImoveis");
         int qt16_QuantCarro = Integer.parseInt(request.getParameter("txt_qt16_QuantCarro"));
         int qt16_QuantTV = Integer.parseInt(request.getParameter("txt_qt16_QuantTV"));
         int qt16_QuantMaqLavar = Integer.parseInt(request.getParameter("txt_qt16_QuantMaqLavar"));
@@ -462,6 +486,8 @@ public class ManterFormularioController extends HttpServlet {
         double qt18_AjudaTerceiros = Double.parseDouble(request.getParameter("txt_qt18_AjudaTerceiros"));
         double qt18_BeneficiosSociais = Double.parseDouble(request.getParameter("txt_qt18_BeneficiosSociais"));
         double qt18_OutraRenda = Double.parseDouble(request.getParameter("txt_qt18_OutraRenda"));
+        String qt18_NomeOutraRenda = request.getParameter("txt_qt18_NomeOutraRenda");
+        double qt18_TotalRenda = Double.parseDouble(request.getParameter("txt_qt18_TotalRenda"));
         int qt18_NumeroResidentes = Integer.parseInt(request.getParameter("txt_qt18_NumeroResidentes"));
         double qt19_ValorAgua = Double.parseDouble(request.getParameter("txt_qt19_ValorAgua"));
         double qt19_ValorLuz = Double.parseDouble(request.getParameter("txt_qt19_ValorLuz"));
@@ -487,20 +513,25 @@ public class ManterFormularioController extends HttpServlet {
             if(codAluno != 0){
                 aluno = Aluno.obterAluno(codAluno);
             }
-            Formulario formulario = new Formulario(codFormulario, aluno, qt01_Resposta, qt01_Nome, qt01_Parentesco, qt01_Programa, 
+            Selecao selecao = null;
+            if(codSelecao != 0){
+                selecao = Selecao.obterSelecao(codSelecao);
+            }
+            Formulario formulario = new Formulario(codFormulario, aluno, selecao, qt01_Resposta, qt01_Nome, qt01_Parentesco, qt01_Programa, 
                     qt01_Ano, qt02_Alimentacao, qt02_Manutencao, qt02_Moradia, qt02_Transporte, qt02_Outro, qt03_Transporte, qt03_Tempo, qt03_ValorGastoDiario, qt03_ValorGastoMensal, 
                     qt03_Outro, qt04_InstituicaoEnsinoFundamental, qt05_InstituicaoEnsinoMedio, qt06_AtividadeRemunerada, qt06_ValorBolsaEstagio, 
                     qt06_ProjetoIniciacao, qt06_ValorBolsaIniciacao, qt06_ProjetoTreinamento, qt06_ValorBolsaTreinamento, qt06_Outro, 
                     qt06_ValorBolsaOutro, qt07_TrabalhoRemunerado, qt07_HorasSemanais, qt07_Salario, qt08_Manutencao, qt08_Outra, qt09_Moradia, 
                     qt09_Outra, qt10_ResponsavelFinanceiro, qt10_Outros, qt11_Esgoto, qt11_Agua, qt11_Iluminacao, qt11_Lixo, qt11_Pavimentacao, 
                     qt12_Residencia, qt12_Outro, qt13_Imovel, qt13_ValorAluguel, qt13_ValorPrestacao, qt13_Nome, qt13_Outro, qt14_Acabamento, 
-                    qt15_OutrosImoveis, qt16_QuantCarro, qt16_QuantTV, qt16_QuantMaqLavar, qt16_QuantGeladeira, qt16_QuantTVCabo, qt16_QuantComputador, 
+                    qt15_OutrosImoveis, qt15_DescricaoImoveis, qt16_QuantCarro, qt16_QuantTV, qt16_QuantMaqLavar, qt16_QuantGeladeira, qt16_QuantTVCabo, qt16_QuantComputador, 
                     qt16_QuantInternetPaga, qt16_QuantEmpregadaMensalista, qt16_QuantEmpregadaDiarista, qt16_QuantBanheiro, qt16_QuantQuarto, 
                     qt17_ProblemaSaude, qt18_AluguelImoveis, qt18_PensaoMorte, qt18_PensaoAlimenticia, qt18_AjudaTerceiros, qt18_BeneficiosSociais, 
-                    qt18_OutraRenda, qt18_NumeroResidentes, qt19_ValorAgua, qt19_ValorLuz, qt19_ValorTelefone, qt19_ValorCondominio, qt19_ValorMensalidadeEscolar, 
-                    qt19_ValorAlimentacao, qt19_ValorSaude, qt19_ValorTransporte, qt19_ValorIptuAnual, qt19_ValorAluguel, qt19_ValorPensao, qt19_ValorOutros, 
-                    qt20_ValorAgua, qt20_ValorLuz, qt20_ValorTelefone, qt20_ValorCondominio, qt20_ValorAluguel, qt20_ValorIptuAnual, qt21_Esclarecimentos);            
+                    qt18_OutraRenda, qt18_NomeOutraRenda, qt18_TotalRenda, qt18_NumeroResidentes, qt19_ValorAgua, qt19_ValorLuz, qt19_ValorTelefone, qt19_ValorCondominio, 
+                    qt19_ValorMensalidadeEscolar, qt19_ValorAlimentacao, qt19_ValorSaude, qt19_ValorTransporte, qt19_ValorIptuAnual, qt19_ValorAluguel, qt19_ValorPensao, 
+                    qt19_ValorOutros, qt20_ValorAgua, qt20_ValorLuz, qt20_ValorTelefone, qt20_ValorCondominio, qt20_ValorAluguel, qt20_ValorIptuAnual, qt21_Esclarecimentos);            
             formulario.setCodAluno(codAluno);
+            formulario.setCodSelecao(codSelecao);
             formulario.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaFormularioController");
             view.forward(request, response);

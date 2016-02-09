@@ -18,7 +18,7 @@ public class SelecaoDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from SELECAO, MODALIDADE where SELECAO.MODALIDADE_ID = MODALIDADE.MODALIDADE_ID");
+            ResultSet rs = comando.executeQuery("select * from SELECAO");
             while (rs.next()) {
                 Selecao selecao = new Selecao(
                         rs.getInt("SELECAO_ID"),

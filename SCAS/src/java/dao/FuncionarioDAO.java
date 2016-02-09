@@ -18,7 +18,7 @@ public class FuncionarioDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from FUNCIONARIO, USUARIO where FUNCIONARIO.USUARIO_ID = USUARIO.USUARIO_ID");
+            ResultSet rs = comando.executeQuery("select * from FUNCIONARIO");
             while(rs.next()){
                 Funcionario funcionario = new Funcionario(
                         rs.getInt("REGISTRO"),

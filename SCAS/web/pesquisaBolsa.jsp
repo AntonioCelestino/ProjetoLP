@@ -20,8 +20,8 @@
             <c:forEach items="${bolsas}" var="bolsa">
                 <tr>
                     <td><c:out value="${bolsa.codBolsa}"/></td>
-                    <td><c:out value="${bolsa.selecao.modalidade.nome}"/></td>
-                    <td><c:out value="${bolsa.aluno.estudante.nome}"/></td>
+                    <td><c:out value="${bolsa.formulario.selecao.modalidade.nome}"/></td>
+                    <td><c:out value="${bolsa.formulario.aluno.estudante.nome}"/></td>
                     <td>
                         <a href="ManterBolsaController?acao=prepararEditar&codBolsa=<c:out value="${bolsa.codBolsa}"/>">Editar</a>
                     </td>

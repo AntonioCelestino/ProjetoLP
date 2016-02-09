@@ -80,8 +80,8 @@ String qt13_Outro = "";		// preenchida se qt13_Imovel = Outro
 String qt14_Acabamento = ""; 	// com ratio button
 
 //--- Questão 15 ---
-String qt15_OutrosImoveis = ""; // com ratio button de 'Sim' ou 'Não'
-String qt15_DescricaoImoveis = "";
+String qt15_OutrosImoveis = ""; 	// com ratio button de 'Sim' ou 'Não'
+String qt15_DescricaoImoveis = "";	// preenchida se qt15_OutrosImoveis = 'Sim'
 
 //--- Questão 16 ---
 int qt16_QuantCarro;
@@ -109,7 +109,7 @@ double qt18_AjudaTerceiros;
 double qt18_BeneficiosSociais;
 double qt18_OutraRenda;
 String qt18_NomeOutraRenda = "";
-double q18_TotalRenda;
+double qt18_TotalRenda;
 int qt18_NumeroResidentes;
 
 //--- Questão 19 ---

@@ -18,7 +18,7 @@ public class RecursoDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from RECURSO, MODALIDADE where RECURSO.MODALIDADE_ID = MODALIDADE.MODALIDADE_ID");
+            ResultSet rs = comando.executeQuery("select * from RECURSO");
             while(rs.next()){
                 Recurso recurso = new Recurso(
                         rs.getInt("RECURSO_ID"),
