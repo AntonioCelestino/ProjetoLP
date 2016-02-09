@@ -388,6 +388,9 @@
                         <br /><textarea rows="5" cols="100" name="txt_qt21_Esclarecimentos" value="${formulario.qt21_Esclarecimentos}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea>
                     </td>
                 </tr>
+                <tr>
+                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                </tr>
             </table>
         </form>
         <SCRIPT language="JavaScript">
