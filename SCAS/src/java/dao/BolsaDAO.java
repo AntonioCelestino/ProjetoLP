@@ -97,7 +97,7 @@ public class BolsaDAO {
                 comando.setInt(3, bolsa.getCodFormulario());
             }
             
-            comando.setInt(5, bolsa.getCodBolsa());
+            comando.setInt(4, bolsa.getCodBolsa());
             comando.execute();
             comando.close();
             conexao.close();
