@@ -268,8 +268,42 @@
                 </tr>
                 <tr>
                     <td>Há problemas de saúde existentes entre as pessoas que moram com sua família, inclusive você?<br />
-                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Sim" <c:if test="${formulario.qt17_ProblemaSaude == 'Sim'}"> checked</c:if>>Sim
-                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Não" <c:if test="${formulario.qt17_ProblemaSaude == 'Não'}"> checked</c:if>>Não
+                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Sim" onclick="if(document.getElementById('qt17_Nome1').disabled==true){document.getElementById('qt17_Nome1').disabled=false}; if(document.getElementById('qt17_Doenca1').disabled==true){document.getElementById('qt17_Doenca1').disabled=false}; if(document.getElementById('qt17_Gasto1').disabled==true){document.getElementById('qt17_Gasto1').disabled=false}; if(document.getElementById('qt17_Nome2').disabled==true){document.getElementById('qt17_Nome2').disabled=false}; if(document.getElementById('qt17_Doenca2').disabled==true){document.getElementById('qt17_Doenca2').disabled=false}; if(document.getElementById('qt17_Gasto2').disabled==true){document.getElementById('qt17_Gasto2').disabled=false}; if(document.getElementById('qt17_Nome3').disabled==true){document.getElementById('qt17_Nome3').disabled=false}; if(document.getElementById('qt17_Doenca3').disabled==true){document.getElementById('qt17_Doenca3').disabled=false}; if(document.getElementById('qt17_Gasto3').disabled==true){document.getElementById('qt17_Gasto3').disabled=false}" <c:if test="${formulario.qt17_ProblemaSaude == 'Sim'}"> checked</c:if>>Sim
+                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Não" onclick="if(document.getElementById('qt17_Nome1').disabled==false){document.getElementById('qt17_Nome1').disabled=true}; if(document.getElementById('qt17_Doenca1').disabled==false){document.getElementById('qt17_Doenca1').disabled=true}; if(document.getElementById('qt17_Gasto1').disabled==false){document.getElementById('qt17_Gasto1').disabled=true}; if(document.getElementById('qt17_Nome2').disabled==false){document.getElementById('qt17_Nome2').disabled=true}; if(document.getElementById('qt17_Doenca2').disabled==false){document.getElementById('qt17_Doenca2').disabled=true}; if(document.getElementById('qt17_Gasto2').disabled==false){document.getElementById('qt17_Gasto2').disabled=true}; if(document.getElementById('qt17_Nome3').disabled==false){document.getElementById('qt17_Nome3').disabled=true}; if(document.getElementById('qt17_Doenca3').disabled==false){document.getElementById('qt17_Doenca3').disabled=true}; if(document.getElementById('qt17_Gasto3').disabled==false){document.getElementById('qt17_Gasto3').disabled=true}" <c:if test="${formulario.qt17_ProblemaSaude == 'Não'}"> checked</c:if>>Não
+                    </td>
+                </tr>
+                <tr> 
+                    <td>
+                        <table border="1">
+                            <tr>
+                                <td>Nome</td>
+                                <td>Doença</td>
+                                <td>Incapacita para trabalhar</td>
+                                <td>Dependência em atividades diárias</td>
+                                <td>Gasto mensal (R$)</td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="qt17_Nome1" name="txt_qt17_Nome1" value="${formulario.qt17_Nome1}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                                <td><input type="text" id="qt17_Doenca1" name="txt_qt17_Doenca1" value="${formulario.qt17_Doenca1}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                                <td><input type="radio" name="opt_qt17_Trabalho1" value="Sim" <c:if test="${formulario.qt17_Trabalho1 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Trabalho1" value="Não" <c:if test="${formulario.qt17_Trabalho1 == 'Não'}"> checked</c:if>>Não</td>
+                                <td><input type="radio" name="opt_qt17_Dependencia1" value="Sim" <c:if test="${formulario.qt17_Dependencia1 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Dependencia1" value="Não" <c:if test="${formulario.qt17_Dependencia1 == 'Não'}"> checked</c:if>>Não</td>
+                                <td><input type="text" id="qt17_Gasto1" name="txt_qt17_Gasto1" value="${formulario.qt17_Gasto1}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="qt17_Nome2" name="txt_qt17_Nome2" value="${formulario.qt17_Nome2}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                                <td><input type="text" id="qt17_Doenca2" name="txt_qt17_Doenca2" value="${formulario.qt17_Doenca2}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                                <td><input type="radio" name="opt_qt17_Trabalho2" value="Sim" <c:if test="${formulario.qt17_Trabalho2 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Trabalho2" value="Não" <c:if test="${formulario.qt17_Trabalho2 == 'Não'}"> checked</c:if>>Não</td>
+                                <td><input type="radio" name="opt_qt17_Dependencia2" value="Sim" <c:if test="${formulario.qt17_Dependencia2 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Dependencia2" value="Não" <c:if test="${formulario.qt17_Dependencia2 == 'Não'}"> checked</c:if>>Não</td>
+                                <td><input type="text" id="qt17_Gasto2" name="txt_qt17_Gasto2" value="${formulario.qt17_Gasto2}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="qt17_Nome3" name="txt_qt17_Nome3" value="${formulario.qt17_Nome3}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                                <td><input type="text" id="qt17_Doenca3" name="txt_qt17_Doenca3" value="${formulario.qt17_Doenca3}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                                <td><input type="radio" name="opt_qt17_Trabalho3" value="Sim" <c:if test="${formulario.qt17_Trabalho3 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Trabalho3" value="Não" <c:if test="${formulario.qt17_Trabalho3 == 'Não'}"> checked</c:if>>Não</td>
+                                <td><input type="radio" name="opt_qt17_Dependencia3" value="Sim" <c:if test="${formulario.qt17_Dependencia3 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Dependencia3" value="Não" <c:if test="${formulario.qt17_Dependencia3 == 'Não'}"> checked</c:if>>Não</td>
+                                <td><input type="text" id="qt17_Gasto3" name="txt_qt17_Gasto3" value="${formulario.qt17_Gasto3}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr> 
@@ -452,7 +486,34 @@
                 }
                 if (!campoNumerico(form.txt_qt06_ValorBolsaOutro.value)){
                     mensagem = mensagem + "O valor bolsa outro na Questão 06 deve ser numérico\n";
-                }                
+                }
+                if (form.txt_qt17_Gasto1.value == ""){
+                    form.txt_qt17_Gasto1.value = 0.0;
+                }
+                if (form.txt_qt17_Gasto1.value < 0.0){
+                    mensagem = mensagem + "O valor do gasto na Questão 17 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt17_Gasto1.value)){
+                    mensagem = mensagem + "O valor do gasto na Questão 17 deve ser numérico\n";
+                }
+                if (form.txt_qt17_Gasto2.value == ""){
+                    form.txt_qt17_Gasto2.value = 0.0;
+                }
+                if (form.txt_qt17_Gasto2.value < 0.0){
+                    mensagem = mensagem + "O valor do gasto na Questão 17 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt17_Gasto2.value)){
+                    mensagem = mensagem + "O valor do gasto na Questão 17 deve ser numérico\n";
+                }
+                if (form.txt_qt17_Gasto3.value == ""){
+                    form.txt_qt17_Gasto3.value = 0.0;
+                }
+                if (form.txt_qt17_Gasto3.value < 0.0){
+                    mensagem = mensagem + "O valor do gasto na Questão 17 não pode ser negativo\n";
+                }
+                if (!campoNumerico(form.txt_qt17_Gasto3.value)){
+                    mensagem = mensagem + "O valor do gasto na Questão 17 deve ser numérico\n";
+                }
                 if (form.opt_qt06_AtividadeRemunerada.value == ""){
                     mensagem = mensagem + "Selecione uma Atividade Remunerada na Questão 06\n";
                 }
