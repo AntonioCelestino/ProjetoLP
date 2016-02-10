@@ -113,7 +113,7 @@ public class ManterBolsaController extends HttpServlet {
     private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, ServletException {
         try{
             request.setAttribute("operacao", "Incluir");
-            request.setAttribute("formulario", Formulario.obterFormularios());
+            request.setAttribute("formularios", Formulario.obterFormularios());
 
             RequestDispatcher view = request.getRequestDispatcher("/manterBolsa.jsp");
             view.forward(request, response);   
@@ -155,8 +155,10 @@ public class ManterBolsaController extends HttpServlet {
     private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try{
             request.setAttribute("operacao", "Editar");
-            request.setAttribute("formulario", Formulario.obterFormularios());
-
+            request.setAttribute("formularios", Formulario.obterFormularios());
+            int codBolsa = Integer.parseInt(request.getParameter("codBolsa"));
+            Bolsa bolsa = Bolsa.obterBolsa(codBolsa);
+            request.setAttribute("bolsa", bolsa);
             RequestDispatcher view = request.getRequestDispatcher("/manterBolsa.jsp");
             view.forward(request, response);   
         } catch(ServletException ex){
@@ -171,8 +173,10 @@ public class ManterBolsaController extends HttpServlet {
     private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try{
             request.setAttribute("operacao", "Excluir");
-            request.setAttribute("formulario", Formulario.obterFormularios());
-
+            request.setAttribute("formularios", Formulario.obterFormularios());
+            int codBolsa = Integer.parseInt(request.getParameter("codBolsa"));
+            Bolsa bolsa = Bolsa.obterBolsa(codBolsa);
+            request.setAttribute("bolsa", bolsa);
             RequestDispatcher view = request.getRequestDispatcher("/manterBolsa.jsp");
             view.forward(request, response);   
         } catch(ServletException ex){

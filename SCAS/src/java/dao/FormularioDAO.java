@@ -35,22 +35,22 @@ public class FormularioDAO {
                     rs.getString("QT02_OUTRO"),
                     rs.getString("QT03_TRANSPORTE"),
                     rs.getString("QT03_TEMPO"),
-                    rs.getDouble("QT03_VALOR_GASTO_DIARIO"),
-                    rs.getDouble("QT03_VALOR_GASTO_MENSAL"),
+                    rs.getString("QT03_VALOR_GASTO_DIARIO"),
+                    rs.getString("QT03_VALOR_GASTO_MENSAL"),
                     rs.getString("QT03_OUTRO"),
                     rs.getString("QT04_INSTITUICAO_ENSINO_FUNDAMENTAL"),
                     rs.getString("QT05_INSTITUICAO_ENSINO_MEDIO"),
                     rs.getString("QT06_ATIVIDADE_REMUNERADA"),
-                    rs.getDouble("QT06_VALOR_BOLSA_ESTAGIO"),
+                    rs.getString("QT06_VALOR_BOLSA_ESTAGIO"),
                     rs.getString("QT06_PROJETO_INICIACAO"),
-                    rs.getDouble("QT06_VALOR_BOLSA_INICIACAO"),
+                    rs.getString("QT06_VALOR_BOLSA_INICIACAO"),
                     rs.getString("QT06_PROJETO_TREINAMENTO"),
-                    rs.getDouble("QT06_VALOR_BOLSA_TREINAMENTO"),
+                    rs.getString("QT06_VALOR_BOLSA_TREINAMENTO"),
                     rs.getString("QT06_OUTRO"),
-                    rs.getDouble("QT06_VALOR_BOLSA_OUTRO"),
+                    rs.getString("QT06_VALOR_BOLSA_OUTRO"),
                     rs.getString("QT07_TRABALHO_REMUNERADO"),
                     rs.getString("QT07_HORAS_SEMANAIS"),
-                    rs.getDouble("QT07_SALARIO"),
+                    rs.getString("QT07_SALARIO"),
                     rs.getString("QT08_MANUTENCAO"),
                     rs.getString("QT08_OUTRO"),
                     rs.getString("QT09_MORADIA"),
@@ -65,8 +65,8 @@ public class FormularioDAO {
                     rs.getString("QT12_RESIDENCIA"),
                     rs.getString("QT12_OUTRO"),
                     rs.getString("QT13_IMOVEL"),
-                    rs.getDouble("QT13_VALOR_ALUGUEL"),
-                    rs.getDouble("QT13_VALOR_PRESTACAO"),
+                    rs.getString("QT13_VALOR_ALUGUEL"),
+                    rs.getString("QT13_VALOR_PRESTACAO"),
                     rs.getString("QT13_NOME"),
                     rs.getString("QT13_OUTRO"),
                     rs.getString("QT14_ACABAMENTO"),
@@ -149,22 +149,22 @@ public class FormularioDAO {
                     rs.getString("QT02_OUTRO"),
                     rs.getString("QT03_TRANSPORTE"),
                     rs.getString("QT03_TEMPO"),
-                    rs.getDouble("QT03_VALOR_GASTO_DIARIO"),
-                    rs.getDouble("QT03_VALOR_GASTO_MENSAL"),
+                    rs.getString("QT03_VALOR_GASTO_DIARIO"),
+                    rs.getString("QT03_VALOR_GASTO_MENSAL"),
                     rs.getString("QT03_OUTRO"),
                     rs.getString("QT04_INSTITUICAO_ENSINO_FUNDAMENTAL"),
                     rs.getString("QT05_INSTITUICAO_ENSINO_MEDIO"),
                     rs.getString("QT06_ATIVIDADE_REMUNERADA"),
-                    rs.getDouble("QT06_VALOR_BOLSA_ESTAGIO"),
+                    rs.getString("QT06_VALOR_BOLSA_ESTAGIO"),
                     rs.getString("QT06_PROJETO_INICIACAO"),
-                    rs.getDouble("QT06_VALOR_BOLSA_INICIACAO"),
+                    rs.getString("QT06_VALOR_BOLSA_INICIACAO"),
                     rs.getString("QT06_PROJETO_TREINAMENTO"),
-                    rs.getDouble("QT06_VALOR_BOLSA_TREINAMENTO"),
+                    rs.getString("QT06_VALOR_BOLSA_TREINAMENTO"),
                     rs.getString("QT06_OUTRO"),
-                    rs.getDouble("QT06_VALOR_BOLSA_OUTRO"),
+                    rs.getString("QT06_VALOR_BOLSA_OUTRO"),
                     rs.getString("QT07_TRABALHO_REMUNERADO"),
                     rs.getString("QT07_HORAS_SEMANAIS"),
-                    rs.getDouble("QT07_SALARIO"),
+                    rs.getString("QT07_SALARIO"),
                     rs.getString("QT08_MANUTENCAO"),
                     rs.getString("QT08_OUTRO"),
                     rs.getString("QT09_MORADIA"),
@@ -179,8 +179,8 @@ public class FormularioDAO {
                     rs.getString("QT12_RESIDENCIA"),
                     rs.getString("QT12_OUTRO"),
                     rs.getString("QT13_IMOVEL"),
-                    rs.getDouble("QT13_VALOR_ALUGUEL"),
-                    rs.getDouble("QT13_VALOR_PRESTACAO"),
+                    rs.getString("QT13_VALOR_ALUGUEL"),
+                    rs.getString("QT13_VALOR_PRESTACAO"),
                     rs.getString("QT13_NOME"),
                     rs.getString("QT13_OUTRO"),
                     rs.getString("QT14_ACABAMENTO"),
@@ -286,22 +286,22 @@ public class FormularioDAO {
             comando.setString(13, formulario.getQt02_Outro());
             comando.setString(14, formulario.getQt03_Transporte());
             comando.setString(15, formulario.getQt03_Tempo());
-            comando.setDouble(16, formulario.getQt03_ValorGastoDiario());
-            comando.setDouble(17, formulario.getQt03_ValorGastoMensal());
+            comando.setString(16, formulario.getQt03_ValorGastoDiario());
+            comando.setString(17, formulario.getQt03_ValorGastoMensal());
             comando.setString(18, formulario.getQt03_Outro());
             comando.setString(19, formulario.getQt04_InstituicaoEnsinoFundamental());
             comando.setString(20, formulario.getQt05_InstituicaoEnsinoMedio());
             comando.setString(21, formulario.getQt06_AtividadeRemunerada());
-            comando.setDouble(22, formulario.getQt06_ValorBolsaEstagio());
+            comando.setString(22, formulario.getQt06_ValorBolsaEstagio());
             comando.setString(23, formulario.getQt06_ProjetoIniciacao());
-            comando.setDouble(24, formulario.getQt06_ValorBolsaIniciacao());
+            comando.setString(24, formulario.getQt06_ValorBolsaIniciacao());
             comando.setString(25, formulario.getQt06_ProjetoTreinamento());
-            comando.setDouble(26, formulario.getQt06_ValorBolsaTreinamento());
+            comando.setString(26, formulario.getQt06_ValorBolsaTreinamento());
             comando.setString(27, formulario.getQt06_Outro());
-            comando.setDouble(28, formulario.getQt06_ValorBolsaOutro());
+            comando.setString(28, formulario.getQt06_ValorBolsaOutro());
             comando.setString(29, formulario.getQt07_TrabalhoRemunerado());
             comando.setString(30, formulario.getQt07_HorasSemanais());
-            comando.setDouble(31, formulario.getQt07_Salario());
+            comando.setString(31, formulario.getQt07_Salario());
             comando.setString(32, formulario.getQt08_Manutencao());
             comando.setString(33, formulario.getQt08_Outra());
             comando.setString(34, formulario.getQt09_Moradia());
@@ -316,8 +316,8 @@ public class FormularioDAO {
             comando.setString(43, formulario.getQt12_Residencia());
             comando.setString(44, formulario.getQt12_Outro());
             comando.setString(45, formulario.getQt13_Imovel());
-            comando.setDouble(46, formulario.getQt13_ValorAluguel());
-            comando.setDouble(47, formulario.getQt13_ValorPrestacao());
+            comando.setString(46, formulario.getQt13_ValorAluguel());
+            comando.setString(47, formulario.getQt13_ValorPrestacao());
             comando.setString(48, formulario.getQt13_Nome());
             comando.setString(49, formulario.getQt13_Outro());
             comando.setString(50, formulario.getQt14_Acabamento());
@@ -419,22 +419,22 @@ public class FormularioDAO {
             comando.setString(12, formulario.getQt02_Outro());
             comando.setString(13, formulario.getQt03_Transporte());
             comando.setString(14, formulario.getQt03_Tempo());
-            comando.setDouble(15, formulario.getQt03_ValorGastoDiario());
-            comando.setDouble(16, formulario.getQt03_ValorGastoMensal());
+            comando.setString(15, formulario.getQt03_ValorGastoDiario());
+            comando.setString(16, formulario.getQt03_ValorGastoMensal());
             comando.setString(17, formulario.getQt03_Outro());
             comando.setString(18, formulario.getQt04_InstituicaoEnsinoFundamental());
             comando.setString(19, formulario.getQt05_InstituicaoEnsinoMedio());
             comando.setString(20, formulario.getQt06_AtividadeRemunerada());
-            comando.setDouble(21, formulario.getQt06_ValorBolsaEstagio());
+            comando.setString(21, formulario.getQt06_ValorBolsaEstagio());
             comando.setString(22, formulario.getQt06_ProjetoIniciacao());
-            comando.setDouble(23, formulario.getQt06_ValorBolsaIniciacao());
+            comando.setString(23, formulario.getQt06_ValorBolsaIniciacao());
             comando.setString(24, formulario.getQt06_ProjetoTreinamento());
-            comando.setDouble(25, formulario.getQt06_ValorBolsaTreinamento());
+            comando.setString(25, formulario.getQt06_ValorBolsaTreinamento());
             comando.setString(26, formulario.getQt06_Outro());
-            comando.setDouble(27, formulario.getQt06_ValorBolsaOutro());
+            comando.setString(27, formulario.getQt06_ValorBolsaOutro());
             comando.setString(28, formulario.getQt07_TrabalhoRemunerado());
             comando.setString(29, formulario.getQt07_HorasSemanais());
-            comando.setDouble(30, formulario.getQt07_Salario());
+            comando.setString(30, formulario.getQt07_Salario());
             comando.setString(31, formulario.getQt08_Manutencao());
             comando.setString(32, formulario.getQt08_Outra());
             comando.setString(33, formulario.getQt09_Moradia());
@@ -449,8 +449,8 @@ public class FormularioDAO {
             comando.setString(42, formulario.getQt12_Residencia());
             comando.setString(43, formulario.getQt12_Outro());
             comando.setString(44, formulario.getQt13_Imovel());
-            comando.setDouble(45, formulario.getQt13_ValorAluguel());
-            comando.setDouble(46, formulario.getQt13_ValorPrestacao());
+            comando.setString(45, formulario.getQt13_ValorAluguel());
+            comando.setString(46, formulario.getQt13_ValorPrestacao());
             comando.setString(47, formulario.getQt13_Nome());
             comando.setString(48, formulario.getQt13_Outro());
             comando.setString(49, formulario.getQt14_Acabamento());

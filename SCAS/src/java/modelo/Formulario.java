@@ -30,8 +30,8 @@ public class Formulario {
     //--- Questão 03 ---
     private String qt03_Transporte;             // com ratio button
     private String qt03_Tempo;                  // preenchida se qt03_Transporte = 'pé-bicicleta'
-    private double qt03_ValorGastoDiario; 	// preenchida se qt03_Transporte = 'transporte coletivo'
-    private double qt03_ValorGastoMensal; 	// preenchida se qt03_Transporte = 'transporte locado'
+    private String qt03_ValorGastoDiario; 	// preenchida se qt03_Transporte = 'transporte coletivo'
+    private String qt03_ValorGastoMensal; 	// preenchida se qt03_Transporte = 'transporte locado'
     private String qt03_Outro;                  // preenchida se qt03_Transporte = 'Outro'
 
     //--- Questão 04 ---
@@ -42,18 +42,18 @@ public class Formulario {
 
     //--- Questão 06 ---
     private String qt06_AtividadeRemunerada; 	// com ratio button
-    private double qt06_ValorBolsaEstagio; 	// preenchida qt06_AtividadeRemunerada = estágio
+    private String qt06_ValorBolsaEstagio; 	// preenchida qt06_AtividadeRemunerada = estágio
     private String qt06_ProjetoIniciacao; 	// preenchida qt06_AtividadeRemunerada = iniciação científica
-    private double qt06_ValorBolsaIniciacao; 	// preenchida qt06_AtividadeRemunerada = iniciação científica
+    private String qt06_ValorBolsaIniciacao; 	// preenchida qt06_AtividadeRemunerada = iniciação científica
     private String qt06_ProjetoTreinamento; 	// preenchida qt06_AtividadeRemunerada = treinamento profissional
-    private double qt06_ValorBolsaTreinamento; 	// preenchida qt06_AtividadeRemunerada = treinamento profissional
+    private String qt06_ValorBolsaTreinamento; 	// preenchida qt06_AtividadeRemunerada = treinamento profissional
     private String qt06_Outro;                  // preenchida qt06_AtividadeRemunerada = Outra
-    private double qt06_ValorBolsaOutro; 	// preenchida qt06_AtividadeRemunerada = Outra
+    private String qt06_ValorBolsaOutro; 	// preenchida qt06_AtividadeRemunerada = Outra
 
     //--- Questão 07 ---
     private String qt07_TrabalhoRemunerado;	// com ratio button de 'Sim' ou 'Não'
     private String qt07_HorasSemanais;  	// preenchida se qt07_TrabalhoRemunerado = 'Sim'
-    private double qt07_Salario; 		// preenchida se qt07_TrabalhoRemunerado = 'Sim'
+    private String qt07_Salario; 		// preenchida se qt07_TrabalhoRemunerado = 'Sim'
 
     //--- Questão 08 ---
     private String qt08_Manutencao; 	// com ratio button
@@ -80,8 +80,8 @@ public class Formulario {
 
     //--- Questão 13 ---
     private String qt13_Imovel; 	// com ratio button
-    private double qt13_ValorAluguel;	// preenchida se qt13_Imovel = alugado
-    private double qt13_ValorPrestacao;	// preenchida se qt13_Imovel = em pagamento
+    private String qt13_ValorAluguel;	// preenchida se qt13_Imovel = alugado
+    private String qt13_ValorPrestacao;	// preenchida se qt13_Imovel = em pagamento
     private String qt13_Nome;		// preenchida se qt13_Imovel = emprestado
     private String qt13_Outro;		// preenchida se qt13_Imovel = Outro
 
@@ -148,12 +148,12 @@ public class Formulario {
 
     public Formulario(int codFormulario, Aluno aluno, Selecao selecao, String qt01_Resposta, String qt01_Nome, String qt01_Parentesco, String qt01_Programa,
             String qt01_Ano, String qt02_Alimentacao, String qt02_Manutencao, String qt02_Moradia, String qt02_Transporte, String qt02_Outro, String qt03_Transporte,
-            String qt03_Tempo, double qt03_ValorGastoDiario, double qt03_ValorGastoMensal, String qt03_Outro, String qt04_InstituicaoEnsinoFundamental, 
-            String qt05_InstituicaoEnsinoMedio, String qt06_AtividadeRemunerada, double qt06_ValorBolsaEstagio, String qt06_ProjetoIniciacao, double qt06_ValorBolsaIniciacao, 
-            String qt06_ProjetoTreinamento, double qt06_ValorBolsaTreinamento, String qt06_Outro, double qt06_ValorBolsaOutro, String qt07_TrabalhoRemunerado, 
-            String qt07_HorasSemanais, double qt07_Salario, String qt08_Manutencao, String qt08_Outra, String qt09_Moradia, String qt09_Outra, 
+            String qt03_Tempo, String qt03_ValorGastoDiario, String qt03_ValorGastoMensal, String qt03_Outro, String qt04_InstituicaoEnsinoFundamental, 
+            String qt05_InstituicaoEnsinoMedio, String qt06_AtividadeRemunerada, String qt06_ValorBolsaEstagio, String qt06_ProjetoIniciacao, String qt06_ValorBolsaIniciacao, 
+            String qt06_ProjetoTreinamento, String qt06_ValorBolsaTreinamento, String qt06_Outro, String qt06_ValorBolsaOutro, String qt07_TrabalhoRemunerado, 
+            String qt07_HorasSemanais, String qt07_Salario, String qt08_Manutencao, String qt08_Outra, String qt09_Moradia, String qt09_Outra, 
             String qt10_ResponsavelFinanceiro, String qt10_Outros, String qt11_Esgoto, String qt11_Agua, String qt11_Iluminacao, String qt11_Lixo, 
-            String qt11_Pavimentacao, String qt12_Residencia, String qt12_Outro, String qt13_Imovel, double qt13_ValorAluguel, double qt13_ValorPrestacao, 
+            String qt11_Pavimentacao, String qt12_Residencia, String qt12_Outro, String qt13_Imovel, String qt13_ValorAluguel, String qt13_ValorPrestacao, 
             String qt13_Nome, String qt13_Outro, String qt14_Acabamento, String qt15_OutrosImoveis, String qt15_DescricaoImoveis, int qt16_QuantCarro, int qt16_QuantTV, 
             int qt16_QuantMaqLavar, int qt16_QuantGeladeira, int qt16_QuantTVCabo, int qt16_QuantComputador, int qt16_QuantInternetPaga, int qt16_QuantEmpregadaMensalista, 
             int qt16_QuantEmpregadaDiarista, int qt16_QuantBanheiro, int qt16_QuantQuarto, String qt17_ProblemaSaude, double qt18_AluguelImoveis, 
@@ -406,19 +406,19 @@ public class Formulario {
         this.qt03_Tempo = qt03_Tempo;
     }
 
-    public double getQt03_ValorGastoDiario() {
+    public String getQt03_ValorGastoDiario() {
         return qt03_ValorGastoDiario;
     }
 
-    public void setQt03_ValorGastoDiario(double qt03_ValorGastoDiario) {
+    public void setQt03_ValorGastoDiario(String qt03_ValorGastoDiario) {
         this.qt03_ValorGastoDiario = qt03_ValorGastoDiario;
     }
 
-    public double getQt03_ValorGastoMensal() {
+    public String getQt03_ValorGastoMensal() {
         return qt03_ValorGastoMensal;
     }
 
-    public void setQt03_ValorGastoMensal(double qt03_ValorGastoMensal) {
+    public void setQt03_ValorGastoMensal(String qt03_ValorGastoMensal) {
         this.qt03_ValorGastoMensal = qt03_ValorGastoMensal;
     }
 
@@ -454,11 +454,11 @@ public class Formulario {
         this.qt06_AtividadeRemunerada = qt06_AtividadeRemunerada;
     }
 
-    public double getQt06_ValorBolsaEstagio() {
+    public String getQt06_ValorBolsaEstagio() {
         return qt06_ValorBolsaEstagio;
     }
 
-    public void setQt06_ValorBolsaEstagio(double qt06_ValorBolsaEstagio) {
+    public void setQt06_ValorBolsaEstagio(String qt06_ValorBolsaEstagio) {
         this.qt06_ValorBolsaEstagio = qt06_ValorBolsaEstagio;
     }
 
@@ -470,11 +470,11 @@ public class Formulario {
         this.qt06_ProjetoIniciacao = qt06_ProjetoIniciacao;
     }
 
-    public double getQt06_ValorBolsaIniciacao() {
+    public String getQt06_ValorBolsaIniciacao() {
         return qt06_ValorBolsaIniciacao;
     }
 
-    public void setQt06_ValorBolsaIniciacao(double qt06_ValorBolsaIniciacao) {
+    public void setQt06_ValorBolsaIniciacao(String qt06_ValorBolsaIniciacao) {
         this.qt06_ValorBolsaIniciacao = qt06_ValorBolsaIniciacao;
     }
 
@@ -486,11 +486,11 @@ public class Formulario {
         this.qt06_ProjetoTreinamento = qt06_ProjetoTreinamento;
     }
 
-    public double getQt06_ValorBolsaTreinamento() {
+    public String getQt06_ValorBolsaTreinamento() {
         return qt06_ValorBolsaTreinamento;
     }
 
-    public void setQt06_ValorBolsaTreinamento(double qt06_ValorBolsaTreinamento) {
+    public void setQt06_ValorBolsaTreinamento(String qt06_ValorBolsaTreinamento) {
         this.qt06_ValorBolsaTreinamento = qt06_ValorBolsaTreinamento;
     }
 
@@ -502,11 +502,11 @@ public class Formulario {
         this.qt06_Outro = qt06_Outro;
     }
 
-    public double getQt06_ValorBolsaOutro() {
+    public String getQt06_ValorBolsaOutro() {
         return qt06_ValorBolsaOutro;
     }
 
-    public void setQt06_ValorBolsaOutro(double qt06_ValorBolsaOutro) {
+    public void setQt06_ValorBolsaOutro(String qt06_ValorBolsaOutro) {
         this.qt06_ValorBolsaOutro = qt06_ValorBolsaOutro;
     }
 
@@ -526,11 +526,11 @@ public class Formulario {
         this.qt07_HorasSemanais = qt07_HorasSemanais;
     }
 
-    public double getQt07_Salario() {
+    public String getQt07_Salario() {
         return qt07_Salario;
     }
 
-    public void setQt07_Salario(double qt07_Salario) {
+    public void setQt07_Salario(String qt07_Salario) {
         this.qt07_Salario = qt07_Salario;
     }
 
@@ -646,19 +646,19 @@ public class Formulario {
         this.qt13_Imovel = qt13_Imovel;
     }
 
-    public double getQt13_ValorAluguel() {
+    public String getQt13_ValorAluguel() {
         return qt13_ValorAluguel;
     }
 
-    public void setQt13_ValorAluguel(double qt13_ValorAluguel) {
+    public void setQt13_ValorAluguel(String qt13_ValorAluguel) {
         this.qt13_ValorAluguel = qt13_ValorAluguel;
     }
 
-    public double getQt13_ValorPrestacao() {
+    public String getQt13_ValorPrestacao() {
         return qt13_ValorPrestacao;
     }
 
-    public void setQt13_ValorPrestacao(double qt13_ValorPrestacao) {
+    public void setQt13_ValorPrestacao(String qt13_ValorPrestacao) {
         this.qt13_ValorPrestacao = qt13_ValorPrestacao;
     }
 

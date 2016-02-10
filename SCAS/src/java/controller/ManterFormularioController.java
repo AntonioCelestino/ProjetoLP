@@ -120,7 +120,7 @@ public class ManterFormularioController extends HttpServlet {
     }
 
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codFormulario = Integer.parseInt(request.getParameter("txtCodFormulario"));
+        int codFormulario = Integer.parseInt(request.getParameter("optAluno") + request.getParameter("optSelecao"));
         int codAluno = Integer.parseInt(request.getParameter("optAluno"));
         int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
         String qt01_Resposta = request.getParameter("opt_qt01_Resposta");	
@@ -135,22 +135,22 @@ public class ManterFormularioController extends HttpServlet {
         String qt02_Outro = request.getParameter("txt_qt02_Outro");
         String qt03_Transporte = request.getParameter("opt_qt03_Transporte");	
         String qt03_Tempo = request.getParameter("txt_qt03_Tempo");	
-        double qt03_ValorGastoDiario = Double.parseDouble(request.getParameter("txt_qt03_ValorGastoDiario")); 	
-        double qt03_ValorGastoMensal = Double.parseDouble(request.getParameter("txt_qt03_ValorGastoMensal")); 	
+        String qt03_ValorGastoDiario = request.getParameter("txt_qt03_ValorGastoDiario"); 	
+        String qt03_ValorGastoMensal = request.getParameter("txt_qt03_ValorGastoMensal"); 	
         String qt03_Outro = request.getParameter("txt_qt03_Outro");
         String qt04_InstituicaoEnsinoFundamental = request.getParameter("opt_qt04_InstituicaoEnsinoFundamental");
         String qt05_InstituicaoEnsinoMedio = request.getParameter("opt_qt05_InstituicaoEnsinoMedio");
         String qt06_AtividadeRemunerada = request.getParameter("opt_qt06_AtividadeRemunerada"); 	
-        double qt06_ValorBolsaEstagio = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaEstagio")); 		
+        String qt06_ValorBolsaEstagio = request.getParameter("txt_qt06_ValorBolsaEstagio"); 		
         String qt06_ProjetoIniciacao = request.getParameter("txt_qt06_ProjetoIniciacao"); 	
-        double qt06_ValorBolsaIniciacao = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaIniciacao")); 	
+        String qt06_ValorBolsaIniciacao = request.getParameter("txt_qt06_ValorBolsaIniciacao"); 	
         String qt06_ProjetoTreinamento = request.getParameter("txt_qt06_ProjetoTreinamento"); 	
-        double qt06_ValorBolsaTreinamento = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaTreinamento")); 	
+        String qt06_ValorBolsaTreinamento = request.getParameter("txt_qt06_ValorBolsaTreinamento"); 	
         String qt06_Outro = request.getParameter("txt_qt06_Outro"); 		
-        double qt06_ValorBolsaOutro = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaOutro"));
+        String qt06_ValorBolsaOutro = request.getParameter("txt_qt06_ValorBolsaOutro");
         String qt07_TrabalhoRemunerado = request.getParameter("opt_qt07_TrabalhoRemunerado");	
         String qt07_HorasSemanais = request.getParameter("txt_qt07_HorasSemanais"); 	
-        double qt07_Salario = Double.parseDouble(request.getParameter("txt_qt07_Salario"));
+        String qt07_Salario = request.getParameter("txt_qt07_Salario");
         String qt08_Manutencao = request.getParameter("opt_qt08_Manutencao"); 	
         String qt08_Outra = request.getParameter("txt_qt08_Outra");
         String qt09_Moradia = request.getParameter("opt_qt09_Moradia"); 	
@@ -165,8 +165,8 @@ public class ManterFormularioController extends HttpServlet {
         String qt12_Residencia = request.getParameter("opt_qt12_Residencia"); 	
         String qt12_Outro = request.getParameter("txt_qt12_Outro");
         String qt13_Imovel = request.getParameter("opt_qt13_Imovel"); 	
-        double qt13_ValorAluguel = Double.parseDouble(request.getParameter("txt_qt13_ValorAluguel"));	
-        double qt13_ValorPrestacao = Double.parseDouble(request.getParameter("txt_qt13_ValorPrestacao"));	
+        String qt13_ValorAluguel = request.getParameter("txt_qt13_ValorAluguel");	
+        String qt13_ValorPrestacao = request.getParameter("txt_qt13_ValorPrestacao");	
         String qt13_Nome = request.getParameter("txt_qt13_Nome");		
         String qt13_Outro = request.getParameter("txt_qt13_Outro");
         String qt14_Acabamento = request.getParameter("opt_qt14_Acabamento");
@@ -255,7 +255,9 @@ public class ManterFormularioController extends HttpServlet {
             request.setAttribute("operacao", "Editar");
             request.setAttribute("alunos", Aluno.obterAlunos());
             request.setAttribute("selecoes", Selecao.obterSelecoes());
-            
+            int codFormulario = Integer.parseInt(request.getParameter("codFormulario"));
+            Formulario formulario = Formulario.obterFormulario(codFormulario);
+            request.setAttribute("formulario", formulario);
             RequestDispatcher view = request.getRequestDispatcher("/manterFormulario.jsp");
             view.forward(request, response);   
         } catch(ServletException ex){
@@ -268,7 +270,7 @@ public class ManterFormularioController extends HttpServlet {
     }
 
     private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codFormulario = Integer.parseInt(request.getParameter("txtCodFormulario"));
+        int codFormulario = Integer.parseInt(request.getParameter("optAluno") + request.getParameter("optSelecao"));
         int codAluno = Integer.parseInt(request.getParameter("optAluno"));
         int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
         String qt01_Resposta = request.getParameter("opt_qt01_Resposta");	
@@ -283,22 +285,22 @@ public class ManterFormularioController extends HttpServlet {
         String qt02_Outro = request.getParameter("txt_qt02_Outro");
         String qt03_Transporte = request.getParameter("opt_qt03_Transporte");	
         String qt03_Tempo = request.getParameter("txt_qt03_Tempo");	
-        double qt03_ValorGastoDiario = Double.parseDouble(request.getParameter("txt_qt03_ValorGastoDiario")); 	
-        double qt03_ValorGastoMensal = Double.parseDouble(request.getParameter("txt_qt03_ValorGastoMensal")); 	
+        String qt03_ValorGastoDiario = request.getParameter("txt_qt03_ValorGastoDiario"); 	
+        String qt03_ValorGastoMensal = request.getParameter("txt_qt03_ValorGastoMensal"); 	
         String qt03_Outro = request.getParameter("txt_qt03_Outro");
         String qt04_InstituicaoEnsinoFundamental = request.getParameter("opt_qt04_InstituicaoEnsinoFundamental");
         String qt05_InstituicaoEnsinoMedio = request.getParameter("opt_qt05_InstituicaoEnsinoMedio");
         String qt06_AtividadeRemunerada = request.getParameter("opt_qt06_AtividadeRemunerada"); 	
-        double qt06_ValorBolsaEstagio = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaEstagio")); 		
+        String qt06_ValorBolsaEstagio = request.getParameter("txt_qt06_ValorBolsaEstagio"); 		
         String qt06_ProjetoIniciacao = request.getParameter("txt_qt06_ProjetoIniciacao"); 	
-        double qt06_ValorBolsaIniciacao = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaIniciacao")); 	
+        String qt06_ValorBolsaIniciacao = request.getParameter("txt_qt06_ValorBolsaIniciacao"); 	
         String qt06_ProjetoTreinamento = request.getParameter("txt_qt06_ProjetoTreinamento"); 	
-        double qt06_ValorBolsaTreinamento = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaTreinamento")); 	
+        String qt06_ValorBolsaTreinamento = request.getParameter("txt_qt06_ValorBolsaTreinamento"); 	
         String qt06_Outro = request.getParameter("txt_qt06_Outro"); 		
-        double qt06_ValorBolsaOutro = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaOutro"));
+        String qt06_ValorBolsaOutro = request.getParameter("txt_qt06_ValorBolsaOutro");
         String qt07_TrabalhoRemunerado = request.getParameter("opt_qt07_TrabalhoRemunerado");	
         String qt07_HorasSemanais = request.getParameter("txt_qt07_HorasSemanais"); 	
-        double qt07_Salario = Double.parseDouble(request.getParameter("txt_qt07_Salario"));
+        String qt07_Salario = request.getParameter("txt_qt07_Salario");
         String qt08_Manutencao = request.getParameter("opt_qt08_Manutencao"); 	
         String qt08_Outra = request.getParameter("txt_qt08_Outra");
         String qt09_Moradia = request.getParameter("opt_qt09_Moradia"); 	
@@ -313,8 +315,8 @@ public class ManterFormularioController extends HttpServlet {
         String qt12_Residencia = request.getParameter("opt_qt12_Residencia"); 	
         String qt12_Outro = request.getParameter("txt_qt12_Outro");
         String qt13_Imovel = request.getParameter("opt_qt13_Imovel"); 	
-        double qt13_ValorAluguel = Double.parseDouble(request.getParameter("txt_qt13_ValorAluguel"));	
-        double qt13_ValorPrestacao = Double.parseDouble(request.getParameter("txt_qt13_ValorPrestacao"));	
+        String qt13_ValorAluguel = request.getParameter("txt_qt13_ValorAluguel");	
+        String qt13_ValorPrestacao = request.getParameter("txt_qt13_ValorPrestacao");	
         String qt13_Nome = request.getParameter("txt_qt13_Nome");		
         String qt13_Outro = request.getParameter("txt_qt13_Outro");
         String qt14_Acabamento = request.getParameter("opt_qt14_Acabamento");
@@ -403,7 +405,9 @@ public class ManterFormularioController extends HttpServlet {
             request.setAttribute("operacao", "Excluir");
             request.setAttribute("alunos", Aluno.obterAlunos());
             request.setAttribute("selecoes", Selecao.obterSelecoes());
-            
+            int codFormulario = Integer.parseInt(request.getParameter("codFormulario"));
+            Formulario formulario = Formulario.obterFormulario(codFormulario);
+            request.setAttribute("formulario", formulario);
             RequestDispatcher view = request.getRequestDispatcher("/manterFormulario.jsp");
             view.forward(request, response);   
         } catch(ServletException ex){
@@ -416,7 +420,7 @@ public class ManterFormularioController extends HttpServlet {
     }
 
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codFormulario = Integer.parseInt(request.getParameter("txtCodFormulario"));
+        int codFormulario = Integer.parseInt(request.getParameter("optAluno") + request.getParameter("optSelecao"));
         int codAluno = Integer.parseInt(request.getParameter("optAluno"));
         int codSelecao = Integer.parseInt(request.getParameter("optSelecao"));
         String qt01_Resposta = request.getParameter("opt_qt01_Resposta");	
@@ -431,22 +435,22 @@ public class ManterFormularioController extends HttpServlet {
         String qt02_Outro = request.getParameter("txt_qt02_Outro");
         String qt03_Transporte = request.getParameter("opt_qt03_Transporte");	
         String qt03_Tempo = request.getParameter("txt_qt03_Tempo");	
-        double qt03_ValorGastoDiario = Double.parseDouble(request.getParameter("txt_qt03_ValorGastoDiario")); 	
-        double qt03_ValorGastoMensal = Double.parseDouble(request.getParameter("txt_qt03_ValorGastoMensal")); 	
+        String qt03_ValorGastoDiario = request.getParameter("txt_qt03_ValorGastoDiario"); 	
+        String qt03_ValorGastoMensal = request.getParameter("txt_qt03_ValorGastoMensal"); 	
         String qt03_Outro = request.getParameter("txt_qt03_Outro");
         String qt04_InstituicaoEnsinoFundamental = request.getParameter("opt_qt04_InstituicaoEnsinoFundamental");
         String qt05_InstituicaoEnsinoMedio = request.getParameter("opt_qt05_InstituicaoEnsinoMedio");
         String qt06_AtividadeRemunerada = request.getParameter("opt_qt06_AtividadeRemunerada"); 	
-        double qt06_ValorBolsaEstagio = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaEstagio")); 		
+        String qt06_ValorBolsaEstagio = request.getParameter("txt_qt06_ValorBolsaEstagio"); 		
         String qt06_ProjetoIniciacao = request.getParameter("txt_qt06_ProjetoIniciacao"); 	
-        double qt06_ValorBolsaIniciacao = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaIniciacao")); 	
+        String qt06_ValorBolsaIniciacao = request.getParameter("txt_qt06_ValorBolsaIniciacao"); 	
         String qt06_ProjetoTreinamento = request.getParameter("txt_qt06_ProjetoTreinamento"); 	
-        double qt06_ValorBolsaTreinamento = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaTreinamento")); 	
+        String qt06_ValorBolsaTreinamento = request.getParameter("txt_qt06_ValorBolsaTreinamento"); 	
         String qt06_Outro = request.getParameter("txt_qt06_Outro"); 		
-        double qt06_ValorBolsaOutro = Double.parseDouble(request.getParameter("txt_qt06_ValorBolsaOutro"));
+        String qt06_ValorBolsaOutro = request.getParameter("txt_qt06_ValorBolsaOutro");
         String qt07_TrabalhoRemunerado = request.getParameter("opt_qt07_TrabalhoRemunerado");	
         String qt07_HorasSemanais = request.getParameter("txt_qt07_HorasSemanais"); 	
-        double qt07_Salario = Double.parseDouble(request.getParameter("txt_qt07_Salario"));
+        String qt07_Salario = request.getParameter("txt_qt07_Salario");
         String qt08_Manutencao = request.getParameter("opt_qt08_Manutencao"); 	
         String qt08_Outra = request.getParameter("txt_qt08_Outra");
         String qt09_Moradia = request.getParameter("opt_qt09_Moradia"); 	
@@ -461,8 +465,8 @@ public class ManterFormularioController extends HttpServlet {
         String qt12_Residencia = request.getParameter("opt_qt12_Residencia"); 	
         String qt12_Outro = request.getParameter("txt_qt12_Outro");
         String qt13_Imovel = request.getParameter("opt_qt13_Imovel"); 	
-        double qt13_ValorAluguel = Double.parseDouble(request.getParameter("txt_qt13_ValorAluguel"));	
-        double qt13_ValorPrestacao = Double.parseDouble(request.getParameter("txt_qt13_ValorPrestacao"));	
+        String qt13_ValorAluguel = request.getParameter("txt_qt13_ValorAluguel");	
+        String qt13_ValorPrestacao = request.getParameter("txt_qt13_ValorPrestacao");	
         String qt13_Nome = request.getParameter("txt_qt13_Nome");		
         String qt13_Outro = request.getParameter("txt_qt13_Outro");
         String qt14_Acabamento = request.getParameter("opt_qt14_Acabamento");
