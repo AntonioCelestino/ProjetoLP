@@ -76,6 +76,22 @@
         <servlet-name>PesquisaUsuarioController</servlet-name>
         <servlet-class>controller.PesquisaUsuarioController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaDoencaController</servlet-name>
+        <servlet-class>controller.PesquisaDoencaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterDoencaController</servlet-name>
+        <servlet-class>controller.ManterDoencaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaRendaController</servlet-name>
+        <servlet-class>controller.PesquisaRendaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterRendaController</servlet-name>
+        <servlet-class>controller.ManterRendaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaCursoController</servlet-name>
         <url-pattern>/PesquisaCursoController</url-pattern>
@@ -151,6 +167,22 @@
     <servlet-mapping>
         <servlet-name>PesquisaUsuarioController</servlet-name>
         <url-pattern>/PesquisaUsuarioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaDoencaController</servlet-name>
+        <url-pattern>/PesquisaDoencaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterDoencaController</servlet-name>
+        <url-pattern>/ManterDoencaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaRendaController</servlet-name>
+        <url-pattern>/PesquisaRendaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterRendaController</servlet-name>
+        <url-pattern>/ManterRendaController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

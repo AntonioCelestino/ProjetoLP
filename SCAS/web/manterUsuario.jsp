@@ -28,7 +28,7 @@
                     <td>Código: <input type="text" name="txtCodUsuario" value="${usuario.codUsuario}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Data de Nascimento: <input type="text" name="txtDataNasc" placeholder="dd/mm/aaaa" value="${usuario.dataNasc}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Data de Nascimento: <input type="text" name="txtDataNasc" maxlength="10" placeholder="dd/mm/aaaa" OnKeyPress="formatar('##/##/####', this)" value="${usuario.dataNasc}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Nome Completo: <input type="text" name="txtNome" placeholder="(Não abrevie nomes)" value="${usuario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
