@@ -23,8 +23,8 @@ public class CursoDAO {
                 Curso curso = new Curso(
                         rs.getInt("CURSO_ID"),
                         rs.getString("NOME"),
-                        rs.getString("NIVEL"),
-                        rs.getString("PERIODO"));
+                        rs.getString("TIPO_ENSINO"),
+                        rs.getString("TURNO"));
                 cursos.add(curso);
             }
         }catch(SQLException e){
@@ -48,8 +48,8 @@ public class CursoDAO {
             curso = new Curso(
                         rs.getInt("CURSO_ID"),
                         rs.getString("NOME"),
-                        rs.getString("NIVEL"),
-                        rs.getString("PERIODO"));
+                        rs.getString("TIPO_ENSINO"),
+                        rs.getString("TURNO"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -62,12 +62,12 @@ public class CursoDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "insert into curso (CURSO_ID, NOME, NIVEL, PERIODO) values (?,?,?,?)";
+            String sql = "insert into curso (CURSO_ID, NOME, TIPO_ENSINO, TURNO) values (?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, curso.getCodCurso());
             comando.setString(2, curso.getNome());
-            comando.setString(3, curso.getNivel());
-            comando.setString(4, curso.getPeriodo());
+            comando.setString(3, curso.getTipoEnsino());
+            comando.setString(4, curso.getTurno());
             comando.execute();
             comando.close();
             conexao.close();
@@ -80,11 +80,11 @@ public class CursoDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "update curso set NOME = ?, NIVEL = ?, PERIODO = ? where CURSO_ID = ?";
+            String sql = "update curso set NOME = ?, TIPO_ENSINO = ?, TURNO = ? where CURSO_ID = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, curso.getNome());
-            comando.setString(2, curso.getNivel());
-            comando.setString(3, curso.getPeriodo());
+            comando.setString(2, curso.getTipoEnsino());
+            comando.setString(3, curso.getTurno());
             comando.setInt(4, curso.getCodCurso());
             comando.execute();
             comando.close();

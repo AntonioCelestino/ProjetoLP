@@ -23,7 +23,7 @@ public class AlunoDAO {
                 Aluno aluno = new Aluno(
                         rs.getInt("MATRICULA"),
                         rs.getInt("ANO_INGRESSO"),
-                        rs.getString("BOLSISTA"),null, null);
+                        rs.getString("PERIODO_CURSO"),null, null);
                 aluno.setCodUsuario(rs.getInt("USUARIO_ID"));
                 aluno.setCodCurso(rs.getInt("CURSO_ID"));
                 Alunos.add(aluno);
@@ -49,7 +49,7 @@ public class AlunoDAO {
             aluno = new Aluno(
                     rs.getInt("MATRICULA"),
                     rs.getInt("ANO_INGRESSO"),
-                    rs.getString("BOLSISTA"),null, null);
+                    rs.getString("PERIODO_CURSO"),null, null);
                     aluno.setCodUsuario(rs.getInt("USUARIO_ID"));
                     aluno.setCodCurso(rs.getInt("CURSO_ID"));
         } catch (SQLException e) {
@@ -64,11 +64,11 @@ public class AlunoDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "insert into aluno (MATRICULA, ANO_INGRESSO, BOLSISTA, USUARIO_ID, CURSO_ID) values (?,?,?,?,?)";
+            String sql = "insert into aluno (MATRICULA, ANO_INGRESSO, PERIODO_CURSO, USUARIO_ID, CURSO_ID) values (?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, aluno.getMatricula());
             comando.setInt(2, aluno.getAnoIngresso());
-            comando.setString(3, aluno.getBolsista());
+            comando.setString(3, aluno.getPeriodoCurso());
             
             if (aluno.getUsuario() == null){
                 comando.setNull(4, Types.NULL);
@@ -94,10 +94,10 @@ public class AlunoDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "update aluno set ANO_INGRESSO = ?, BOLSISTA = ?, USUARIO_ID = ?, CURSO_ID = ? where MATRICULA = ?";
+            String sql = "update aluno set ANO_INGRESSO = ?, PERIODO_CURSO = ?, USUARIO_ID = ?, CURSO_ID = ? where MATRICULA = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, aluno.getAnoIngresso());
-            comando.setString(2, aluno.getBolsista());
+            comando.setString(2, aluno.getPeriodoCurso());
             
             if (aluno.getUsuario() == null){
                 comando.setNull(3, Types.NULL);

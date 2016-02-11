@@ -25,48 +25,59 @@
         <form action="ManterUsuarioController?acao=confirmar${operacao}" method="post" name="frmManterUsuario" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Código:</td> 
-                    <td><input type="text" name="txtCodUsuario" value="${usuario.codUsuario}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>Código: <input type="text" name="txtCodUsuario" value="${usuario.codUsuario}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Nome:</td> 
-                    <td><input type="text" name="txtNome" value="${usuario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Data de Nascimento: <input type="text" name="txtDataNasc" placeholder="dd/mm/aaaa" value="${usuario.dataNasc}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>CPF:</td> 
-                    <td><input type="text" name="txtCPF" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" value="${usuario.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Nome Completo: <input type="text" name="txtNome" placeholder="(Não abrevie nomes)" value="${usuario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Telefone Fixo:</td> 
-                    <td><input type="text" name="txtTelefoneFixo" maxlength="12" OnKeyPress="formatar('##-####-####', this)" value="${usuario.telefoneFixo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Sexo:
+                        <input type="radio" name="txtSexo" value="Masculino" <c:if test="${usuario.sexo == 'Masculino'}"> checked</c:if>>Masculino
+                        <input type="radio" name="txtSexo" value="Feminino" <c:if test="${usuario.sexo == 'Feminino'}"> checked</c:if>>Feminino
+                    </td>
                 </tr>
                 <tr>
-                    <td>Telefone Celular:</td> 
-                    <td><input type="text" name="txtTelefoneCelular" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" value="${usuario.telefoneCelular}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>CPF: <input type="text" name="txtCPF" maxlength="14" placeholder="000.000.000-00" OnKeyPress="formatar('###.###.###-##', this)" value="${usuario.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Email:</td> 
-                    <td><input type="text" name="txtEmail" value="${usuario.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Carteira de Identidade (RG): <input type="text" name="txtIdentidade" maxlength="14" value="${usuario.identidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Endereço:</td> 
-                    <td><input type="text" name="txtEndereco" value="${usuario.endereco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Telefone Fixo: <input type="text" name="txtTelefoneFixo" maxlength="12" placeholder="Ex: 32-1111-1111" OnKeyPress="formatar('##-####-####', this)" value="${usuario.telefoneFixo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Cidade:</td> 
-                    <td><input type="text" name="txtCidade" value="${usuario.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Telefone Celular: <input type="text" name="txtTelefoneCelular" maxlength="13" placeholder="Ex: 32-99999-9999" OnKeyPress="formatar('##-#####-####', this)" value="${usuario.telefoneCelular}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>UF:</td> 
-                    <td><input type="text" name="txtUF" value="${usuario.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Email: <input type="text" name="txtEmail" value="${usuario.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Login:</td> 
-                    <td><input type="text" name="txtLogin" value="${usuario.login}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>
+                    Endereço: <input size="30" type="text" name="txtEndereco" placeholder="(Rua, Avenida, Praça, Travessa, etc)" value="${usuario.endereco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    Número: <input size="3" type="text" name="txtNumero" value="${usuario.numero}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    Complemento: <input size="3" type="text" name="txtComplemento" value="${usuario.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Senha:</td> 
-                    <td><input type="password" name="txtSenha" value="${usuario.senha}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>
+                    Bairro: <input type="text" name="txtBairro" value="${usuario.bairro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>  
+                    CEP: <input type="text" name="txtCep" maxlength="10" placeholder="00.000-000" OnKeyPress="formatar('##.###-###', this)" value="${usuario.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Cidade: <input type="text" name="txtCidade" value="${usuario.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> 
+                    UF: <input size="5" type="text" name="txtUF" placeholder="Ex: MG" value="${usuario.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Login: <input type="text" name="txtLogin" value="${usuario.login}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Senha: <input type="password" name="txtSenha" value="${usuario.senha}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
@@ -98,11 +109,20 @@
                 if (form.txtCodUsuario.value == ""){
                     mensagem = mensagem + "Informe o Código do Usuário\n";
                 }                             
+                if (form.txtDataNasc.value == ""){
+                    mensagem = mensagem + "Informe a Data de Nascimento do Usuário\n";
+                }
                 if (form.txtNome.value == ""){
                     mensagem = mensagem + "Informe o Nome do Usuário\n";
                 }
+                if (form.txtSexo.value == ""){
+                    mensagem = mensagem + "Informe o Sexo do Usuário\n";
+                }
                 if (form.txtCPF.value == ""){
                     mensagem = mensagem + "Informe o CPF do Usuário\n";
+                }
+                if (form.txtIdentidade.value == ""){
+                    mensagem = mensagem + "Informe o RG do Usuário\n";
                 }
                 if (form.txtTelefoneFixo.value == ""){
                     mensagem = mensagem + "Informe o Telefone Fixo do Usuário\n";
@@ -114,7 +134,16 @@
                     mensagem = mensagem + "Informe o E-mail do Usuário\n";
                 }
                 if (form.txtEndereco.value == ""){
-                    mensagem = mensagem + "Informe o Endereço do Usuário\n";
+                    mensagem = mensagem + "Informe o nome da Rua do Usuário\n";
+                }
+                if (form.txtNumero.value == ""){
+                    mensagem = mensagem + "Informe o número do Endereço do Usuário\n";
+                }
+                if (form.txtBairro.value == ""){
+                    mensagem = mensagem + "Informe o Bairro do Usuário\n";
+                }
+                if (form.txtCep.value == ""){
+                    mensagem = mensagem + "Informe o CEP do Usuário\n";
                 }
                 if (form.txtCidade.value == ""){
                     mensagem = mensagem + "Informe a Cidade do Usuário\n";

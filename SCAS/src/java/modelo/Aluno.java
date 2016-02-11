@@ -9,17 +9,17 @@ import java.util.List;
 public class Aluno {
     private int matricula;
     private int anoIngresso;
-    private String bolsista;
+    private String periodoCurso;
     private Curso curso;
     private Usuario usuario;
     
     private int codCurso;
     private int codUsuario;
 
-    public Aluno(int matricula, int anoIngresso, String bolsista, Curso curso, Usuario usuario) {
+    public Aluno(int matricula, int anoIngresso, String periodoCurso, Curso curso, Usuario usuario) {
         this.matricula = matricula;
         this.anoIngresso = anoIngresso;
-        this.bolsista = bolsista;
+        this.periodoCurso = periodoCurso;
         this.curso = curso;
         this.usuario = usuario;
     }
@@ -48,12 +48,12 @@ public class Aluno {
         this.anoIngresso = anoIngresso;
     }
     
-    public String getBolsista() {
-        return bolsista;
+    public String getPeriodoCurso() {
+        return periodoCurso;
     }
 
-    public void setBolsista(String bolsista) {
-        this.bolsista = bolsista;
+    public void setPeriodoCurso(String periodoCurso) {
+        this.periodoCurso = periodoCurso;
     }
     
     public int getCodCurso() {

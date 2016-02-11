@@ -116,10 +116,10 @@ public class ManterCursoController extends HttpServlet {
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
         int codCurso = Integer.parseInt(request.getParameter("txtCodCurso"));
         String nome = request.getParameter("txtNomeCurso");
-        String nivel = request.getParameter("optNivelCurso");
-        String periodo = request.getParameter("optPeriodo"); 
+        String tipoEnsino = request.getParameter("optTipoEnsino");
+        String turno = request.getParameter("optTurno"); 
         try{
-            Curso curso = new Curso(codCurso, nome, nivel, periodo);
+            Curso curso = new Curso(codCurso, nome, tipoEnsino, turno);
             curso.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
             view.forward(request, response);
@@ -171,10 +171,10 @@ public class ManterCursoController extends HttpServlet {
     private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codCurso = Integer.parseInt(request.getParameter("txtCodCurso"));
         String nome = request.getParameter("txtNomeCurso");
-        String nivel = request.getParameter("optNivelCurso");
-        String periodo = request.getParameter("optPeriodo"); 
+        String tipoEnsino = request.getParameter("optTipoEnsino");
+        String turno = request.getParameter("optTurno"); 
         try{
-            Curso curso = new Curso(codCurso, nome, nivel, periodo);
+            Curso curso = new Curso(codCurso, nome, tipoEnsino, turno);
             curso.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
             view.forward(request, response);
@@ -192,10 +192,10 @@ public class ManterCursoController extends HttpServlet {
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codCurso = Integer.parseInt(request.getParameter("txtCodCurso"));
         String nome = request.getParameter("txtNomeCurso");
-        String nivel = request.getParameter("optNivelCurso");
-        String periodo = request.getParameter("optPeriodo"); 
+        String tipoEnsino = request.getParameter("optTipoEnsino");
+        String turno = request.getParameter("optTurno"); 
         try{
-            Curso curso = new Curso(codCurso, nome, nivel, periodo);
+            Curso curso = new Curso(codCurso, nome, tipoEnsino, turno);
             curso.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
             view.forward(request, response);

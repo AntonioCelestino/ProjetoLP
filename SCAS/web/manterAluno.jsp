@@ -31,16 +31,6 @@
                     <td>Ano de Ingresso:</td> 
                     <td><input type="text" name="txtAnoIngresso" maxlength="4" value="${aluno.anoIngresso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
-                <tr>
-                    <td>É Bolsista?:</td> 
-                    <td>
-                        <select name="optBolsista" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <option value="" <c:if test="${aluno.bolsista == null}"> selected</c:if>> </option>
-                        <option value="Sim" <c:if test="${aluno.bolsista == 'Sim'}"> selected</c:if>>Sim</option>
-                        <option value="Não" <c:if test="${aluno.bolsista == 'Não'}"> selected</c:if>>Não</option>
-                        </select>
-                    </td>
-                </tr>
                 <tr> 
                     <td>Curso do Aluno:</td> 
                     <td>
@@ -51,6 +41,10 @@
                             </c:forEach>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td>(Período / Módulo / Série) que está cursando:</td> 
+                    <td><input type="text" name="txtPeriodoCurso" value="${aluno.periodoCurso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
@@ -88,8 +82,8 @@
                 if (form.txtAnoIngresso.value == ""){
                     mensagem = mensagem + "Informe o Ano de Ingresso\n";
                 }
-                if (form.optBolsista.value == ""){
-                    mensagem = mensagem + "Informe se é Bolsista ou não\n";
+                if (form.txtPeriodoCurso.value == ""){
+                    mensagem = mensagem + "Informe qual o (Período / Módulo / Série) que está cursando \n";
                 }
                 if (form.optCurso.value == "0"){
                     mensagem = mensagem + "Selecione o Curso\n";
@@ -99,7 +93,10 @@
                 }
                 if (!campoNumerico(form.txtAnoIngresso.value)){
                     mensagem = mensagem + "Ano deve ser Numérico\n";
-                } 
+                }
+                if (!campoNumerico(form.txtPeriodoCurso.value)){
+                    mensagem = mensagem + "(Período / Módulo / Série) deve ser Numérico\n";
+                }
                 if (mensagem == ""){
                     return true;
                 }else{

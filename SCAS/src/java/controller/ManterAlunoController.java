@@ -131,7 +131,7 @@ public class ManterAlunoController extends HttpServlet {
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
         int anoIngresso = Integer.parseInt(request.getParameter("txtAnoIngresso"));
-        String bolsista = request.getParameter("optBolsista");
+        String periodoCurso = request.getParameter("txtPeriodoCurso");
         int codCurso = Integer.parseInt(request.getParameter("optCurso"));
         int codUsuario = Integer.parseInt(request.getParameter("optUsuario"));
         try{
@@ -143,7 +143,7 @@ public class ManterAlunoController extends HttpServlet {
             if(codCurso != 0){
                 curso = Curso.obterCurso(codCurso);
             }
-            Aluno aluno = new Aluno(matricula, anoIngresso, bolsista, curso, usuario);
+            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, curso, usuario);
             aluno.setCodUsuario(codUsuario);
             aluno.setCodCurso(codCurso);
             aluno.gravar();
@@ -201,7 +201,7 @@ public class ManterAlunoController extends HttpServlet {
     private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
         int anoIngresso = Integer.parseInt(request.getParameter("txtAnoIngresso"));
-        String bolsista = request.getParameter("optBolsista");
+        String periodoCurso = request.getParameter("txtPeriodoCurso");
         int codCurso = Integer.parseInt(request.getParameter("optCurso"));
         int codUsuario = Integer.parseInt(request.getParameter("optUsuario"));
         try{
@@ -213,7 +213,7 @@ public class ManterAlunoController extends HttpServlet {
             if(codCurso != 0){
                 curso = Curso.obterCurso(codCurso);
             }
-            Aluno aluno = new Aluno(matricula, anoIngresso, bolsista, curso, usuario);
+            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, curso, usuario);
             aluno.setCodUsuario(codUsuario);
             aluno.setCodCurso(codCurso);
             aluno.alterar();
@@ -233,7 +233,7 @@ public class ManterAlunoController extends HttpServlet {
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
         int anoIngresso = Integer.parseInt(request.getParameter("txtAnoIngresso"));
-        String bolsista = request.getParameter("optBolsista");
+        String periodoCurso = request.getParameter("txtPeriodoCurso");
         int codCurso = Integer.parseInt(request.getParameter("optCurso"));
         int codUsuario = Integer.parseInt(request.getParameter("optUsuario"));
         try{
@@ -245,7 +245,7 @@ public class ManterAlunoController extends HttpServlet {
             if(codCurso != 0){
                 curso = Curso.obterCurso(codCurso);
             }
-            Aluno aluno = new Aluno(matricula, anoIngresso, bolsista, curso, usuario);
+            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, curso, usuario);
             aluno.setCodUsuario(codUsuario);
             aluno.setCodCurso(codCurso);
             aluno.excluir();

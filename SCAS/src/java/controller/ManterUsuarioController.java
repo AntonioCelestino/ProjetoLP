@@ -116,18 +116,25 @@ public class ManterUsuarioController extends HttpServlet {
 
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codUsuario = Integer.parseInt(request.getParameter("txtCodUsuario"));
+        String dataNasc = request.getParameter("txtDataNasc");
         String nome = request.getParameter("txtNome");
+        String sexo = request.getParameter("txtSexo");
         String cpf = request.getParameter("txtCPF");
+        String identidade = request.getParameter("txtIdentidade");
         String telefoneFixo = request.getParameter("txtTelefoneFixo");
         String telefoneCelular = request.getParameter("txtTelefoneCelular");
         String email = request.getParameter("txtEmail");
         String endereco = request.getParameter("txtEndereco");
+        String numero = request.getParameter("txtNumero");
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        String cep = request.getParameter("txtCep");
         String cidade = request.getParameter("txtCidade");
         String uf = request.getParameter("txtUF");
         String login = request.getParameter("txtLogin");
         String senha = request.getParameter("txtSenha");
         try{
-            Usuario usuario = new Usuario(codUsuario, nome, cpf, telefoneFixo, telefoneCelular, email, endereco, cidade, uf, login, senha);
+            Usuario usuario = new Usuario(codUsuario, dataNasc, nome, sexo, cpf, identidade, telefoneFixo, telefoneCelular, email, endereco, numero, complemento, bairro, cep, cidade, uf, login, senha);
             usuario.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaUsuarioController");
             view.forward(request, response);
@@ -178,18 +185,25 @@ public class ManterUsuarioController extends HttpServlet {
 
     private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codUsuario = Integer.parseInt(request.getParameter("txtCodUsuario"));
+        String dataNasc = request.getParameter("txtDataNasc");
         String nome = request.getParameter("txtNome");
+        String sexo = request.getParameter("txtSexo");
         String cpf = request.getParameter("txtCPF");
+        String identidade = request.getParameter("txtIdentidade");
         String telefoneFixo = request.getParameter("txtTelefoneFixo");
         String telefoneCelular = request.getParameter("txtTelefoneCelular");
         String email = request.getParameter("txtEmail");
         String endereco = request.getParameter("txtEndereco");
+        String numero = request.getParameter("txtNumero");
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        String cep = request.getParameter("txtCep");
         String cidade = request.getParameter("txtCidade");
         String uf = request.getParameter("txtUF");
         String login = request.getParameter("txtLogin");
         String senha = request.getParameter("txtSenha");
         try{
-            Usuario usuario = new Usuario(codUsuario, nome, cpf, telefoneFixo, telefoneCelular, email, endereco, cidade, uf, login, senha);
+            Usuario usuario = new Usuario(codUsuario, dataNasc, nome, sexo, cpf, identidade, telefoneFixo, telefoneCelular, email, endereco, numero, complemento, bairro, cep, cidade, uf, login, senha);
             usuario.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaUsuarioController");
             view.forward(request, response);
@@ -206,18 +220,25 @@ public class ManterUsuarioController extends HttpServlet {
 
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         int codUsuario = Integer.parseInt(request.getParameter("txtCodUsuario"));
+        String dataNasc = request.getParameter("txtDataNasc");
         String nome = request.getParameter("txtNome");
+        String sexo = request.getParameter("txtSexo");
         String cpf = request.getParameter("txtCPF");
+        String identidade = request.getParameter("txtIdentidade");
         String telefoneFixo = request.getParameter("txtTelefoneFixo");
         String telefoneCelular = request.getParameter("txtTelefoneCelular");
         String email = request.getParameter("txtEmail");
         String endereco = request.getParameter("txtEndereco");
+        String numero = request.getParameter("txtNumero");
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        String cep = request.getParameter("txtCep");
         String cidade = request.getParameter("txtCidade");
         String uf = request.getParameter("txtUF");
         String login = request.getParameter("txtLogin");
         String senha = request.getParameter("txtSenha");
         try{
-            Usuario usuario = new Usuario(codUsuario, nome, cpf, telefoneFixo, telefoneCelular, email, endereco, cidade, uf, login, senha);
+            Usuario usuario = new Usuario(codUsuario, dataNasc, nome, sexo, cpf, identidade, telefoneFixo, telefoneCelular, email, endereco, numero, complemento, bairro, cep, cidade, uf, login, senha);
             usuario.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaUsuarioController");
             view.forward(request, response);

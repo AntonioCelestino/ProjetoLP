@@ -7,8 +7,8 @@ import java.util.List;
 public class Curso {
     private int codCurso;
     private String nome;
-    private String nivel;
-    private String periodo;
+    private String tipoEnsino;
+    private String turno;
     
     public static List<Curso> obterCursos() throws ClassNotFoundException{
         return CursoDAO.obterCursos();
@@ -18,11 +18,11 @@ public class Curso {
         return CursoDAO.obterCurso(codCurso);
     }
 
-    public Curso(int codCurso, String nome, String nivel, String periodo) {
+    public Curso(int codCurso, String nome, String tipoEnsino, String turno) {
         this.codCurso = codCurso;
         this.nome = nome;
-        this.nivel = nivel;
-        this.periodo = periodo;
+        this.tipoEnsino = tipoEnsino;
+        this.turno = turno;
     }
 
     public int getCodCurso() {
@@ -41,20 +41,20 @@ public class Curso {
         this.nome = nome;
     }
 
-    public String getNivel() {
-        return nivel;
+    public String getTipoEnsino() {
+        return tipoEnsino;
     }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public void setTipoEnsino(String tipoEnsino) {
+        this.tipoEnsino = tipoEnsino;
     }
 
-    public String getPeriodo() {
-        return periodo;
+    public String getTurno() {
+        return turno;
     }
 
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
+    public void setTurno(String turno) {
+        this.turno = turno;
     }
     
     public void gravar() throws SQLException, ClassNotFoundException {

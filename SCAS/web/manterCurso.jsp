@@ -21,23 +21,26 @@
                     <td><input type="text" name="txtNomeCurso" value="${curso.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Período:</td> 
+                    <td>Turno:</td> 
                     <td>
-                        <select name="optPeriodo" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <option value="" <c:if test="${curso.periodo == null}"> selected</c:if>> </option>
-                        <option value="Diurno" <c:if test="${curso.periodo == 'Diurno'}"> selected</c:if>>Diurno</option>
-                        <option value="Noturno" <c:if test="${curso.periodo == 'Noturno'}"> selected</c:if>>Noturno</option>
-                        <option value="Integral" <c:if test="${curso.periodo == 'Integral'}"> selected</c:if>>Integral</option> 
+                        <select name="optTurno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <option value="" <c:if test="${curso.turno == null}"> selected</c:if>> </option>
+                        <option value="Diurno" <c:if test="${curso.turno == 'Diurno'}"> selected</c:if>>Diurno</option>
+                        <option value="Noturno" <c:if test="${curso.turno == 'Noturno'}"> selected</c:if>>Noturno</option>
+                        <option value="Integral" <c:if test="${curso.turno == 'Integral'}"> selected</c:if>>Integral</option> 
                         </select>
                     </td>
                 </tr>
                 <tr> 
-                    <td>Nível:</td> 
+                    <td>Tipo de Ensino:</td> 
                     <td>
-                        <select name="optNivelCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                            <option value="" <c:if test="${curso.nivel == null}"> selected</c:if>> </option>
-                            <option value="Técnico" <c:if test="${curso.nivel == 'Técnico'}"> selected</c:if>>Técnico</option>
-                            <option value="Superior" <c:if test="${curso.nivel == 'Superior'}"> selected</c:if>>Superior</option>
+                        <select name="optTipoEnsino" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            <option value="" <c:if test="${curso.tipoEnsino == null}"> selected</c:if>> </option>
+                            <option value="Integrado" <c:if test="${curso.tipoEnsino == 'Integrado'}"> selected</c:if>>Integrado</option>
+                            <option value="Superior" <c:if test="${curso.tipoEnsino == 'Superior'}"> selected</c:if>>Superior</option>
+                            <option value="Pós-Graduação" <c:if test="${curso.tipoEnsino == 'Pós-Graduação'}"> selected</c:if>>Pós-Graduação</option>
+                            <option value="Conc.Externa" <c:if test="${curso.tipoEnsino == 'Conc.Externa'}"> selected</c:if>>Conc.Externa (cursando ensino médio)</option>
+                            <option value="Subsequente" <c:if test="${curso.tipoEnsino == 'Subsequente'}"> selected</c:if>>Subsequente (ensino médio concluído)</option>
                         </select>
                     </td>
                 </tr>
@@ -74,11 +77,11 @@
                 if (form.txtNomeCurso.value == ""){
                     mensagem = mensagem + "Informe o Nome do Curso\n";
                 }
-                if (form.optPeriodo.value == ""){
-                    mensagem = mensagem + "Selecione um Período\n";
+                if (form.optTurno.value == ""){
+                    mensagem = mensagem + "Selecione um Turno\n";
                 }
-                if (form.optNivelCurso.value == ""){
-                    mensagem = mensagem + "Selecione um Nível de Curso\n";
+                if (form.optTipoEnsino.value == ""){
+                    mensagem = mensagem + "Selecione o Tipo de Ensino do Curso\n";
                 }
                 if (!campoNumerico(form.txtCodCurso.value)){
                     mensagem = mensagem + "Código do Curso deve ser numérico\n";
