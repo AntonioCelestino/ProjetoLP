@@ -274,50 +274,12 @@
                     </td>
                 </tr>
                 <tr> 
-                    <td>
-                        <table border="1">
-                            <tr>
-                                <td>Nome</td>
-                                <td>Doença</td>
-                                <td>Incapacita para trabalhar</td>
-                                <td>Dependência em atividades diárias</td>
-                                <td>Gasto mensal (R$)</td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" id="qt17_Nome1" name="txt_qt17_Nome1" value="${formulario.qt17_Nome1}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                                <td><input type="text" id="qt17_Doenca1" name="txt_qt17_Doenca1" value="${formulario.qt17_Doenca1}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                                <td><input type="radio" name="opt_qt17_Trabalho1" value="Sim" <c:if test="${formulario.qt17_Trabalho1 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Trabalho1" value="Não" <c:if test="${formulario.qt17_Trabalho1 == 'Não'}"> checked</c:if>>Não</td>
-                                <td><input type="radio" name="opt_qt17_Dependencia1" value="Sim" <c:if test="${formulario.qt17_Dependencia1 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Dependencia1" value="Não" <c:if test="${formulario.qt17_Dependencia1 == 'Não'}"> checked</c:if>>Não</td>
-                                <td><input type="text" id="qt17_Gasto1" name="txt_qt17_Gasto1" value="${formulario.qt17_Gasto1}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" id="qt17_Nome2" name="txt_qt17_Nome2" value="${formulario.qt17_Nome2}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                                <td><input type="text" id="qt17_Doenca2" name="txt_qt17_Doenca2" value="${formulario.qt17_Doenca2}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                                <td><input type="radio" name="opt_qt17_Trabalho2" value="Sim" <c:if test="${formulario.qt17_Trabalho2 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Trabalho2" value="Não" <c:if test="${formulario.qt17_Trabalho2 == 'Não'}"> checked</c:if>>Não</td>
-                                <td><input type="radio" name="opt_qt17_Dependencia2" value="Sim" <c:if test="${formulario.qt17_Dependencia2 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Dependencia2" value="Não" <c:if test="${formulario.qt17_Dependencia2 == 'Não'}"> checked</c:if>>Não</td>
-                                <td><input type="text" id="qt17_Gasto2" name="txt_qt17_Gasto2" value="${formulario.qt17_Gasto2}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" id="qt17_Nome3" name="txt_qt17_Nome3" value="${formulario.qt17_Nome3}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                                <td><input type="text" id="qt17_Doenca3" name="txt_qt17_Doenca3" value="${formulario.qt17_Doenca3}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                                <td><input type="radio" name="opt_qt17_Trabalho3" value="Sim" <c:if test="${formulario.qt17_Trabalho3 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Trabalho3" value="Não" <c:if test="${formulario.qt17_Trabalho3 == 'Não'}"> checked</c:if>>Não</td>
-                                <td><input type="radio" name="opt_qt17_Dependencia3" value="Sim" <c:if test="${formulario.qt17_Dependencia3 == 'Sim'}"> checked</c:if>>Sim<input type="radio" name="opt_qt17_Dependencia3" value="Não" <c:if test="${formulario.qt17_Dependencia3 == 'Não'}"> checked</c:if>>Não</td>
-                                <td><input type="text" id="qt17_Gasto3" name="txt_qt17_Gasto3" value="${formulario.qt17_Gasto3}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr> 
                     <td><hr />QUESTÃO 18:</td>
                 </tr>
                 <tr>
                     <td>
-                        Deverão ser lançados, no quadro abaixo, os dados de sua família atual, considerando as pessoas mantidas pela mesma renda ou contribuintes com a renda familiar, inclusive o estudante.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Outras rendas:
+                        Outras rendas (dados referentes ao último mês):
+                        <br />(lance os dados de sua família, considerando as pessoas mantidas pela mesma renda ou contribuintes com a renda familiar, inclusive o estudante)
                         <br />01) Aluguel(is) de imóvel(is) - Valor (R$):&nbsp;<input type="text" name="txt_qt18_AluguelImoveis" value="${formulario.qt18_AluguelImoveis}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />02) Pensão por morte - Valor (R$):&nbsp;<input type="text" name="txt_qt18_PensaoMorte" value="${formulario.qt18_PensaoMorte}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />03) Pensão alimentícia - Valor (R$):&nbsp;<input type="text" name="txt_qt18_PensaoAlimenticia" value="${formulario.qt18_PensaoAlimenticia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
@@ -326,6 +288,7 @@
                         <br />06) Outro - Qual?&nbsp;<input type="text" name="txt_qt18_NomeOutraRenda" value="${formulario.qt18_NomeOutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> - Valor (R$):&nbsp;<input type="text" name="txt_qt18_OutraRenda" value="${formulario.qt18_OutraRenda}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <br />Total da renda familiar (R$)&nbsp;<input type="text" name="txt_qt18_TotalRenda" value="${formulario.qt18_TotalRenda}" <c:if test="${operacao != 'Excluir'}"> readonly</c:if>>
                         <br />Número total de pessoas da família que vivem dessa renda (incluindo o estudante)&nbsp;<input type="text" name="txt_qt18_NumeroResidentes" value="${formulario.qt18_NumeroResidentes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <br />OBS.: Acesse no menu o item 'Manter Renda' depois de terminar e confirmar este formulário, para lançar a renda de cada membro da família.
                     </td>
                 </tr>
                 <tr> 
