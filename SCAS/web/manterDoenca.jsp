@@ -27,29 +27,29 @@
                 </tr>
                 <tr>
                     <td>Nome do familiar doente (pode ser inclusive o estudante):
-                        <input type="text" name="txt_qt17_Nome" value="${doenca.qt17_Nome}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt17_Nome" value="${doenca.qt17_Nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
                     <td>Doença do familiar:
-                        <input type="text" name="txt_qt17_Doenca" value="${doenca.qt17_Doenca}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt17_Doenca" value="${doenca.qt17_Doenca}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
                     <td>Incapacita para o trabalho?
-                        <input type="radio" name="opt_qt17_Trabalho" value="Sim" <c:if test="${formulario.qt17_Trabalho == 'Sim'}"> checked</c:if>>Sim
-                        <input type="radio" name="opt_qt17_Trabalho" value="Não" <c:if test="${formulario.qt17_Trabalho == 'Não'}"> checked</c:if>>Não
+                        <input type="radio" name="opt_qt17_Trabalho" value="Sim" <c:if test="${doenca.qt17_Trabalho == 'Sim'}"> checked</c:if>>Sim
+                        <input type="radio" name="opt_qt17_Trabalho" value="Não" <c:if test="${doenca.qt17_Trabalho == 'Não'}"> checked</c:if>>Não
                     </td>
                 </tr>
                 <tr>
                     <td>Dependente para as atividades diárias?
-                        <input type="radio" name="opt_qt17_Dependencia" value="Sim" <c:if test="${formulario.qt17_Dependencia == 'Sim'}"> checked</c:if>>Sim
-                        <input type="radio" name="opt_qt17_Dependencia" value="Não" <c:if test="${formulario.qt17_Dependencia == 'Não'}"> checked</c:if>>Não
+                        <input type="radio" name="opt_qt17_Dependencia" value="Sim" <c:if test="${doenca.qt17_Dependencia == 'Sim'}"> checked</c:if>>Sim
+                        <input type="radio" name="opt_qt17_Dependencia" value="Não" <c:if test="${doenca.qt17_Dependencia == 'Não'}"> checked</c:if>>Não
                     </td>
                 </tr>
                 <tr>
                     <td>Gasto mensal:
-                        <input type="text" name="txt_qt17_Gasto" value="${doenca.qt17_Gasto}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt17_Gasto" value="${doenca.qt17_Gasto}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -98,11 +98,11 @@
                 if (!campoNumerico(form.txt_qt17_Gasto.value)){
                     mensagem = mensagem + "O valor do gasto deve ser numérico\n";
                 }
-                if(!form.opt_qt17_Trabalho.checked){
-                    mensagem = mensagem + "Você deve selecionar 'Sim' ou 'Não' Incapacita para o trabalho?\n";
+                if(form.opt_qt17_Trabalho.value == ""){
+                    mensagem = mensagem + "Você deve selecionar 'Sim' ou 'Não' Incapacita para o trabalho\n";
                 }
-                if(!form.opt_qt17_Dependencia.checked){
-                    mensagem = mensagem + "Você deve selecionar 'Sim' ou 'Não' Dependente para as atividades diárias?\n";
+                if(form.opt_qt17_Dependencia.value == ""){
+                    mensagem = mensagem + "Você deve selecionar 'Sim' ou 'Não' Dependente para as atividades diárias\n";
                 }
                 if (mensagem == ""){
                     return true;

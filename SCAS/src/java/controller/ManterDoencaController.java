@@ -189,7 +189,7 @@ public class ManterDoencaController extends HttpServlet {
             Doenca doenca = new Doenca(codDoenca, formulario, qt17_Nome, qt17_Doenca, qt17_Trabalho, qt17_Dependencia, qt17_Gasto);
             doenca.setCodFormulario(codFormulario);
             doenca.alterar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaBolsaController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaDoencaController");
             view.forward(request, response);
         }catch (IOException ex){
             throw new ServletException(ex);
@@ -236,7 +236,7 @@ public class ManterDoencaController extends HttpServlet {
             Doenca doenca = new Doenca(codDoenca, formulario, qt17_Nome, qt17_Doenca, qt17_Trabalho, qt17_Dependencia, qt17_Gasto);
             doenca.setCodFormulario(codFormulario);
             doenca.excluir();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaBolsaController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaDoencaController");
             view.forward(request, response);
         }catch (IOException ex){
             throw new ServletException(ex);

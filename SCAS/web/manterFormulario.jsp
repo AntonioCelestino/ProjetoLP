@@ -268,8 +268,8 @@
                 </tr>
                 <tr>
                     <td>Há problemas de saúde existentes entre as pessoas que moram com sua família, inclusive você?<br />
-                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Sim" onclick="if(document.getElementById('qt17_Nome1').disabled==true){document.getElementById('qt17_Nome1').disabled=false}; if(document.getElementById('qt17_Doenca1').disabled==true){document.getElementById('qt17_Doenca1').disabled=false}; if(document.getElementById('qt17_Gasto1').disabled==true){document.getElementById('qt17_Gasto1').disabled=false}; if(document.getElementById('qt17_Nome2').disabled==true){document.getElementById('qt17_Nome2').disabled=false}; if(document.getElementById('qt17_Doenca2').disabled==true){document.getElementById('qt17_Doenca2').disabled=false}; if(document.getElementById('qt17_Gasto2').disabled==true){document.getElementById('qt17_Gasto2').disabled=false}; if(document.getElementById('qt17_Nome3').disabled==true){document.getElementById('qt17_Nome3').disabled=false}; if(document.getElementById('qt17_Doenca3').disabled==true){document.getElementById('qt17_Doenca3').disabled=false}; if(document.getElementById('qt17_Gasto3').disabled==true){document.getElementById('qt17_Gasto3').disabled=false}" <c:if test="${formulario.qt17_ProblemaSaude == 'Sim'}"> checked</c:if>>Sim
-                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Não" onclick="if(document.getElementById('qt17_Nome1').disabled==false){document.getElementById('qt17_Nome1').disabled=true}; if(document.getElementById('qt17_Doenca1').disabled==false){document.getElementById('qt17_Doenca1').disabled=true}; if(document.getElementById('qt17_Gasto1').disabled==false){document.getElementById('qt17_Gasto1').disabled=true}; if(document.getElementById('qt17_Nome2').disabled==false){document.getElementById('qt17_Nome2').disabled=true}; if(document.getElementById('qt17_Doenca2').disabled==false){document.getElementById('qt17_Doenca2').disabled=true}; if(document.getElementById('qt17_Gasto2').disabled==false){document.getElementById('qt17_Gasto2').disabled=true}; if(document.getElementById('qt17_Nome3').disabled==false){document.getElementById('qt17_Nome3').disabled=true}; if(document.getElementById('qt17_Doenca3').disabled==false){document.getElementById('qt17_Doenca3').disabled=true}; if(document.getElementById('qt17_Gasto3').disabled==false){document.getElementById('qt17_Gasto3').disabled=true}" <c:if test="${formulario.qt17_ProblemaSaude == 'Não'}"> checked</c:if>>Não
+                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Sim" <c:if test="${formulario.qt17_ProblemaSaude == 'Sim'}"> checked</c:if>>Sim
+                        <input type="radio" name="opt_qt17_ProblemaSaude" value="Não" <c:if test="${formulario.qt17_ProblemaSaude == 'Não'}"> checked</c:if>>Não
                         <br/> Caso 'Sim' acesse no menu o item 'Manter Doença' depois de terminar e confirmar este formulário.
                     </td>
                 </tr>
@@ -451,33 +451,6 @@
                 if (!campoNumerico(form.txt_qt06_ValorBolsaOutro.value)){
                     mensagem = mensagem + "O valor bolsa outro na Questão 06 deve ser numérico\n";
                 }
-                if (form.txt_qt17_Gasto1.value == ""){
-                    form.txt_qt17_Gasto1.value = 0.0;
-                }
-                if (form.txt_qt17_Gasto1.value < 0.0){
-                    mensagem = mensagem + "O valor do gasto na Questão 17 não pode ser negativo\n";
-                }
-                if (!campoNumerico(form.txt_qt17_Gasto1.value)){
-                    mensagem = mensagem + "O valor do gasto na Questão 17 deve ser numérico\n";
-                }
-                if (form.txt_qt17_Gasto2.value == ""){
-                    form.txt_qt17_Gasto2.value = 0.0;
-                }
-                if (form.txt_qt17_Gasto2.value < 0.0){
-                    mensagem = mensagem + "O valor do gasto na Questão 17 não pode ser negativo\n";
-                }
-                if (!campoNumerico(form.txt_qt17_Gasto2.value)){
-                    mensagem = mensagem + "O valor do gasto na Questão 17 deve ser numérico\n";
-                }
-                if (form.txt_qt17_Gasto3.value == ""){
-                    form.txt_qt17_Gasto3.value = 0.0;
-                }
-                if (form.txt_qt17_Gasto3.value < 0.0){
-                    mensagem = mensagem + "O valor do gasto na Questão 17 não pode ser negativo\n";
-                }
-                if (!campoNumerico(form.txt_qt17_Gasto3.value)){
-                    mensagem = mensagem + "O valor do gasto na Questão 17 deve ser numérico\n";
-                }
                 if (form.opt_qt06_AtividadeRemunerada.value == ""){
                     mensagem = mensagem + "Selecione uma Atividade Remunerada na Questão 06\n";
                 }
@@ -580,7 +553,7 @@
                 if (form.txt_qt16_QuantQuarto.value == ""){
                     mensagem = mensagem + "Informe a quantidade de quartos na Questão 16\n";
                 }
-                if (form.opt_qt17_ProblemaSaude == ""){
+                if (form.opt_qt17_ProblemaSaude.value == ""){
                     mensagem = mensagem + "Informe Sim ou Não para Problema de Saúde na Questão 17\n";
                 }
                 if (form.txt_qt18_AluguelImoveis.value == ""){

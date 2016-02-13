@@ -195,7 +195,7 @@ public class ManterRendaController extends HttpServlet {
             Renda renda = new Renda(codRenda, formulario, qt18_Nome, qt18_DataNasc, qt18_EstadoCivil, qt18_Parentesco, qt18_Escolaridade, qt18_Trabalho, qt18_Ocupacao, qt18_RendaBruta);
             renda.setCodFormulario(codFormulario);
             renda.alterar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaBolsaController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaRendaController");
             view.forward(request, response);
         }catch (IOException ex){
             throw new ServletException(ex);
@@ -245,7 +245,7 @@ public class ManterRendaController extends HttpServlet {
             Renda renda = new Renda(codRenda, formulario, qt18_Nome, qt18_DataNasc, qt18_EstadoCivil, qt18_Parentesco, qt18_Escolaridade, qt18_Trabalho, qt18_Ocupacao, qt18_RendaBruta);
             renda.setCodFormulario(codFormulario);
             renda.excluir();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaBolsaController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaRendaController");
             view.forward(request, response);
         }catch (IOException ex){
             throw new ServletException(ex);

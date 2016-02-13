@@ -39,17 +39,17 @@
                 </tr>
                 <tr>
                     <td>Primeiro nome do familiar (pode ser inclusive o estudante):
-                        <input type="text" name="txt_qt18_Nome" value="${renda.qt18_Nome}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt18_Nome" value="${renda.qt18_Nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
                     <td>Data de nascimento do familiar:
-                        <input type="text" name="txt_qt18_DataNasc" maxlength="10" placeholder="dd/mm/aaaa" OnKeyPress="formatar('##/##/####', this)" value="${renda.qt18_DataNasc}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt18_DataNasc" maxlength="10" placeholder="dd/mm/aaaa" OnKeyPress="formatar('##/##/####', this)" value="${renda.qt18_DataNasc}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
                     <td>Parentesco do familiar:
-                        <input type="text" name="txt_qt18_Parentesco" value="${renda.qt18_Parentesco}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt18_Parentesco" value="${renda.qt18_Parentesco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -103,12 +103,12 @@
                 </tr>
                 <tr>
                     <td>Ocupação do familiar:
-                        <input type="text" name="txt_qt18_Ocupacao" value="${renda.qt18_Ocupacao}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt18_Ocupacao" value="${renda.qt18_Ocupacao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
                     <td>Renda bruta mensal do familiar (não colocar centavos):
-                        <input type="text" name="txt_qt18_RendaBruta" value="${renda.qt18_RendaBruta}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input type="text" name="txt_qt18_RendaBruta" value="${renda.qt18_RendaBruta}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
