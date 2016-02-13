@@ -12,6 +12,9 @@
         <h1>Manter Doença - ${operacao}</h1>
         <form action="ManterDoencaController?acao=confirmar${operacao}" method="post" name="frmManterDoenca" onsubmit="return validarFormulario(this)">
             <table>
+                <tr>
+                    <td>Código:<input type="text" name="txtCodDoenca" value="${doenca.codDoenca}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                </tr>
                 <tr> 
                     <td>Formulário: (Nome do Aluno | Seleção Modalidade): 
                         <select name="optFormulario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
@@ -76,6 +79,9 @@
                 mensagem = "";
                 if (form.optFormulario.value == "0"){
                     mensagem = mensagem + "Selecione um Formulário\n";
+                }
+                if (form.txtCodDoenca.value == ""){
+                    mensagem = mensagem + "Informe o código\n";
                 }
                 if (form.txt_qt17_Nome.value == ""){
                     mensagem = mensagem + "Informe o nome do familiar\n";

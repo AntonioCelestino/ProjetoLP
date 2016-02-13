@@ -24,6 +24,9 @@
         <h1>Manter Renda - ${operacao}</h1>
         <form action="ManterRendaController?acao=confirmar${operacao}" method="post" name="frmManterRenda" onsubmit="return validarFormulario(this)">
             <table>
+                <tr>
+                    <td>Código:<input type="text" name="txtCodRenda" value="${renda.codRenda}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                </tr>
                 <tr> 
                     <td>Formulário: (Nome do Aluno | Seleção Modalidade): 
                         <select name="optFormulario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
@@ -138,6 +141,9 @@
                 }
                 if (form.txt_qt18_Nome.value == ""){
                     mensagem = mensagem + "Informe o nome do familiar\n";
+                }
+                if (form.txtCodRenda.value == ""){
+                    mensagem = mensagem + "Informe o código\n";
                 }
                 if (form.txt_qt18_DataNasc.value == ""){
                     mensagem = mensagem + "Informe a Data de Nascimento do familiar\n";
