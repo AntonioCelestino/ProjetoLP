@@ -174,7 +174,7 @@ public class ManterDoencaController extends HttpServlet {
     }
 
     private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codDoenca = Integer.parseInt(request.getParameter("txtCodDoenca"));
+        int codDoenca = Integer.parseInt(request.getParameter("optFormulario") + request.getParameter("txtCodDoenca"));
         int codFormulario = Integer.parseInt(request.getParameter("optFormulario"));
         String qt17_Nome = request.getParameter("txt_qt17_Nome");
         String qt17_Doenca = request.getParameter("txt_qt17_Doenca");
@@ -221,7 +221,7 @@ public class ManterDoencaController extends HttpServlet {
     }
 
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codDoenca = Integer.parseInt(request.getParameter("txtCodDoenca"));
+        int codDoenca = Integer.parseInt(request.getParameter("optFormulario") + request.getParameter("txtCodDoenca"));
         int codFormulario = Integer.parseInt(request.getParameter("optFormulario"));
         String qt17_Nome = request.getParameter("txt_qt17_Nome");
         String qt17_Doenca = request.getParameter("txt_qt17_Doenca");

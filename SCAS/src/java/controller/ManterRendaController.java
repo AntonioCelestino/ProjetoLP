@@ -177,7 +177,7 @@ public class ManterRendaController extends HttpServlet {
     }
 
     private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codRenda = Integer.parseInt(request.getParameter("txtCodRenda"));
+        int codRenda = Integer.parseInt(request.getParameter("optFormulario") + request.getParameter("txtCodRenda"));
         int codFormulario = Integer.parseInt(request.getParameter("optFormulario"));
         String qt18_Nome = request.getParameter("txt_qt18_Nome");
         String qt18_DataNasc = request.getParameter("txt_qt18_DataNasc");
@@ -227,7 +227,7 @@ public class ManterRendaController extends HttpServlet {
     }
 
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codRenda = Integer.parseInt(request.getParameter("txtCodRenda"));
+        int codRenda = Integer.parseInt(request.getParameter("optFormulario") + request.getParameter("txtCodRenda"));
         int codFormulario = Integer.parseInt(request.getParameter("optFormulario"));
         String qt18_Nome = request.getParameter("txt_qt18_Nome");
         String qt18_DataNasc = request.getParameter("txt_qt18_DataNasc");

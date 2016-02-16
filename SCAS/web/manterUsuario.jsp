@@ -70,7 +70,7 @@
                 <tr>
                     <td>
                     Cidade: <input type="text" name="txtCidade" value="${usuario.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> 
-                    UF: <input size="5" type="text" name="txtUF" placeholder="Ex: MG" value="${usuario.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    UF: <input size="5" type="text" name="txtUF" maxlength="2" placeholder="Ex: MG" value="${usuario.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>

@@ -13,8 +13,7 @@
         <form action="ManterAlunoController?acao=confirmar${operacao}" method="post" name="frmManterAluno" onsubmit="return validarFormulario(this)">
             <table>
                 <tr> 
-                    <td>Nome do Usuário:</td> 
-                    <td>
+                    <td>Nome do Usuário: 
                         <select name="optUsuario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${aluno.codUsuario == null}"> selected</c:if>> </option>  
                             <c:forEach items="${usuarios}" var="usuario">
@@ -24,16 +23,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Matrícula:</td> 
-                    <td><input type="text" name="txtMatricula" value="${aluno.matricula}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Matrícula: <input type="text" name="txtMatricula" value="${aluno.matricula}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Ano de Ingresso:</td> 
-                    <td><input type="text" name="txtAnoIngresso" maxlength="4" value="${aluno.anoIngresso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Ano de Ingresso: <input type="text" name="txtAnoIngresso" maxlength="4" value="${aluno.anoIngresso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr> 
-                    <td>Curso do Aluno:</td> 
-                    <td>
+                    <td>Curso do Aluno:
                         <select name="optCurso" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${aluno.codCurso == null}"> selected</c:if>> </option>  
                             <c:forEach items="${cursos}" var="curso">
@@ -43,23 +39,33 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>(Período / Módulo / Série) que está cursando:</td> 
-                    <td><input type="text" name="txtPeriodoCurso" value="${aluno.periodoCurso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>(Período / Módulo / Série) que está cursando: <input type="text" name="txtPeriodoCurso" value="${aluno.periodoCurso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td><br />O seu endereço é o mesmo da sua família?</td> 
-                    <td><br /><input type="radio" name="endereco" value="Sim" onclick="if(document.getElementById('FamiliaEndereco').disabled==false){document.getElementById('FamiliaEndereco').disabled=true}; if(document.getElementById('FamiliaNumero').disabled==false){document.getElementById('FamiliaNumero').disabled=true}; if(document.getElementById('FamiliaComplemento').disabled==false){document.getElementById('FamiliaComplemento').disabled=true}; if(document.getElementById('FamiliaBairro').disabled==false){document.getElementById('FamiliaBairro').disabled=true}; if(document.getElementById('FamiliaCep').disabled==false){document.getElementById('FamiliaCep').disabled=true}; if(document.getElementById('FamiliaCidade').disabled==false){document.getElementById('FamiliaCidade').disabled=true}; if(document.getElementById('FamiliaUF').disabled==false){document.getElementById('FamiliaUF').disabled=true};">Sim
-                        <input type="radio" name="endereco" value="Não" onclick="if(document.getElementById('FamiliaEndereco').disabled==true){document.getElementById('FamiliaEndereco').disabled=false}; if(document.getElementById('FamiliaNumero').disabled==true){document.getElementById('FamiliaNumero').disabled=false}; if(document.getElementById('FamiliaComplemento').disabled==true){document.getElementById('FamiliaComplemento').disabled=false}; if(document.getElementById('FamiliaBairro').disabled==true){document.getElementById('FamiliaBairro').disabled=false}; if(document.getElementById('FamiliaCep').disabled==true){document.getElementById('FamiliaCep').disabled=false}; if(document.getElementById('FamiliaCidade').disabled==true){document.getElementById('FamiliaCidade').disabled=false}; if(document.getElementById('FamiliaUF').disabled==true){document.getElementById('FamiliaUF').disabled=false};">Não</td>
+                    <td><br />O endereço da sua família é diferente do seu?
+                        <input type="radio" name="endereco" value="Sim" onclick="if(document.getElementById('FamiliaEndereco').disabled==true){document.getElementById('FamiliaEndereco').disabled=false}; if(document.getElementById('FamiliaNumero').disabled==true){document.getElementById('FamiliaNumero').disabled=false}; if(document.getElementById('FamiliaComplemento').disabled==true){document.getElementById('FamiliaComplemento').disabled=false}; if(document.getElementById('FamiliaBairro').disabled==true){document.getElementById('FamiliaBairro').disabled=false}; if(document.getElementById('FamiliaCep').disabled==true){document.getElementById('FamiliaCep').disabled=false}; if(document.getElementById('FamiliaCidade').disabled==true){document.getElementById('FamiliaCidade').disabled=false}; if(document.getElementById('FamiliaUF').disabled==true){document.getElementById('FamiliaUF').disabled=false};" <c:if test="${(aluno.familia_endereco != '' && aluno.familia_endereco != null) || (aluno.familia_numero != '' && aluno.familia_numero != null) || (aluno.familia_complemento != '' && aluno.familia_complemento != null) || (aluno.familia_bairro != '' && aluno.familia_bairro != null) || (aluno.familia_cep != '' && aluno.familia_cep != null) || (aluno.familia_cidade != '' && aluno.familia_cidade != null) || (aluno.familia_uf != '' && aluno.familia_uf != null)}"> checked</c:if>>Sim
+                        <input type="radio" name="endereco" value="Não" onclick="if(document.getElementById('FamiliaEndereco').disabled==false){document.getElementById('FamiliaEndereco').disabled=true}; if(document.getElementById('FamiliaNumero').disabled==false){document.getElementById('FamiliaNumero').disabled=true}; if(document.getElementById('FamiliaComplemento').disabled==false){document.getElementById('FamiliaComplemento').disabled=true}; if(document.getElementById('FamiliaBairro').disabled==false){document.getElementById('FamiliaBairro').disabled=true}; if(document.getElementById('FamiliaCep').disabled==false){document.getElementById('FamiliaCep').disabled=true}; if(document.getElementById('FamiliaCidade').disabled==false){document.getElementById('FamiliaCidade').disabled=true}; if(document.getElementById('FamiliaUF').disabled==false){document.getElementById('FamiliaUF').disabled=true};" <c:if test="${(aluno.familia_endereco == '' || aluno.familia_endereco == null) && (aluno.familia_numero == '' || aluno.familia_numero == null) && (aluno.familia_complemento == '' || aluno.familia_complemento == null) && (aluno.familia_bairro == '' || aluno.familia_bairro == null) && (aluno.familia_cep == '' || aluno.familia_cep == null) && (aluno.familia_cidade == '' || aluno.familia_cidade == null) && (aluno.familia_uf == '' || aluno.familia_uf == null)}"> checked</c:if>>Não</td>
                 </tr>
                 <tr>
-                    <td colspan="2">(Caso não seja o mesmo, informe abaixo o endereço da sua família)
-                    <br />Rua:<input type="text" id="FamiliaEndereco" name="txtFamiliaEndereco" value="${aluno.familia_endereco}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                    <br />Número:<input type="text" id="FamiliaNumero" name="txtFamiliaNumero" value="${aluno.familia_numero}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                    <br />Complemento:<input type="text" id="FamiliaComplemento" name="txtFamiliaComplemento" value="${aluno.familia_complemento}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                    <br />Bairro:<input type="text" id="FamiliaBairro" name="txtFamiliaBairro" value="${aluno.familia_bairro}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                    <br />CEP:<input type="text" id="FamiliaCep" name="txtFamiliaCep" value="${aluno.familia_cep}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                    <br />Cidade:<input type="text" id="FamiliaCidade" name="txtFamiliaCidade" value="${aluno.familia_cidade}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                    <br />UF:<input type="text" id="FamiliaUF" name="txtFamiliaUF" value="${aluno.familia_uf}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    <td>(Caso seja diferente, informe abaixo o endereço da sua família) </td>
+                </tr>
+                <tr>
+                    <td>
+                    Endereço: <input size="30" type="text" id="FamiliaEndereco" name="txtFamiliaEndereco" placeholder="(Rua, Avenida, Praça, Travessa, etc)" value="${aluno.familia_endereco}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    Número: <input size="3" type="text" id="FamiliaNumero" name="txtFamiliaNumero" value="${aluno.familia_numero}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    Complemento: <input size="3" type="text" id="FamiliaComplemento" name="txtFamiliaComplemento" value="${aluno.familia_complemento}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Bairro: <input type="text" id="FamiliaBairro" name="txtFamiliaBairro" value="${aluno.familia_bairro}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>  
+                    CEP: <input type="text" id="FamiliaCep" name="txtFamiliaCep" maxlength="10" placeholder="00.000-000" OnKeyPress="formatar('##.###-###', this)" value="${aluno.familia_cep}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Cidade: <input type="text" id="FamiliaCidade" name="txtFamiliaCidade" value="${aluno.familia_cidade}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> 
+                    UF: <input size="5" type="text" id="FamiliaUF" name="txtFamiliaUF" maxlength="2" placeholder="Ex: MG" value="${aluno.familia_uf}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -114,7 +120,7 @@
                     mensagem = mensagem + "(Período / Módulo / Série) deve ser Numérico\n";
                 }
                 if (form.endereco.value == ""){
-                    mensagem = mensagem + "Informe se o seu endereço é o mesmo da sua família\n";
+                    mensagem = mensagem + "Informe se o endereço da sua família é diferente do seu ou não\n";
                 }
                 if (mensagem == ""){
                     return true;
