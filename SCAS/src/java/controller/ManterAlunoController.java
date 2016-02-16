@@ -132,6 +132,13 @@ public class ManterAlunoController extends HttpServlet {
         int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
         int anoIngresso = Integer.parseInt(request.getParameter("txtAnoIngresso"));
         String periodoCurso = request.getParameter("txtPeriodoCurso");
+        String familia_endereco = request.getParameter("txtFamiliaEndereco");
+        String familia_numero = request.getParameter("txtFamiliaNumero");
+        String familia_complemento = request.getParameter("txtFamiliaComplemento");
+        String familia_bairro = request.getParameter("txtFamiliaBairro");
+        String familia_cep = request.getParameter("txtFamiliaCep");
+        String familia_cidade = request.getParameter("txtFamiliaCidade");
+        String familia_uf = request.getParameter("txtFamiliaUF");
         int codCurso = Integer.parseInt(request.getParameter("optCurso"));
         int codUsuario = Integer.parseInt(request.getParameter("optUsuario"));
         try{
@@ -143,7 +150,7 @@ public class ManterAlunoController extends HttpServlet {
             if(codCurso != 0){
                 curso = Curso.obterCurso(codCurso);
             }
-            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, curso, usuario);
+            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, familia_endereco, familia_numero, familia_complemento, familia_bairro, familia_cep, familia_cidade, familia_uf, curso, usuario);
             aluno.setCodUsuario(codUsuario);
             aluno.setCodCurso(codCurso);
             aluno.gravar();
@@ -202,6 +209,13 @@ public class ManterAlunoController extends HttpServlet {
         int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
         int anoIngresso = Integer.parseInt(request.getParameter("txtAnoIngresso"));
         String periodoCurso = request.getParameter("txtPeriodoCurso");
+        String familia_endereco = request.getParameter("txtFamiliaEndereco");
+        String familia_numero = request.getParameter("txtFamiliaNumero");
+        String familia_complemento = request.getParameter("txtFamiliaComplemento");
+        String familia_bairro = request.getParameter("txtFamiliaBairro");
+        String familia_cep = request.getParameter("txtFamiliaCep");
+        String familia_cidade = request.getParameter("txtFamiliaCidade");
+        String familia_uf = request.getParameter("txtFamiliaUF");
         int codCurso = Integer.parseInt(request.getParameter("optCurso"));
         int codUsuario = Integer.parseInt(request.getParameter("optUsuario"));
         try{
@@ -213,7 +227,7 @@ public class ManterAlunoController extends HttpServlet {
             if(codCurso != 0){
                 curso = Curso.obterCurso(codCurso);
             }
-            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, curso, usuario);
+            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, familia_endereco, familia_numero, familia_complemento, familia_bairro, familia_cep, familia_cidade, familia_uf, curso, usuario);
             aluno.setCodUsuario(codUsuario);
             aluno.setCodCurso(codCurso);
             aluno.alterar();
@@ -234,6 +248,13 @@ public class ManterAlunoController extends HttpServlet {
         int matricula = Integer.parseInt(request.getParameter("txtMatricula"));
         int anoIngresso = Integer.parseInt(request.getParameter("txtAnoIngresso"));
         String periodoCurso = request.getParameter("txtPeriodoCurso");
+        String familia_endereco = request.getParameter("txtFamiliaEndereco");
+        String familia_numero = request.getParameter("txtFamiliaNumero");
+        String familia_complemento = request.getParameter("txtFamiliaComplemento");
+        String familia_bairro = request.getParameter("txtFamiliaBairro");
+        String familia_cep = request.getParameter("txtFamiliaCep");
+        String familia_cidade = request.getParameter("txtFamiliaCidade");
+        String familia_uf = request.getParameter("txtFamiliaUF");
         int codCurso = Integer.parseInt(request.getParameter("optCurso"));
         int codUsuario = Integer.parseInt(request.getParameter("optUsuario"));
         try{
@@ -245,7 +266,7 @@ public class ManterAlunoController extends HttpServlet {
             if(codCurso != 0){
                 curso = Curso.obterCurso(codCurso);
             }
-            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, curso, usuario);
+            Aluno aluno = new Aluno(matricula, anoIngresso, periodoCurso, familia_endereco, familia_numero, familia_complemento, familia_bairro, familia_cep, familia_cidade, familia_uf, curso, usuario);
             aluno.setCodUsuario(codUsuario);
             aluno.setCodCurso(codCurso);
             aluno.excluir();

@@ -23,7 +23,14 @@ public class AlunoDAO {
                 Aluno aluno = new Aluno(
                         rs.getInt("MATRICULA"),
                         rs.getInt("ANO_INGRESSO"),
-                        rs.getString("PERIODO_CURSO"),null, null);
+                        rs.getString("PERIODO_CURSO"),
+                        rs.getString("FAMILIA_ENDERECO"),
+                        rs.getString("FAMILIA_NUMERO"),
+                        rs.getString("FAMILIA_COMPLEMENTO"),
+                        rs.getString("FAMILIA_BAIRRO"),
+                        rs.getString("FAMILIA_CEP"),
+                        rs.getString("FAMILIA_CIDADE"),
+                        rs.getString("FAMILIA_UF"), null, null);
                 aluno.setCodUsuario(rs.getInt("USUARIO_ID"));
                 aluno.setCodCurso(rs.getInt("CURSO_ID"));
                 Alunos.add(aluno);
@@ -49,7 +56,14 @@ public class AlunoDAO {
             aluno = new Aluno(
                     rs.getInt("MATRICULA"),
                     rs.getInt("ANO_INGRESSO"),
-                    rs.getString("PERIODO_CURSO"),null, null);
+                    rs.getString("PERIODO_CURSO"),
+                    rs.getString("FAMILIA_ENDERECO"),
+                    rs.getString("FAMILIA_NUMERO"),
+                    rs.getString("FAMILIA_COMPLEMENTO"),
+                    rs.getString("FAMILIA_BAIRRO"),
+                    rs.getString("FAMILIA_CEP"),
+                    rs.getString("FAMILIA_CIDADE"),
+                    rs.getString("FAMILIA_UF"), null, null);
                     aluno.setCodUsuario(rs.getInt("USUARIO_ID"));
                     aluno.setCodCurso(rs.getInt("CURSO_ID"));
         } catch (SQLException e) {
@@ -64,22 +78,30 @@ public class AlunoDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "insert into aluno (MATRICULA, ANO_INGRESSO, PERIODO_CURSO, USUARIO_ID, CURSO_ID) values (?,?,?,?,?)";
+            String sql = "insert into aluno (MATRICULA, ANO_INGRESSO, PERIODO_CURSO, FAMILIA_ENDERECO, FAMILIA_NUMERO, FAMILIA_COMPLEMENTO, "
+                    + "FAMILIA_BAIRRO, FAMILIA_CEP, FAMILIA_CIDADE, FAMILIA_UF, USUARIO_ID, CURSO_ID) values (?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, aluno.getMatricula());
             comando.setInt(2, aluno.getAnoIngresso());
             comando.setString(3, aluno.getPeriodoCurso());
+            comando.setString(4, aluno.getFamilia_endereco());
+            comando.setString(5, aluno.getFamilia_numero());
+            comando.setString(6, aluno.getFamilia_complemento());
+            comando.setString(7, aluno.getFamilia_bairro());
+            comando.setString(8, aluno.getFamilia_cep());
+            comando.setString(9, aluno.getFamilia_cidade());
+            comando.setString(10, aluno.getFamilia_uf());
             
             if (aluno.getUsuario() == null){
-                comando.setNull(4, Types.NULL);
+                comando.setNull(11, Types.NULL);
             }else{
-                comando.setInt(4, aluno.getCodUsuario());
+                comando.setInt(11, aluno.getCodUsuario());
             }
             
             if (aluno.getCurso()== null){
-                comando.setNull(5, Types.NULL);
+                comando.setNull(12, Types.NULL);
             }else{
-                comando.setInt(5, aluno.getCodCurso());
+                comando.setInt(12, aluno.getCodCurso());
             } 
             
             comando.execute();
@@ -94,23 +116,30 @@ public class AlunoDAO {
         Connection conexao = null;
         try{
             conexao = BD.getConexao();
-            String sql = "update aluno set ANO_INGRESSO = ?, PERIODO_CURSO = ?, USUARIO_ID = ?, CURSO_ID = ? where MATRICULA = ?";
+            String sql = "update aluno set ANO_INGRESSO = ?, PERIODO_CURSO = ?, FAMILIA_ENDERECO = ?, FAMILIA_NUMERO = ?, FAMILIA_COMPLEMENTO = ?, "
+                    + "FAMILIA_BAIRRO = ?, FAMILIA_CEP = ?, FAMILIA_CIDADE = ?, FAMILIA_UF = ?, USUARIO_ID = ?, CURSO_ID = ? where MATRICULA = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, aluno.getAnoIngresso());
             comando.setString(2, aluno.getPeriodoCurso());
-            
+            comando.setString(3, aluno.getFamilia_endereco());
+            comando.setString(4, aluno.getFamilia_numero());
+            comando.setString(5, aluno.getFamilia_complemento());
+            comando.setString(6, aluno.getFamilia_bairro());
+            comando.setString(7, aluno.getFamilia_cep());
+            comando.setString(8, aluno.getFamilia_cidade());
+            comando.setString(9, aluno.getFamilia_uf());
             if (aluno.getUsuario() == null){
-                comando.setNull(3, Types.NULL);
+                comando.setNull(10, Types.NULL);
             }else{
-                comando.setInt(3, aluno.getCodUsuario());
+                comando.setInt(10, aluno.getCodUsuario());
             }
             
             if (aluno.getCurso()== null){
-                comando.setNull(4, Types.NULL);
+                comando.setNull(11, Types.NULL);
             }else{
-                comando.setInt(4, aluno.getCodCurso());
+                comando.setInt(11, aluno.getCodCurso());
             } 
-            comando.setInt(5, aluno.getMatricula());
+            comando.setInt(12, aluno.getMatricula());
             comando.execute();
             comando.close();
             conexao.close();
