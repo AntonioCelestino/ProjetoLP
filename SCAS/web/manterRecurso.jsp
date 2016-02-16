@@ -53,7 +53,7 @@
             
             function campoNumerico(valor)
             {
-                var caracteresValidos = "0123456789";
+                var caracteresValidos = ".0123456789";
                 var ehNumero = true;
                 var umCaracter;
                 for (i = 0; i < valor.length && ehNumero == true; i++) 

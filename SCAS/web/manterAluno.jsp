@@ -23,7 +23,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Matrícula: <input type="text" name="txtMatricula" value="${aluno.matricula}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Matrícula: <input type="text" name="txtMatricula" value="${aluno.matricula}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Ano de Ingresso: <input type="text" name="txtAnoIngresso" maxlength="4" value="${aluno.anoIngresso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>

@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td>Registro:</td> 
-                    <td><input type="text" name="txtRegistro" value="${funcionario.registro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtRegistro" value="${funcionario.registro}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Cargo do Funcionário:</td> 

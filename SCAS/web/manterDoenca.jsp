@@ -13,11 +13,11 @@
         <form action="ManterDoencaController?acao=confirmar${operacao}" method="post" name="frmManterDoenca" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Digite sequência numérica para cada membro familiar (1, 2, ...):<input type="text" size=2 name="txtCodDoenca" value="${doenca.codDoenca}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>Digite sequência numérica para cada membro familiar (1, 2, ...):<input type="text" size="10" name="txtCodDoenca" value="${doenca.codDoenca}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr> 
                     <td>Formulário: (Nome do Aluno | Seleção Modalidade): 
-                        <select name="optFormulario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <select name="optFormulario" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${doenca.codFormulario == null}"> selected</c:if>> </option>  
                             <c:forEach items="${formularios}" var="formulario">
                                 <option value="${formulario.codFormulario}" <c:if test="${doenca.codFormulario == formulario.codFormulario}"> selected</c:if>>${formulario.aluno.usuario.nome} | ${formulario.selecao.numeroEdital} | ${formulario.selecao.modalidade.nome}</option>  
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>Doença do familiar:
-                        <input type="text" name="txt_qt17_Doenca" value="${doenca.qt17_Doenca}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input type="text" size="30" name="txt_qt17_Doenca" value="${doenca.qt17_Doenca}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
