@@ -47,6 +47,22 @@
                     <td><input type="text" name="txtPeriodoCurso" value="${aluno.periodoCurso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
+                    <td><br />O seu endereço é o mesmo da sua família?</td> 
+                    <td><br /><input type="radio" name="endereco" value="Sim" onclick="if(document.getElementById('FamiliaEndereco').disabled==false){document.getElementById('FamiliaEndereco').disabled=true}; if(document.getElementById('FamiliaNumero').disabled==false){document.getElementById('FamiliaNumero').disabled=true}; if(document.getElementById('FamiliaComplemento').disabled==false){document.getElementById('FamiliaComplemento').disabled=true}; if(document.getElementById('FamiliaBairro').disabled==false){document.getElementById('FamiliaBairro').disabled=true}; if(document.getElementById('FamiliaCep').disabled==false){document.getElementById('FamiliaCep').disabled=true}; if(document.getElementById('FamiliaCidade').disabled==false){document.getElementById('FamiliaCidade').disabled=true}; if(document.getElementById('FamiliaUF').disabled==false){document.getElementById('FamiliaUF').disabled=true};">Sim
+                        <input type="radio" name="endereco" value="Não" onclick="if(document.getElementById('FamiliaEndereco').disabled==true){document.getElementById('FamiliaEndereco').disabled=false}; if(document.getElementById('FamiliaNumero').disabled==true){document.getElementById('FamiliaNumero').disabled=false}; if(document.getElementById('FamiliaComplemento').disabled==true){document.getElementById('FamiliaComplemento').disabled=false}; if(document.getElementById('FamiliaBairro').disabled==true){document.getElementById('FamiliaBairro').disabled=false}; if(document.getElementById('FamiliaCep').disabled==true){document.getElementById('FamiliaCep').disabled=false}; if(document.getElementById('FamiliaCidade').disabled==true){document.getElementById('FamiliaCidade').disabled=false}; if(document.getElementById('FamiliaUF').disabled==true){document.getElementById('FamiliaUF').disabled=false};">Não</td>
+                </tr>
+                <tr>
+                    <td colspan="2">(Caso não seja o mesmo, informe abaixo o endereço da sua família)
+                    <br />Rua:<input type="text" id="FamiliaEndereco" name="txtFamiliaEndereco" value="${aluno.familia_endereco}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    <br />Número:<input type="text" id="FamiliaNumero" name="txtFamiliaNumero" value="${aluno.familia_numero}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    <br />Complemento:<input type="text" id="FamiliaComplemento" name="txtFamiliaComplemento" value="${aluno.familia_complemento}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    <br />Bairro:<input type="text" id="FamiliaBairro" name="txtFamiliaBairro" value="${aluno.familia_bairro}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    <br />CEP:<input type="text" id="FamiliaCep" name="txtFamiliaCep" value="${aluno.familia_cep}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    <br />Cidade:<input type="text" id="FamiliaCidade" name="txtFamiliaCidade" value="${aluno.familia_cidade}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    <br />UF:<input type="text" id="FamiliaUF" name="txtFamiliaUF" value="${aluno.familia_uf}" disabled="disabled" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                    </td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
@@ -96,6 +112,9 @@
                 }
                 if (!campoNumerico(form.txtPeriodoCurso.value)){
                     mensagem = mensagem + "(Período / Módulo / Série) deve ser Numérico\n";
+                }
+                if (form.endereco.value == ""){
+                    mensagem = mensagem + "Informe se o seu endereço é o mesmo da sua família\n";
                 }
                 if (mensagem == ""){
                     return true;

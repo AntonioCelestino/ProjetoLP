@@ -13,7 +13,7 @@
         <form action="ManterDoencaController?acao=confirmar${operacao}" method="post" name="frmManterDoenca" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Código:<input type="text" name="txtCodDoenca" value="${doenca.codDoenca}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>Digite sequência numérica para cada membro familiar (1, 2, ...):<input type="text" size=2 name="txtCodDoenca" value="${doenca.codDoenca}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr> 
                     <td>Formulário: (Nome do Aluno | Seleção Modalidade): 
@@ -26,7 +26,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Nome do familiar doente (pode ser inclusive o estudante):
+                    <td>Nome do familiar doente (pode ser o estudante):
                         <input type="text" name="txt_qt17_Nome" value="${doenca.qt17_Nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
@@ -81,7 +81,7 @@
                     mensagem = mensagem + "Selecione um Formulário\n";
                 }
                 if (form.txtCodDoenca.value == ""){
-                    mensagem = mensagem + "Informe o código\n";
+                    mensagem = mensagem + "Informe o número de sequência\n";
                 }
                 if (form.txt_qt17_Nome.value == ""){
                     mensagem = mensagem + "Informe o nome do familiar\n";

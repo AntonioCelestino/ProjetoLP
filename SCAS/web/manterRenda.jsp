@@ -25,7 +25,7 @@
         <form action="ManterRendaController?acao=confirmar${operacao}" method="post" name="frmManterRenda" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Código:<input type="text" name="txtCodRenda" value="${renda.codRenda}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>Digite sequência numérica para cada membro familiar (1, 2, ...):<input type="text" size=2 name="txtCodRenda" value="${renda.codRenda}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr> 
                     <td>Formulário: (Nome do Aluno | Seleção Modalidade): 
@@ -38,7 +38,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Primeiro nome do familiar (pode ser inclusive o estudante):
+                    <td>Primeiro nome do familiar (pode ser o estudante):
                         <input type="text" name="txt_qt18_Nome" value="${renda.qt18_Nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
@@ -108,7 +108,7 @@
                 </tr>
                 <tr>
                     <td>Renda bruta mensal do familiar (não colocar centavos):
-                        <input type="text" name="txt_qt18_RendaBruta" value="${renda.qt18_RendaBruta}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input type="text" size=8 name="txt_qt18_RendaBruta" value="${renda.qt18_RendaBruta}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -143,7 +143,7 @@
                     mensagem = mensagem + "Informe o nome do familiar\n";
                 }
                 if (form.txtCodRenda.value == ""){
-                    mensagem = mensagem + "Informe o código\n";
+                    mensagem = mensagem + "Informe o número de sequência\n";
                 }
                 if (form.txt_qt18_DataNasc.value == ""){
                     mensagem = mensagem + "Informe a Data de Nascimento do familiar\n";
