@@ -38,7 +38,7 @@
             
             function campoNumerico(valor)
             {
-                var caracteresValidos = "0123456789";
+                var caracteresValidos = ".0123456789";
                 var ehNumero = true;
                 var umCaracter;
                 for (i = 0; i < valor.length && ehNumero == true; i++) 
@@ -68,8 +68,11 @@
                     mensagem = mensagem + "Informe uma Descrição para a Modalidade\n";
                 }
                 if (!campoNumerico(form.txtCodModalidade.value)){
-                    mensagem = mensagem + "Código da Modalidade deve ser numérico\n";
-                }                                   
+                    mensagem = mensagem + "Código da Modalidade deve ser somente numérico\n";
+                }
+                if (!campoNumerico(form.txtValorMensal.value)){
+                    mensagem = mensagem + "Valor Mensal deve ser somente numérico\n";
+                }
                 if (mensagem == ""){
                     return true;
                 }else{

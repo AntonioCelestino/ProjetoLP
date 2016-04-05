@@ -15,7 +15,7 @@
                 <tr> 
                     <td>Nome do Usuário:</td> 
                     <td>
-                        <select name="optUsuario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <select name="optUsuario" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${funcionario.codUsuario == null}"> selected</c:if>> </option>  
                             <c:forEach items="${usuarios}" var="usuario">
                                 <option value="${usuario.codUsuario}" <c:if test="${funcionario.codUsuario == usuario.codUsuario}"> selected</c:if>>${usuario.nome}</option>  

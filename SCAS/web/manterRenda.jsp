@@ -25,7 +25,7 @@
         <form action="ManterRendaController?acao=confirmar${operacao}" method="post" name="frmManterRenda" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Digite sequência numérica para cada membro familiar (1, 2, ...):<input type="text" size=2 name="txtCodRenda" value="${renda.codRenda}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>Digite sequência numérica para cada membro familiar (1, 2, ...):<input type="text" size="10" name="txtCodRenda" value="${renda.codRenda}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr> 
                     <td>Formulário: (Nome do Aluno | Seleção Modalidade): 

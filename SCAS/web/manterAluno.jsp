@@ -39,7 +39,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>(Período / Módulo / Série) que está cursando: <input type="text" name="txtPeriodoCurso" value="${aluno.periodoCurso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>(Período / Módulo / Série) que está cursando: <input size="1" type="text" name="txtPeriodoCurso" value="${aluno.periodoCurso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td><br />O endereço da sua família é diferente do seu?
@@ -121,6 +121,26 @@
                 }
                 if (form.endereco.value == ""){
                     mensagem = mensagem + "Informe se o endereço da sua família é diferente do seu ou não\n";
+                }
+                if (form.endereco.value == "Sim"){
+                    if (form.txtFamiliaEndereco.value == ""){
+                        mensagem = mensagem + "Informe o nome da Rua do seu familiar\n";
+                    }
+                    if (form.txtFamiliaNumero.value == ""){
+                        mensagem = mensagem + "Informe o número do Endereço do seu familiar\n";
+                    }
+                    if (form.txtFamiliaBairro.value == ""){
+                        mensagem = mensagem + "Informe o Bairro do seu familiar\n";
+                    }
+                    if (form.txtFamiliaCep.value == ""){
+                        mensagem = mensagem + "Informe o CEP do seu familiar\n";
+                    }
+                    if (form.txtFamiliaCidade.value == ""){
+                        mensagem = mensagem + "Informe a Cidade do seu familiar\n";
+                    }
+                    if (form.txtFamiliaUF.value == ""){
+                        mensagem = mensagem + "Informe o UF do seu familiar\n";
+                    }
                 }
                 if (mensagem == ""){
                     return true;

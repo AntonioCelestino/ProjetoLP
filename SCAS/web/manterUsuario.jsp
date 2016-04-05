@@ -31,7 +31,7 @@
                     <td>Data de Nascimento: <input type="text" name="txtDataNasc" maxlength="10" placeholder="dd/mm/aaaa" OnKeyPress="formatar('##/##/####', this)" value="${usuario.dataNasc}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Nome Completo: <input type="text" name="txtNome" placeholder="(Não abrevie nomes)" value="${usuario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Nome Completo: <input size="40" type="text" name="txtNome" placeholder="(Não abrevie nomes)" value="${usuario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Sexo:

@@ -14,7 +14,7 @@
             <table>
                 <tr> 
                     <td><hr />Confirme o nome do aluno:
-                        <select name="optAluno" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <select name="optAluno" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${formulario.codAluno == null}"> selected</c:if>> </option>  
                             <c:forEach items="${alunos}" var="aluno">
                                 <option value="${aluno.matricula}" <c:if test="${formulario.codAluno == aluno.matricula}"> selected</c:if>>${aluno.usuario.nome}</option>  
@@ -24,7 +24,7 @@
                 </tr>
                 <tr> 
                     <td><hr />Escolha em qual Seleção quer concorrer:
-                        <select name="optSelecao" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <select name="optSelecao" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${formulario.codSelecao == null}"> selected</c:if>> </option>  
                             <c:forEach items="${selecoes}" var="selecao">
                                 <option value="${selecao.codSelecao}" <c:if test="${formulario.codSelecao == selecao.codSelecao}"> selected</c:if>>${selecao.numeroEdital} | ${selecao.modalidade.nome}</option>  
