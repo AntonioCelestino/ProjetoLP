@@ -92,6 +92,10 @@
         <servlet-name>ManterRendaController</servlet-name>
         <servlet-class>controller.ManterRendaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioCursosController</servlet-name>
+        <servlet-class>controller.RelatorioCursosController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaCursoController</servlet-name>
         <url-pattern>/PesquisaCursoController</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>ManterRendaController</servlet-name>
         <url-pattern>/ManterRendaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioCursosController</servlet-name>
+        <url-pattern>/RelatorioCursosController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
