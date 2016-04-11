@@ -24,7 +24,9 @@
         <a href="PesquisaDoencaController">Manter Doença</a><br>
         <a href="PesquisaRendaController">Manter Renda</a><br>
         <a href="PesquisaBolsaController">Manter Bolsa</a><br>
-        <a href="RelatorioUsuariosController">Relatório Usuáio</a><br>
+        <br/>
+        <h3>Gerar Relatórios:</h3>
+        <a href="RelatorioUsuariosController">Relatório Usuário</a><br>
         <a href="RelatorioFuncionariosController">Relatório Funcionário</a><br>
         <a href="RelatorioCursosController">Relatório Curso</a><br>
         <a href="RelatorioModalidadesController">Relatório Modalidade</a><br>
@@ -33,7 +35,7 @@
         <a href="RelatorioSelecoesController">Relatório Seleção</a><br>
         <a href="RelatorioFormulariosController">Relatório Formulário</a><br>
         <a href="RelatorioDoencasController">Relatório Doença</a><br>
-        <a href="RelatorioRendasController">Relatório Renda</a><br>
+        <a href="RelatorioRendaController">Relatório Renda</a><br>
         <a href="RelatorioBolsasController">Relatório Bolsa</a><br>
     </body>
 </html>

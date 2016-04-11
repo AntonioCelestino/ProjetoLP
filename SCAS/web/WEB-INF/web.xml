@@ -96,6 +96,34 @@
         <servlet-name>RelatorioCursosController</servlet-name>
         <servlet-class>controller.RelatorioCursosController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioFormulariosController</servlet-name>
+        <servlet-class>controller.RelatorioFormulariosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioFuncionariosController</servlet-name>
+        <servlet-class>controller.RelatorioFuncionariosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioModalidadesController</servlet-name>
+        <servlet-class>controller.RelatorioModalidadesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioRecursosController</servlet-name>
+        <servlet-class>controller.RelatorioRecursosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioRendaController</servlet-name>
+        <servlet-class>controller.RelatorioRendaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioSelecoesController</servlet-name>
+        <servlet-class>controller.RelatorioSelecoesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioUsuariosController</servlet-name>
+        <servlet-class>controller.RelatorioUsuariosController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaCursoController</servlet-name>
         <url-pattern>/PesquisaCursoController</url-pattern>
@@ -191,6 +219,34 @@
     <servlet-mapping>
         <servlet-name>RelatorioCursosController</servlet-name>
         <url-pattern>/RelatorioCursosController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioFormulariosController</servlet-name>
+        <url-pattern>/RelatorioFormulariosController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioFuncionariosController</servlet-name>
+        <url-pattern>/RelatorioFuncionariosController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioModalidadesController</servlet-name>
+        <url-pattern>/RelatorioModalidadesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioRecursosController</servlet-name>
+        <url-pattern>/RelatorioRecursosController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioRendaController</servlet-name>
+        <url-pattern>/RelatorioRendaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioSelecoesController</servlet-name>
+        <url-pattern>/RelatorioSelecoesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioUsuariosController</servlet-name>
+        <url-pattern>/RelatorioUsuariosController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
