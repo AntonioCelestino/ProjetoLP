@@ -124,6 +124,18 @@
         <servlet-name>RelatorioUsuariosController</servlet-name>
         <servlet-class>controller.RelatorioUsuariosController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioAlunosController</servlet-name>
+        <servlet-class>controller.RelatorioAlunosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioBolsasController</servlet-name>
+        <servlet-class>controller.RelatorioBolsasController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioDoencasController</servlet-name>
+        <servlet-class>controller.RelatorioDoencasController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaCursoController</servlet-name>
         <url-pattern>/PesquisaCursoController</url-pattern>
@@ -247,6 +259,18 @@
     <servlet-mapping>
         <servlet-name>RelatorioUsuariosController</servlet-name>
         <url-pattern>/RelatorioUsuariosController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioAlunosController</servlet-name>
+        <url-pattern>/RelatorioAlunosController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioBolsasController</servlet-name>
+        <url-pattern>/RelatorioBolsasController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioDoencasController</servlet-name>
+        <url-pattern>/RelatorioDoencasController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
