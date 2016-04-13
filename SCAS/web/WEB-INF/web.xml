@@ -136,6 +136,10 @@
         <servlet-name>RelatorioDoencasController</servlet-name>
         <servlet-class>controller.RelatorioDoencasController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlunosBolsistas</servlet-name>
+        <servlet-class>controller.AlunosBolsistas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaCursoController</servlet-name>
         <url-pattern>/PesquisaCursoController</url-pattern>
@@ -271,6 +275,10 @@
     <servlet-mapping>
         <servlet-name>RelatorioDoencasController</servlet-name>
         <url-pattern>/RelatorioDoencasController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlunosBolsistas</servlet-name>
+        <url-pattern>/AlunosBolsistas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

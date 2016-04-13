@@ -37,5 +37,6 @@
         <a href="RelatorioDoencasController">Relatório Doença</a><br>
         <a href="RelatorioRendaController">Relatório Renda</a><br>
         <a href="RelatorioBolsasController">Relatório Bolsa</a><br>
+        <a href="AlunosBolsistas">Relatório Bolsistas</a><br>
     </body>
 </html>
