@@ -38,5 +38,6 @@
         <a href="RelatorioRendaController">Relatório Renda</a><br>
         <a href="RelatorioBolsasController">Relatório Bolsa</a><br>
         <a href="AlunosBolsistas">Relatório Bolsistas</a><br>
+        <a href="PesquisaAlunoPorCursoController">Relatório Aluno por Curso</a><br>
     </body>
 </html>

@@ -15,17 +15,17 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
-public class RelatorioAlunosController extends HttpServlet {
+public class RelatorioAlunosPorCursoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response){
         Connection conexao = null;
         try{
             HashMap parametros = new HashMap();
             conexao = BD.getConexao();
-            //parametros.put("PAR_Curso", Integer.parseInt(request.getParameter("optCurso")));
-            String relatorio = getServletContext().getRealPath ("/WEB-INF")+"//RelatorioAlunos.jasper";
+            parametros.put("PAR_Curso", Integer.parseInt(request.getParameter("optCurso")));
+            String relatorio = getServletContext().getRealPath ("/WEB-INF")+"//RelatorioAlunosPorCurso.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
-            response.setHeader("Content-Disposition", "attachment; filename=RelatorioAlunos.pdf");
+            response.setHeader("Content-Disposition", "attachment; filename=RelatorioAlunosPorCurso.pdf");
             response.setContentType("application/pdf");
             response.getOutputStream().write(relat);
         } catch (SQLException ex){
@@ -46,7 +46,7 @@ public class RelatorioAlunosController extends HttpServlet {
             }
         }
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

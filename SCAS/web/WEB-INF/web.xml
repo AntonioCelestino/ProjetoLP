@@ -125,10 +125,6 @@
         <servlet-class>controller.RelatorioUsuariosController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RelatorioAlunosController</servlet-name>
-        <servlet-class>controller.RelatorioAlunosController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>RelatorioBolsasController</servlet-name>
         <servlet-class>controller.RelatorioBolsasController</servlet-class>
     </servlet>
@@ -139,6 +135,18 @@
     <servlet>
         <servlet-name>AlunosBolsistas</servlet-name>
         <servlet-class>controller.AlunosBolsistas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaAlunoPorCursoController</servlet-name>
+        <servlet-class>controller.PesquisaAlunoPorCursoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioAlunosPorCursoController</servlet-name>
+        <servlet-class>controller.RelatorioAlunosPorCursoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioAlunosController</servlet-name>
+        <servlet-class>controller.RelatorioAlunosController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaCursoController</servlet-name>
@@ -265,10 +273,6 @@
         <url-pattern>/RelatorioUsuariosController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RelatorioAlunosController</servlet-name>
-        <url-pattern>/RelatorioAlunosController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>RelatorioBolsasController</servlet-name>
         <url-pattern>/RelatorioBolsasController</url-pattern>
     </servlet-mapping>
@@ -279,6 +283,18 @@
     <servlet-mapping>
         <servlet-name>AlunosBolsistas</servlet-name>
         <url-pattern>/AlunosBolsistas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaAlunoPorCursoController</servlet-name>
+        <url-pattern>/PesquisaAlunoPorCursoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioAlunosPorCursoController</servlet-name>
+        <url-pattern>/RelatorioAlunosPorCursoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioAlunosController</servlet-name>
+        <url-pattern>/RelatorioAlunosController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
