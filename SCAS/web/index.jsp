@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 10/11/2015, 08:33:44
-    Author     : Nathan
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,5 +33,6 @@
         <a href="RelatorioBolsasController">Relatório Bolsa</a><br>
         <a href="AlunosBolsistas">Relatório Bolsistas</a><br>
         <a href="PesquisaAlunoPorCursoController">Relatório Aluno por Curso</a><br>
+        <a href="PesquisaBolsaPorModalidadeController">Relatório Bolsa por Modalidade</a><br>
     </body>
 </html>

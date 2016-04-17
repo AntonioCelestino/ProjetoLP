@@ -148,6 +148,18 @@
         <servlet-name>RelatorioAlunosController</servlet-name>
         <servlet-class>controller.RelatorioAlunosController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaBolsasPorModalidade</servlet-name>
+        <servlet-class>controller.PesquisaBolsasPorModalidade</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaBolsaPorModalidadeController</servlet-name>
+        <servlet-class>controller.PesquisaBolsaPorModalidadeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioBolsasPorModalidadeController</servlet-name>
+        <servlet-class>controller.RelatorioBolsasPorModalidadeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaCursoController</servlet-name>
         <url-pattern>/PesquisaCursoController</url-pattern>
@@ -295,6 +307,18 @@
     <servlet-mapping>
         <servlet-name>RelatorioAlunosController</servlet-name>
         <url-pattern>/RelatorioAlunosController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaBolsasPorModalidade</servlet-name>
+        <url-pattern>/PesquisaBolsasPorModalidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaBolsaPorModalidadeController</servlet-name>
+        <url-pattern>/PesquisaBolsaPorModalidadeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioBolsasPorModalidadeController</servlet-name>
+        <url-pattern>/RelatorioBolsasPorModalidadeController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
