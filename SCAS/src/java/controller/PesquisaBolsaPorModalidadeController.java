@@ -15,7 +15,7 @@ public class PesquisaBolsaPorModalidadeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try{
-            request.setAttribute("modalidade", Modalidade.obterModalidades());
+            request.setAttribute("modalidades", Modalidade.obterModalidades());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaBolsaPorModalidade.jsp");
             view.forward(request, response);   
         } catch(ServletException ex){
