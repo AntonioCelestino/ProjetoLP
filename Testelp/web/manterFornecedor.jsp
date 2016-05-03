@@ -1,9 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Manter Fornecedor</title>
     </head>
     <body>
         <h1>Manter Fornecedor - ${operacao}</h1>
@@ -16,10 +19,10 @@
                     <td>Nome: <input size="40" type="text" name="txtNome" placeholder="(Não abrevie nomes)" value="${fornecedor.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>CNPJ: <input type="text" name="txtCNPJ" maxlength="14" placeholder="000.000.000-00" OnKeyPress="formatar('###.###.###-##', this)" value="${fornecedor.cnpj}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>CNPJ: <input type="text" name="txtCNPJ" maxlength="14" value="${fornecedor.cnpj}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Telefone: <input type="text" name="txtTelefone" maxlength="12" placeholder="Ex: 32-1111-1111" OnKeyPress="formatar('##-####-####', this)" value="${fornecedor.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Telefone: <input type="text" name="txtTelefone" maxlength="12" placeholder="Ex: 32-1111-1111" value="${fornecedor.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                 <tr>

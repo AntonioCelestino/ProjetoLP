@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1></h1>
-        <a href="">Manter Fornecedor</a><br>
-        <a href="">Manter Produto</a><br>
+        <a href="PesquisaFornecedorController">Manter Fornecedor</a><br>
+        <a href="PesquisaProdutoController">Manter Produto</a><br>
     </body>
 </html>
