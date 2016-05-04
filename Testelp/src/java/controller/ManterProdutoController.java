@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Fornecedor;
+import modelo.Produto;
 
-/**
- *
- * @author Nathan
- */
 public class ManterProdutoController extends HttpServlet {
 
     /**
@@ -29,18 +24,31 @@ public class ManterProdutoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding( "UTF-8" );
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManterProdutoController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManterProdutoController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String acao = request.getParameter("acao");
+        if(acao.equals("prepararIncluir")){
+            prepararIncluir(request, response);
+        } else {
+            if (acao.equals("confirmarIncluir")) {
+                confirmarIncluir(request, response);
+            } else {
+                if(acao.equals("prepararEditar")){
+                    prepararEditar(request, response);
+                } else {
+                    if (acao.equals("confirmarEditar")) {
+                        confirmarEditar(request, response);
+                    } else {
+                        if(acao.equals("prepararExcluir")){
+                            prepararExcluir(request, response);
+                        } else {
+                            if (acao.equals("confirmarExcluir")) {
+                                confirmarExcluir(request, response);
+                            }
+                        }
+                    }   
+                }
+            }
         }
     }
 
@@ -83,4 +91,130 @@ public class ManterProdutoController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try{
+            request.setAttribute("operacao", "Incluir");
+            
+            RequestDispatcher view = request.getRequestDispatcher("/manterProduto.jsp");
+            view.forward(request, response);   
+        } catch(ServletException ex){
+            throw ex;
+        } catch(IOException ex){
+            throw new ServletException(ex);
+        } //catch(ClassNotFoundException ex){
+            //throw new ServletException(ex);
+        //}
+    }
+
+    private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codProduto = Integer.parseInt(request.getParameter("txtCodProduto"));
+        String nome = request.getParameter("txtNome");
+        double preco = Double.parseDouble(request.getParameter("txtPreco"));
+        int quantidade = Integer.parseInt(request.getParameter("txtQuantidade"));
+        int codFornecedor = Integer.parseInt(request.getParameter("optFornecedor"));
+        try{
+            Fornecedor fornecedor = null;
+            if(codFornecedor != 0){
+                fornecedor = Fornecedor.obterFornecedor(codFornecedor);
+            }
+            Produto produto = new Produto(codProduto, nome, preco, quantidade, fornecedor);
+            produto.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaProdutoController");
+            view.forward(request, response);
+        }catch (IOException ex){
+            throw new ServletException(ex);
+        }catch (SQLException ex){
+            throw new ServletException(ex);
+        }catch (ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }catch (ServletException ex){
+            throw ex;
+        }
+    }
+
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try{
+            request.setAttribute("operacao", "Editar");
+            int codProduto = Integer.parseInt(request.getParameter("codProduto"));
+            Produto produto = Produto.obterProduto(codProduto);
+            request.setAttribute("produto", produto);
+            RequestDispatcher view = request.getRequestDispatcher("/manterProduto.jsp");
+            view.forward(request, response);   
+        } catch(ServletException ex){
+            throw ex;
+        } catch(IOException ex){
+            throw new ServletException(ex);
+        } catch(ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }
+    }
+
+    private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try{
+            request.setAttribute("operacao", "Excluir");
+            int codProduto = Integer.parseInt(request.getParameter("codProduto"));
+            Produto produto = Produto.obterProduto(codProduto);
+            request.setAttribute("produto", produto);
+            RequestDispatcher view = request.getRequestDispatcher("/manterProduto.jsp");
+            view.forward(request, response);   
+        } catch(ServletException ex){
+            throw ex;
+        } catch(IOException ex){
+            throw new ServletException(ex);
+        } catch(ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }
+    }
+
+    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codProduto = Integer.parseInt(request.getParameter("txtCodProduto"));
+        String nome = request.getParameter("txtNome");
+        double preco = Double.parseDouble(request.getParameter("txtPreco"));
+        int quantidade = Integer.parseInt(request.getParameter("txtQuantidade"));
+        int codFornecedor = Integer.parseInt(request.getParameter("optFornecedor"));
+        try{
+            Fornecedor fornecedor = null;
+            if(codFornecedor != 0){
+                fornecedor = Fornecedor.obterFornecedor(codFornecedor);
+            }
+            Produto produto = new Produto(codProduto, nome, preco, quantidade, fornecedor);
+            produto.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaProdutoController");
+            view.forward(request, response);
+        }catch (IOException ex){
+            throw new ServletException(ex);
+        }catch (SQLException ex){
+            throw new ServletException(ex);
+        }catch (ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }catch (ServletException ex){
+            throw ex;
+        }
+    }
+
+    private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codProduto = Integer.parseInt(request.getParameter("txtCodProduto"));
+        String nome = request.getParameter("txtNome");
+        double preco = Double.parseDouble(request.getParameter("txtPreco"));
+        int quantidade = Integer.parseInt(request.getParameter("txtQuantidade"));
+        int codFornecedor = Integer.parseInt(request.getParameter("optFornecedor"));
+        try{
+            Fornecedor fornecedor = null;
+            if(codFornecedor != 0){
+                fornecedor = Fornecedor.obterFornecedor(codFornecedor);
+            }
+            Produto produto = new Produto(codProduto, nome, preco, quantidade, fornecedor);
+            produto.excluir();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaProdutoController");
+            view.forward(request, response);
+        }catch (IOException ex){
+            throw new ServletException(ex);
+        }catch (SQLException ex){
+            throw new ServletException(ex);
+        }catch (ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }catch (ServletException ex){
+            throw ex;
+        }
+    }
 }

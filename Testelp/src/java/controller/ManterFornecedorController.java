@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Fornecedor;
 
-/**
- *
- * @author Nathan
- */
 public class ManterFornecedorController extends HttpServlet {
 
     /**
@@ -29,18 +23,31 @@ public class ManterFornecedorController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding( "UTF-8" );
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManterFornecedorController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManterFornecedorController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String acao = request.getParameter("acao");
+        if(acao.equals("prepararIncluir")){
+            prepararIncluir(request, response);
+        } else {
+            if (acao.equals("confirmarIncluir")) {
+                confirmarIncluir(request, response);
+            } else {
+                if(acao.equals("prepararEditar")){
+                    prepararEditar(request, response);
+                } else {
+                    if (acao.equals("confirmarEditar")) {
+                        confirmarEditar(request, response);
+                    } else {
+                        if(acao.equals("prepararExcluir")){
+                            prepararExcluir(request, response);
+                        } else {
+                            if (acao.equals("confirmarExcluir")) {
+                                confirmarExcluir(request, response);
+                            }
+                        }
+                    }   
+                }
+            }
         }
     }
 
@@ -83,4 +90,118 @@ public class ManterFornecedorController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try{
+            request.setAttribute("operacao", "Incluir");
+            
+            RequestDispatcher view = request.getRequestDispatcher("/manterFornecedor.jsp");
+            view.forward(request, response);   
+        } catch(ServletException ex){
+            throw ex;
+        } catch(IOException ex){
+            throw new ServletException(ex);
+        } //catch(ClassNotFoundException ex){
+            //throw new ServletException(ex);
+        //}
+    }
+
+    private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codFornecedor = Integer.parseInt(request.getParameter("txtCodFornecedor"));
+        String nome = request.getParameter("txtNome");
+        String cnpj = request.getParameter("txtCNPJ");
+        String telefone = request.getParameter("txtTelefone");
+        String cidade = request.getParameter("txtCidade");
+        try{
+            Fornecedor fornecedor = new Fornecedor(codFornecedor, nome, cnpj, telefone, cidade);
+            fornecedor.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaFornecedorController");
+            view.forward(request, response);
+        }catch (IOException ex){
+            throw new ServletException(ex);
+        }catch (SQLException ex){
+            throw new ServletException(ex);
+        }catch (ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }catch (ServletException ex){
+            throw ex;
+        }
+    }
+
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try{
+            request.setAttribute("operacao", "Editar");
+            int codFornecedor = Integer.parseInt(request.getParameter("codFornecedor"));
+            Fornecedor fornecedor = Fornecedor.obterFornecedor(codFornecedor);
+            request.setAttribute("fornecedor", fornecedor);
+            RequestDispatcher view = request.getRequestDispatcher("/manterFornecedor.jsp");
+            view.forward(request, response);   
+        } catch(ServletException ex){
+            throw ex;
+        } catch(IOException ex){
+            throw new ServletException(ex);
+        } catch(ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }
+    }
+
+    private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try{
+            request.setAttribute("operacao", "Excluir");
+            int codFornecedor = Integer.parseInt(request.getParameter("codFornecedor"));
+            Fornecedor fornecedor = Fornecedor.obterFornecedor(codFornecedor);
+            request.setAttribute("fornecedor", fornecedor);
+            RequestDispatcher view = request.getRequestDispatcher("/manterFornecedor.jsp");
+            view.forward(request, response);   
+        } catch(ServletException ex){
+            throw ex;
+        } catch(IOException ex){
+            throw new ServletException(ex);
+        } catch(ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }
+    }
+
+    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codFornecedor = Integer.parseInt(request.getParameter("txtCodFornecedor"));
+        String nome = request.getParameter("txtNome");
+        String cnpj = request.getParameter("txtCNPJ");
+        String telefone = request.getParameter("txtTelefone");
+        String cidade = request.getParameter("txtCidade");
+        try{
+            Fornecedor fornecedor = new Fornecedor(codFornecedor, nome, cnpj, telefone, cidade);
+            fornecedor.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaFornecedorController");
+            view.forward(request, response);
+        }catch (IOException ex){
+            throw new ServletException(ex);
+        }catch (SQLException ex){
+            throw new ServletException(ex);
+        }catch (ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }catch (ServletException ex){
+            throw ex;
+        }
+    }
+
+    private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        int codFornecedor = Integer.parseInt(request.getParameter("txtCodFornecedor"));
+        String nome = request.getParameter("txtNome");
+        String cnpj = request.getParameter("txtCNPJ");
+        String telefone = request.getParameter("txtTelefone");
+        String cidade = request.getParameter("txtCidade");
+        try{
+            Fornecedor fornecedor = new Fornecedor(codFornecedor, nome, cnpj, telefone, cidade);
+            fornecedor.excluir();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaFornecedorController");
+            view.forward(request, response);
+        }catch (IOException ex){
+            throw new ServletException(ex);
+        }catch (SQLException ex){
+            throw new ServletException(ex);
+        }catch (ClassNotFoundException ex){
+            throw new ServletException(ex);
+        }catch (ServletException ex){
+            throw ex;
+        }
+    }
 }
