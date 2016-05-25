@@ -18,18 +18,18 @@
             </tr>
             <c:forEach items="${fornecedores}" var="fornecedor">
                 <tr>
-                    <td><c:out value="${fornecedor.codFornecedor}"/></td>
+                    <td><c:out value="${fornecedor.id}"/></td>
                     <td><c:out value="${fornecedor.nome}"/></td>
                     <td>
-                        <a href="ManterFornecedorController?acao=prepararEditar&codFornecedor=<c:out value="${fornecedor.codFornecedor}"/>">Editar</a>
+                        <a href="ManterFornecedorController?acao=prepararOperacao&operacao=Editar&codFornecedor=<c:out value="${fornecedor.id}"/>">Editar</a>
                     </td>
                     <td>
-                        <a href="ManterFornecedorController?acao=prepararExcluir&codFornecedor=<c:out value="${fornecedor.codFornecedor}"/>">Excluir</a>
+                        <a href="ManterFornecedorController?acao=prepararOperacao&operacao=Excluir&codFornecedor=<c:out value="${fornecedor.id}"/>">Excluir</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-        <form action="ManterFornecedorController?acao=prepararIncluir" method="post">
+        <form action="ManterFornecedorController?acao=prepararOperacao&operacao=Incluir" method="post">
             <input type="submit" name="btnIncluir" value="Incluir"/>
         </form>
     </body>

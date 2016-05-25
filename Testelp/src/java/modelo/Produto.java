@@ -1,23 +1,52 @@
 package modelo;
 
+import dao.ProdutoDAO;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Produto {
-    private int codProduto;
-    private String nome;
-    private double preco;
-    private int quantidade;
-    private Fornecedor fornecedor;
+@Entity
+@Table(name = "produto")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Produto.findAll", query = "SELECT p FROM Produto p"),
+    @NamedQuery(name = "Produto.findById", query = "SELECT p FROM Produto p WHERE p.id = :id"),
+    @NamedQuery(name = "Produto.findByNome", query = "SELECT p FROM Produto p WHERE p.nome = :nome"),
+    @NamedQuery(name = "Produto.findByPreco", query = "SELECT p FROM Produto p WHERE p.preco = :preco"),
+    @NamedQuery(name = "Produto.findByQuantidade", query = "SELECT p FROM Produto p WHERE p.quantidade = :quantidade")})
+public class Produto implements Serializable {
     
-    private int codFornecedor;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ID", nullable = false)
+    private Integer id;
+    @Size(max = 45)
+    @Column(name = "NOME", length = 45)
+    private String nome;
+    @Size(max = 45)
+    @Column(name = "PRECO", length = 45)
+    private double preco;
+    @Column(name = "QUANTIDADE")
+    private Integer quantidade;
+    @JoinColumn(name = "FORNECEDOR_ID", referencedColumnName = "ID", nullable = false)
+    @ManyToOne(optional = false)
+    private Fornecedor fornecedorId;
 
-    public Produto(int codProduto, String nome, double preco, int quantidade, Fornecedor fornecedor) {
-        this.codProduto = codProduto;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
-        this.fornecedor = fornecedor;
+    public Produto() {
     }
     
     public static List<Produto> obterProdutos() throws ClassNotFoundException{
@@ -28,12 +57,24 @@ public class Produto {
         return ProdutoDAO.obterProduto(codProduto);
     }
 
-    public int getCodProduto() {
-        return codProduto;
+    public Produto(Integer id) {
+        this.id = id;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public Produto(Integer id, String nome, double preco, Integer quantidade, Fornecedor fornecedorId) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.fornecedorId = fornecedorId;
+    }
+    
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -52,39 +93,56 @@ public class Produto {
         this.preco = preco;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public Fornecedor getFornecedorId() {
+        return fornecedorId;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setFornecedorId(Fornecedor fornecedorId) {
+        this.fornecedorId = fornecedorId;
     }
 
-    public int getCodFornecedor() {
-        return codFornecedor;
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
     }
 
-    public void setCodFornecedor(int codFornecedor) {
-        this.codFornecedor = codFornecedor;
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Produto)) {
+            return false;
+        }
+        Produto other = (Produto) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "entity.Produto[ id=" + id + " ]";
     }
     
-    public void gravar() throws SQLException, ClassNotFoundException {
-        
+    public void salvar() throws SQLException, ClassNotFoundException {
+        ProdutoDAO.getInstance().salvar(this);
     }
 
     public void alterar() throws SQLException, ClassNotFoundException{
-        
+        ProdutoDAO.getInstance().alterar(this);
     }
 
     public void excluir() throws SQLException, ClassNotFoundException{
-        
+        ProdutoDAO.getInstance().excluir(this);
     }
 }

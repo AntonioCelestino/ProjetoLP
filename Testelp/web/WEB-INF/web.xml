@@ -16,6 +16,10 @@
         <servlet-name>ManterProdutoController</servlet-name>
         <servlet-class>controller.ManterProdutoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TratamentoExcecao</servlet-name>
+        <servlet-class>exception.TratamentoExcecao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaFornecedorController</servlet-name>
         <url-pattern>/PesquisaFornecedorController</url-pattern>
@@ -32,9 +36,29 @@
         <servlet-name>ManterProdutoController</servlet-name>
         <url-pattern>/ManterProdutoController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TratamentoExcecao</servlet-name>
+        <url-pattern>/TratamentoExcecao</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <error-page>
+        <error-code>
+            404
+        </error-code>
+        <location>
+            /TratamentoExcecao
+        </location>
+    </error-page>
+    <error-page>
+        <exception-type>
+            java.lang.Exception
+        </exception-type>
+        <location>
+            /TratamentoExcecao
+        </location>
+    </error-page>
 </web-app>

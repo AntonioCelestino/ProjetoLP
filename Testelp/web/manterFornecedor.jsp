@@ -10,10 +10,10 @@
     </head>
     <body>
         <h1>Manter Fornecedor - ${operacao}</h1>
-        <form action="ManterFornecedorController?acao=confirmar${operacao}" method="post" name="frmManterFornecedor" onsubmit="return validarFormulario(this)">
+        <form action="ManterFornecedorController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFornecedor" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Código: <input type="text" name="txtCodFornecedor" value="${fornecedor.codFornecedor}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>Código: <input type="text" name="txtCodFornecedor" value="${fornecedor.id}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Nome: <input size="40" type="text" name="txtNome" placeholder="(Não abrevie nomes)" value="${fornecedor.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>

@@ -1,7 +1,10 @@
 package controller;
 
+import dao.FornecedorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.ServerError;
+import java.rmi.ServerException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Fornecedor;
 
 public class ManterFornecedorController extends HttpServlet {
-
+    private Fornecedor fornecedor;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -26,28 +29,11 @@ public class ManterFornecedorController extends HttpServlet {
         request.setCharacterEncoding( "UTF-8" );
         response.setContentType("text/html;charset=UTF-8");
         String acao = request.getParameter("acao");
-        if(acao.equals("prepararIncluir")){
-            prepararIncluir(request, response);
-        } else {
-            if (acao.equals("confirmarIncluir")) {
-                confirmarIncluir(request, response);
-            } else {
-                if(acao.equals("prepararEditar")){
-                    prepararEditar(request, response);
-                } else {
-                    if (acao.equals("confirmarEditar")) {
-                        confirmarEditar(request, response);
-                    } else {
-                        if(acao.equals("prepararExcluir")){
-                            prepararExcluir(request, response);
-                        } else {
-                            if (acao.equals("confirmarExcluir")) {
-                                confirmarExcluir(request, response);
-                            }
-                        }
-                    }   
-                }
-            }
+        if(acao.equals("prepararOperacao")){
+            prepararOperacao(request, response);
+        } 
+        if(acao.equals("confirmarOperacao")){
+            confirmarOperacao(request, response);
         }
     }
 
@@ -88,120 +74,49 @@ public class ManterFornecedorController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
-    private void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    }// </editor-fold>    
+    
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
-            request.setAttribute("operacao", "Incluir");
-            
+            String operacao = request.getParameter("operacao");
+            request.setAttribute("operacao", operacao);
+            if(!operacao.equals("Incluir")){
+                long codFornecedor = Long.parseLong(request.getParameter("codFornecedor"));
+                fornecedor = FornecedorDAO.obterFornecedor(codFornecedor);
+                request.setAttribute("fornecedor", fornecedor);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/manterFornecedor.jsp");
-            view.forward(request, response);   
-        } catch(ServletException ex){
-            throw ex;
-        } catch(IOException ex){
-            throw new ServletException(ex);
-        } //catch(ClassNotFoundException ex){
-            //throw new ServletException(ex);
-        //}
-    }
-
-    private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codFornecedor = Integer.parseInt(request.getParameter("txtCodFornecedor"));
-        String nome = request.getParameter("txtNome");
-        String cnpj = request.getParameter("txtCNPJ");
-        String telefone = request.getParameter("txtTelefone");
-        String cidade = request.getParameter("txtCidade");
-        try{
-            Fornecedor fornecedor = new Fornecedor(codFornecedor, nome, cnpj, telefone, cidade);
-            fornecedor.gravar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaFornecedorController");
             view.forward(request, response);
-        }catch (IOException ex){
-            throw new ServletException(ex);
-        }catch (SQLException ex){
-            throw new ServletException(ex);
-        }catch (ClassNotFoundException ex){
-            throw new ServletException(ex);
-        }catch (ServletException ex){
+        }catch(ServletException ex){
             throw ex;
-        }
-    }
-
-    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        try{
-            request.setAttribute("operacao", "Editar");
-            int codFornecedor = Integer.parseInt(request.getParameter("codFornecedor"));
-            Fornecedor fornecedor = Fornecedor.obterFornecedor(codFornecedor);
-            request.setAttribute("fornecedor", fornecedor);
-            RequestDispatcher view = request.getRequestDispatcher("/manterFornecedor.jsp");
-            view.forward(request, response);   
-        } catch(ServletException ex){
-            throw ex;
-        } catch(IOException ex){
-            throw new ServletException(ex);
-        } catch(ClassNotFoundException ex){
+        }catch(IOException ex){
             throw new ServletException(ex);
         }
     }
 
-    private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
-            request.setAttribute("operacao", "Excluir");
-            int codFornecedor = Integer.parseInt(request.getParameter("codFornecedor"));
-            Fornecedor fornecedor = Fornecedor.obterFornecedor(codFornecedor);
-            request.setAttribute("fornecedor", fornecedor);
-            RequestDispatcher view = request.getRequestDispatcher("/manterFornecedor.jsp");
-            view.forward(request, response);   
-        } catch(ServletException ex){
-            throw ex;
-        } catch(IOException ex){
-            throw new ServletException(ex);
-        } catch(ClassNotFoundException ex){
-            throw new ServletException(ex);
-        }
-    }
-
-    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codFornecedor = Integer.parseInt(request.getParameter("txtCodFornecedor"));
-        String nome = request.getParameter("txtNome");
-        String cnpj = request.getParameter("txtCNPJ");
-        String telefone = request.getParameter("txtTelefone");
-        String cidade = request.getParameter("txtCidade");
-        try{
-            Fornecedor fornecedor = new Fornecedor(codFornecedor, nome, cnpj, telefone, cidade);
-            fornecedor.alterar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaFornecedorController");
-            view.forward(request, response);
-        }catch (IOException ex){
-            throw new ServletException(ex);
-        }catch (SQLException ex){
-            throw new ServletException(ex);
-        }catch (ClassNotFoundException ex){
-            throw new ServletException(ex);
-        }catch (ServletException ex){
-            throw ex;
-        }
-    }
-
-    private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        int codFornecedor = Integer.parseInt(request.getParameter("txtCodFornecedor"));
-        String nome = request.getParameter("txtNome");
-        String cnpj = request.getParameter("txtCNPJ");
-        String telefone = request.getParameter("txtTelefone");
-        String cidade = request.getParameter("txtCidade");
-        try{
-            Fornecedor fornecedor = new Fornecedor(codFornecedor, nome, cnpj, telefone, cidade);
-            fornecedor.excluir();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaFornecedorController");
-            view.forward(request, response);
-        }catch (IOException ex){
-            throw new ServletException(ex);
-        }catch (SQLException ex){
-            throw new ServletException(ex);
-        }catch (ClassNotFoundException ex){
-            throw new ServletException(ex);
-        }catch (ServletException ex){
-            throw ex;
+            String operacao = request.getParameter("operacao");
+            int codFornecedor = Integer.parseInt(request.getParameter("txtCodFornecedor"));
+            String nome = request.getParameter("txtNome");
+            String cnpj = request.getParameter("txtCNPJ");
+            String telefone = request.getParameter("txtTelefone");
+            String cidade = request.getParameter("txtCidade");
+            if(operacao.equals("Incluir")){
+                fornecedor = new Fornecedor(codFornecedor, nome, cnpj, telefone, cidade);
+                FornecedorDAO.getInstance().salvar(fornecedor);
+            }else if(operacao.equals("Editar")){
+                fornecedor.setNome(nome);
+                fornecedor.setCnpj(cnpj);
+                fornecedor.setTelefone(telefone);
+                fornecedor.setCidade(cidade);
+                FornecedorDAO.getInstance().alterar(fornecedor);
+            }else if (operacao.equals("Excluir")){
+                FornecedorDAO.getInstance().excluir(fornecedor);
+            }
+            throw new ServletException();
+        }catch(ServletException e){
+            throw e;
         }
     }
 }
